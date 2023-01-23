@@ -2,5 +2,45 @@
     "lang": "عربي",
     "login":{
         
-    }
+    },
+    "navbar":{
+        "home":"Home",
+        "companies":"Companies",
+        "branches":"Branches",
+        "departments":"Departments",
+        "employees":"Employees",
+        "reset-password":"Reset Password"
+    },
+    "companies":{},
+    "branches":{},
+    "departments":{},
+    "employees":{},
+    "company_name_en":"Company Name",
+    "company_name_ar":"اسم الشركة",
+    "tax_num":"Tax Number",
+    "phone":"Phone",
+    "mobile":"Mobile",
+    "fax":"Fax",
+    "email":"Email",
+    "number_of_employees":"Number Of Employees",
+    "creation_date":"Creation Date",
+    "edit":"Edit",
+    "branch_name_en":"Branch Name",
+    "branch_name_ar":"اسم الفرع",
+    "country_en":"Country",
+    "country_ar":"اسم الدولة",
+    "address_en":"Address",
+    "address_ar":"العنوان",
+    "latitude":"Latitude",
+    "longitude":"Longitude",
+    "company":"Company",
+    "department_name_en":"Department Name",
+    "department_name_ar":"اسم القسم",
+    "branch":"Branch",
+    "emp_name_en":"Employee Name",
+    "emp_name_ar":"اسم الموظف",    
+    "place_of_birth_en":"Place Of Birth",
+    "place_of_birth_ar":"محل الميلاد"
+
+    
 }

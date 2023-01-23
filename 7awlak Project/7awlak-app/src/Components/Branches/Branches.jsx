@@ -2,9 +2,19 @@ import React ,{useState, useEffect}from 'react'
 import "./Branches.scss"
 import TableData from '../../Components/TableData/TableData';
 import hawlakServices from '../../services/hawlakServices';
+import GeneralModal from '../Modal/Modal';
+import { useNavigate } from "react-router-dom"
+import EditBranch from '../../Pages/EditBranch/EditBranch';
+import { t } from 'i18next';
 export default function Branches() {
+  const navigate = useNavigate()
     const [allBranches, setAllBranches] = useState([]);
-
+    const [currentEditingBranch, setCurrentEditingBranch] = useState({});
+    const [modalVisable, setModalVisable] = useState(false);
+    function handleRowClick(tableRow) {
+      navigate(`/branch-details/${tableRow.id}`);
+      console.log(tableRow, "hhhhhhhhhhhhhhh");
+    }
     async function allDepartmentsHandler() {
         try{
           let {data} = await hawlakServices.getAllBranches()
@@ -12,8 +22,7 @@ export default function Branches() {
           let formatedBranches = data.results.map((item) => {
             return {
             id: item.id,
-            company_name_en: item.company_name_en,
-            company_name_ar: item.company_name_ar,          
+                     
             branch_name_en: item.branch_name_en,
             branch_name_ar: item.branch_name_ar,
             number_of_employees:item.number_of_employees,
@@ -26,7 +35,20 @@ export default function Branches() {
             creation_date: item.creation_date,
             company: item.company,          
             is_active: item.is_active,
+            edit: (
             
+              <button
+                className="edit-branch-btn"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setCurrentEditingBranch(item);
+                  setModalVisable(true);
+                }}
+              >
+                {t("edit")}
+              </button>
+           
+          ),
             };
           });
           console.log(data.results, "All branches");
@@ -37,11 +59,20 @@ export default function Branches() {
         allDepartmentsHandler();
       }, []);
   return (
-    <div>      
-    <TableData        
+    <div className='container'> 
+    {modalVisable && (
+        <GeneralModal>
+          <EditBranch
+            currentBranch={currentEditingBranch}
+            setCurrentEditingBranch={setCurrentEditingBranch}
+            setModalVisable={setModalVisable}
+          />
+        </GeneralModal>
+      )}     
+    <TableData  
+    handleRowClick={handleRowClick}      
     tableHeaders={[
-      "company_name_en",
-      "company_name_ar",
+      
       "branch_name_en",
       "branch_name_ar",
       "number_of_employees",

@@ -18,4 +18,4 @@ root.render(
     </BrowserRouter>
 );
 
-// document.getElementsByTagName("html")[0].setAttribute("dir", "rtl");
+document.getElementsByTagName("html")[0].setAttribute("dir", "ltr");

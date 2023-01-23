@@ -1,11 +1,20 @@
 import React from 'react'
 import "./NavBar.scss"
+import { useTranslation } from "react-i18next";
 import Hawlaklogo from "../../assets/Hawlaklogo (3).png"
 import { NavLink } from "react-router-dom";
 import { authActions } from './../../store/AuthSlice';
-
+import { useDispatch } from "react-redux";
+import { currentLang, switchLang } from "../Localize/lang";
 export default function NavBar() {
-
+  const { t, i18n } = useTranslation();
+  const lang = i18n.language;
+  const dispatch = useDispatch();
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng);
+    localStorage.setItem("lng", lng);
+    switchLang(lng);
+  };
   return (
     
     <>
@@ -18,32 +27,36 @@ export default function NavBar() {
 
         <div className="content">
           <div className='navbar-routes'>
-          <img src={Hawlaklogo} alt="profile-img" className="profile-img" />
+          <NavLink to="/home"><img src={Hawlaklogo} alt="profile-img" className="profile-img" /></NavLink>
 
+          <NavLink to="/home" className="navbar-navlink">
+            {t("navbar.home")}
+          </NavLink>
           <NavLink to="/companies" className="navbar-navlink">
-            Companies
+            {t("navbar.companies")}
           </NavLink>
 
           <NavLink to="/branches" className="navbar-navlink">
-            Branches
+            {t("navbar.branches")}
           </NavLink>
 
           <NavLink to="/departments" className="navbar-navlink">
-          Departments
+          {t("navbar.departments")}
           </NavLink>
-
-          {/* <NavLink to="/add-department" className="navbar-navlink">
-            Add Department
-          </NavLink>
-          <NavLink to="/add-employee" className="navbar-navlink">
-            Add Employee
-          </NavLink> */}
-          <NavLink to="/reset-password" className="navbar-navlink">
-            Reset Password
-          </NavLink>
-          <button className="navbar-navlink lang-btn"><i className="fa-solid fa-globe lang-icon"></i> English</button>
+          <NavLink to="/employees" className="navbar-navlink">
+          {t("navbar.employees")}
+          </NavLink>   
+        
+          <button className="navbar-navlink lang-btn" onClick={() => {
+              changeLanguage(currentLang() === "en" ? "ar" : "en");
+            }}><i className="fa-solid fa-globe lang-icon"></i> {t("lang")}</button>
           </div>
-           <div className='logout-action'>
+          </div>
+          <div className='logout-section'>
+           <div className='logout-action' onClick={(e) => {
+                e.preventDefault();
+                dispatch(authActions.logout());
+              }}>
           <i class="fa-solid fa-right-from-bracket logout"></i>
           </div>
         </div>

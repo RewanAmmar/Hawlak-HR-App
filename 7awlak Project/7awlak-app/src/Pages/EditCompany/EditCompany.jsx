@@ -3,24 +3,23 @@ import hawlakServices from '../../services/hawlakServices'
 import "./EditCompany.scss"
 import toastPopup from '../../Helpers/Toast'
 import { useNavigate } from "react-router-dom";
-export default function EditCompany({currentCompany,setCurrentEditingCompanies}) {
+export default function EditCompany({currentCompany,setCurrentEditingCompany,setModalVisable}) {
     const navigate = useNavigate();
     
     async function editCompanyHandler(){
-        let obj = {
-            id: currentCompany.id,
-            company_name_en: currentCompany.companyNameEN,
-            company_name_ar: currentCompany.companyNameAR,
-            tax_num: currentCompany.taxNumber,
-            phone: currentCompany.phoneNumber,
-            mobile: currentCompany.mobileNumber,
+        let obj = {            
+            company_name_en: currentCompany.company_name_en,
+            company_name_ar: currentCompany.company_name_ar,
+            tax_num: currentCompany.tax_num,
+            phone: currentCompany.phone,
+            mobile: currentCompany.mobile,
             fax: currentCompany.fax,
             email: currentCompany.email,
-            number_of_employees: currentCompany.numberOfEmployees,
+            number_of_employees: currentCompany.number_of_employees,
             is_active: true
         }
         try{
-            let {data} = await hawlakServices.editCompany(obj);
+            let {data} = await hawlakServices.editCompany(currentCompany.id,obj);
             toastPopup("success");
             setTimeout(() => {
               navigate(0);
@@ -52,10 +51,10 @@ export default function EditCompany({currentCompany,setCurrentEditingCompanies})
                 name="company-name"
                 placeholder="Company Name"
                 className="add-department-name"
-               value={currentCompany.companyNameEN}
+               value={currentCompany.company_name_en}
                onChange={(e) => {
-                setCurrentEditingCompanies((prev) => {
-                  return { ...prev, companyNameEN: e.target.value };
+                setCurrentEditingCompany((prev) => {
+                  return { ...prev, company_name_en: e.target.value };
                 });
               }}
               />
@@ -71,10 +70,10 @@ export default function EditCompany({currentCompany,setCurrentEditingCompanies})
                 id="company-name-ar"
                 placeholder="اسم الشركة"
                 className="add-department-name"
-                value={currentCompany.companyNameAR}
+                value={currentCompany.company_name_ar}
                 onChange={(e) => {
-                    setCurrentEditingCompanies((prev) => {
-                      return { ...prev, companyNameAR: e.target.value };
+                    setCurrentEditingCompany((prev) => {
+                      return { ...prev, company_name_ar: e.target.value };
                     });
                   }}
               />
@@ -90,10 +89,10 @@ export default function EditCompany({currentCompany,setCurrentEditingCompanies})
                 id="tax-number"
                 placeholder="Tax Number"
                 className="add-department-name"
-              value={currentCompany.taxNumber}
+              value={currentCompany.tax_num}
               onChange={(e) => {
-                setCurrentEditingCompanies((prev) => {
-                  return { ...prev, taxNumber: e.target.value };
+                setCurrentEditingCompany((prev) => {
+                  return { ...prev, tax_num: e.target.value };
                 });
               }}
               />
@@ -114,7 +113,7 @@ export default function EditCompany({currentCompany,setCurrentEditingCompanies})
                 className="add-department-name"
                value={currentCompany.email}
                onChange={(e) => {
-                setCurrentEditingCompanies((prev) => {
+                setCurrentEditingCompany((prev) => {
                   return { ...prev, email: e.target.value };
                 });
               }}
@@ -131,10 +130,10 @@ export default function EditCompany({currentCompany,setCurrentEditingCompanies})
                 id="mobile"
                 placeholder="Mobile"
                 className="add-department-name"
-                value={currentCompany.mobileNumber}
+                value={currentCompany.mobile}
                 onChange={(e) => {
-                    setCurrentEditingCompanies((prev) => {
-                      return { ...prev, mobileNumber: e.target.value };
+                    setCurrentEditingCompany((prev) => {
+                      return { ...prev, mobile: e.target.value };
                     });
                   }}
               />
@@ -150,10 +149,10 @@ export default function EditCompany({currentCompany,setCurrentEditingCompanies})
                 id="phone"
                 placeholder="Phone"
                 className="add-department-name"
-                value={currentCompany.phoneNumber}
+                value={currentCompany.phone}
                 onChange={(e) => {
-                    setCurrentEditingCompanies((prev) => {
-                      return { ...prev, phoneNumber: e.target.value };
+                    setCurrentEditingCompany((prev) => {
+                      return { ...prev, phone: e.target.value };
                     });
                   }}
               />
@@ -171,10 +170,10 @@ export default function EditCompany({currentCompany,setCurrentEditingCompanies})
                 name="fax"
                 placeholder="Fax"
                 className="add-department-name"
-               value={currentCompany.faxNumber}
+               value={currentCompany.fax}
                onChange={(e) => {
-                setCurrentEditingCompanies((prev) => {
-                  return { ...prev, faxNumber: e.target.value };
+                setCurrentEditingCompany((prev) => {
+                  return { ...prev, fax: e.target.value };
                 });
               }}
               />
@@ -191,10 +190,10 @@ export default function EditCompany({currentCompany,setCurrentEditingCompanies})
                 id="number-of-employee"
                 placeholder="Number Of Employees"
                 className="add-department-name"
-                value={currentCompany.numberOfEmployees}
+                value={currentCompany.number_of_employees}
                 onChange={(e) => {
-                    setCurrentEditingCompanies((prev) => {
-                      return { ...prev, numberOfEmployees: e.target.value };
+                    setCurrentEditingCompany((prev) => {
+                      return { ...prev, number_of_employees: e.target.value };
                     });
                   }}
               />
@@ -210,8 +209,16 @@ export default function EditCompany({currentCompany,setCurrentEditingCompanies})
                 type="submit"
                 onClick={() => editCompanyHandler()}
               >
-               Edit
-              </button>            
+               Save
+              </button> 
+              <button
+                  name="add-button"
+                  className="company-btn"
+                  type="submit"
+                  onClick={() => setModalVisable(false)}
+                >
+                  Cancel
+                </button>           
             </div>
           </div>
         </form>

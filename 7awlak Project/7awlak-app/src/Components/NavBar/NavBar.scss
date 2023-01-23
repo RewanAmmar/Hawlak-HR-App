@@ -21,16 +21,16 @@
     }
   .content{
     display: flex;
-  
+    margin-left: 25px;
     .navbar-routes {
       display: flex;
       align-items: center;
       gap: 5px;
       
       .profile-img {
-        width: 35px;
-        height: 35px;
-        border-radius: 100%;
+        width: 90px;
+        height: 50px;
+        border-radius: 15px;
         overflow: hidden;
         border: 1px solid #ddd;
         margin-right: 15px;
@@ -74,6 +74,10 @@
         }
       }
     }
+   
+  }
+  .logout-section{
+    margin-right: 35px;
     .logout-action{
       width: 35px;
       height: 35px;
@@ -148,5 +152,13 @@
         }
       }  
       
+    }
+  }
+  [dir="rtl"]{
+    .content{
+      margin-right: 25px;
+    }
+    .logout-section{
+      margin-left: 35px;
     }
   }

@@ -1,6 +1,47 @@
-import React from 'react'
-import "./EditEmployee.scss"
-export default function EditEmployee() {
+import React from "react";
+import "./EditEmployee.scss";
+import { useNavigate } from "react-router-dom";
+
+import toastPopup from "../../Helpers/Toast";
+import hawlakServices from '../../services/hawlakServices';
+export default function EditEmployee({
+  currentEmployee,
+  setCurrentEditingEmployee,
+  setModalVisable,
+}) {
+  console.log(currentEmployee,"currentEmployee");
+  const navigate = useNavigate();
+   async function editEmployeeHandler(){
+    let obj ={
+      user:{
+        username: currentEmployee.username,
+        email: currentEmployee.email,
+        password: currentEmployee.password
+      },
+      position:{
+        start_date: currentEmployee.start_date,
+        manager: currentEmployee.manager,
+        job_title: currentEmployee.job_title,
+        contract_type: currentEmployee.contract_type
+      },
+      emp_name_en: currentEmployee.emp_name_en,
+      emp_name_ar: currentEmployee.emp_name_ar,
+      phone: currentEmployee.phone,
+      mobile: currentEmployee.mobile,
+      place_of_birth_en: currentEmployee.place_of_birth_en,
+      place_of_birth_ar: currentEmployee.place_of_birth_ar
+    }
+    try{
+      let { data } = hawlakServices.editEmployee(currentEmployee.id, obj)
+      console.log(data,"employee data");
+      toastPopup("success")
+      setTimeout(()=>{
+        navigate(0)
+      },1500)
+    }catch(error){
+      toastPopup("error")
+    }
+   }
   return (
     <div>
       <div className="employee-container">
@@ -23,7 +64,12 @@ export default function EditEmployee() {
                       name="user-name"
                       placeholder="User Name"
                       className="add-department-name"
-                     
+                      value={currentEmployee.username}
+                      onChange={(e)=>{
+                        setCurrentEditingEmployee((prev) =>{
+                          return {...prev, username: e.target.value}
+                        })
+                      }}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -37,7 +83,12 @@ export default function EditEmployee() {
                       id="email"
                       placeholder="Email"
                       className="add-department-name"
-                     
+                      value={currentEmployee.email}
+                      onChange={(e)=>{
+                        setCurrentEditingEmployee((prev) =>{
+                          return {...prev, email: e.target.value}
+                        })
+                      }}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -51,7 +102,12 @@ export default function EditEmployee() {
                       id="password"
                       placeholder="Password"
                       className="add-department-name"
-                      
+                      value={currentEmployee.password}
+                      onChange={(e)=>{
+                        setCurrentEditingEmployee((prev) =>{
+                          return {...prev, password: e.target.value}
+                        })
+                      }}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -65,7 +121,12 @@ export default function EditEmployee() {
                       id="start-date"
                       placeholder="Start Date"
                       className="add-department-name"
-                      
+                      value={currentEmployee.start_date}
+                      onChange={(e)=>{
+                        setCurrentEditingEmployee((prev) =>{
+                          return {...prev, start_date: e.target.value}
+                        })
+                      }}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -79,11 +140,14 @@ export default function EditEmployee() {
                       id="manager"
                       placeholder="Manager"
                       className="add-department-name"
-                      
+                      value={currentEmployee.manager}
+                      onChange={(e)=>{
+                        setCurrentEditingEmployee((prev) =>{
+                          return {...prev, manager: e.target.value}
+                        })
+                      }}
                     />
                   </div>
-                </div>
-                <div className="left-side ">
                   <div className="employee-input-container">
                     <label htmlFor="job-title" className="employee-label">
                       Job Title
@@ -95,9 +159,16 @@ export default function EditEmployee() {
                       id="job-title"
                       placeholder="Job Tilte"
                       className="add-department-name"
-                     
+                      value={currentEmployee.job_title}
+                      onChange={(e)=>{
+                        setCurrentEditingEmployee((prev) =>{
+                          return {...prev, job_title: e.target.value}
+                        })
+                      }}
                     />
                   </div>
+                </div>
+                <div className="left-side ">               
                   <div className="employee-input-container">
                     <label htmlFor="contract-type" className="employee-label">
                       Contract Type
@@ -109,13 +180,17 @@ export default function EditEmployee() {
                       id="contract-type"
                       placeholder="Contract Type"
                       className="add-department-name"
-                     
+                      value={currentEmployee.contract_type}
+                      onChange={(e)=>{
+                        setCurrentEditingEmployee((prev) =>{
+                          return {...prev, contract_type: e.target.value}
+                        })
+                      }}
                     />
                   </div>
-
                   <div className="employee-input-container">
                     <label htmlFor="employee-name" className="employee-label">
-                     Employee Name
+                      Employee Name
                     </label>
 
                     <input
@@ -123,7 +198,12 @@ export default function EditEmployee() {
                       name="employee-name"
                       placeholder="Employee Name"
                       className="add-department-name"
-                      
+                    value={currentEmployee.emp_name_en}
+                    onChange={(e)=>{
+                      setCurrentEditingEmployee((prev) =>{
+                        return {...prev, emp_name_en: e.target.value}
+                      })
+                    }}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -136,7 +216,12 @@ export default function EditEmployee() {
                       name="employee-ar"
                       placeholder="اسم الموظف"
                       className="add-department-name"
-                      
+                      value={currentEmployee.emp_name_ar}
+                      onChange ={(e)=>{
+                        setCurrentEditingEmployee((prev)=>{
+                          return {...prev, emp_name_ar: e.target.value}
+                        })
+                      }}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -149,11 +234,14 @@ export default function EditEmployee() {
                       name="phone"
                       placeholder="Phone"
                       className="add-department-name"
-                     
+                      value={currentEmployee.phone}
+                      onChange ={(e)=>{
+                        setCurrentEditingEmployee((prev)=>{
+                          return {...prev, phone: e.target.value}
+                        })
+                      }}
                     />
                   </div>
-                </div>
-                <div className="left-side ">
                   <div className="employee-input-container">
                     <label htmlFor="mobile" className="employee-label">
                       Mobile
@@ -165,7 +253,12 @@ export default function EditEmployee() {
                       id="mobile"
                       placeholder="Mobile"
                       className="add-department-name"
-                      
+                      value={currentEmployee.mobile}
+                      onChange ={(e)=>{
+                        setCurrentEditingEmployee((prev)=>{
+                          return {...prev, mobile: e.target.value}
+                        })
+                      }}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -179,9 +272,17 @@ export default function EditEmployee() {
                       id="date-of-birth"
                       placeholder="Date Of Birth"
                       className="add-department-name"
-                      
+                      value={currentEmployee.date_of_birth}
+                      onChange={(e)=>{
+                        setCurrentEditingEmployee((prev) =>{
+                          return {...prev, date_of_birth: e.target.value}
+                        })
+                      }}
                     />
                   </div>
+                </div>
+                <div className="left-side ">  
+                
 
                   <div className="employee-input-container">
                     <label htmlFor="hire-date" className="employee-label">
@@ -194,7 +295,12 @@ export default function EditEmployee() {
                       name="hire-date"
                       placeholder="Hire Date"
                       className="add-department-name"
-                      
+                      value={currentEmployee.hiredate}
+                      onChange={(e)=>{
+                        setCurrentEditingEmployee((prev) =>{
+                          return {...prev, hiredate: e.target.value}
+                        })
+                      }}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -207,11 +313,19 @@ export default function EditEmployee() {
                       name="place-of-birth"
                       placeholder="Place Of Birth"
                       className="add-department-name"
-                     
+                      value={currentEmployee.place_of_birth_en}
+                      onChange ={(e)=>{
+                        setCurrentEditingEmployee((prev)=>{
+                          return {...prev, place_of_birth_en: e.target.value}
+                        })
+                      }}
                     />
                   </div>
                   <div className="employee-input-container">
-                    <label htmlFor="place-of-birth-ar" className="employee-label">
+                    <label
+                      htmlFor="place-of-birth-ar"
+                      className="employee-label"
+                    >
                       محل الميلاد
                     </label>
 
@@ -220,11 +334,14 @@ export default function EditEmployee() {
                       name="place-of-birth-ar"
                       placeholder="محل الميلاد"
                       className="add-department-name"
-                      
+                      value={currentEmployee.place_of_birth_ar}
+                      onChange ={(e)=>{
+                        setCurrentEditingEmployee((prev)=>{
+                          return {...prev, place_of_birth_ar: e.target.value}
+                        })
+                      }}
                     />
                   </div>
-                </div>
-                <div className="left-side ">
                   <div className="employee-input-container">
                     <label htmlFor="id-type" className="employee-label">
                       ID Type
@@ -236,7 +353,12 @@ export default function EditEmployee() {
                       id="id-type"
                       placeholder="ID Type"
                       className="add-department-name"
-                      
+                      value={currentEmployee.identification_type_en}
+                      onChange ={(e)=>{
+                        setCurrentEditingEmployee((prev)=>{
+                          return {...prev, identification_type_en: e.target.value}
+                        })
+                      }}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -250,7 +372,12 @@ export default function EditEmployee() {
                       id="id-type-ar"
                       placeholder="نوع الهوية"
                       className="add-department-name"
-                      
+                      value={currentEmployee.identification_type_ar}
+                      onChange ={(e)=>{
+                        setCurrentEditingEmployee((prev)=>{
+                          return {...prev, identification_type_ar: e.target.value}
+                        })
+                      }}
                     />
                   </div>
 
@@ -264,9 +391,17 @@ export default function EditEmployee() {
                       name="id-number"
                       placeholder="ID Number"
                       className="add-department-name"
-                     
+                      value={currentEmployee.identification_number}
+                      onChange ={(e)=>{
+                        setCurrentEditingEmployee((prev)=>{
+                          return {...prev, identification_number: e.target.value}
+                        })
+                      }}
                     />
                   </div>
+                </div>
+                {/* <div className="left-side ">
+              
                   <div className="employee-input-container">
                     <label htmlFor="nationality" className="employee-label">
                       Nationality
@@ -293,8 +428,6 @@ export default function EditEmployee() {
                       
                     />
                   </div>
-                </div>
-                <div className="left-side ">
                   <div className="employee-input-container">
                     <label htmlFor="address-one" className="employee-label">
                       Address 1
@@ -350,6 +483,9 @@ export default function EditEmployee() {
                       
                     />
                   </div>
+                </div> */}
+                {/* <div className="left-side ">
+                 
                   <div className="employee-input-container">
                     <label htmlFor="education-degree" className="employee-label">
                       Education Degree
@@ -363,8 +499,8 @@ export default function EditEmployee() {
                       
                     />
                   </div>
-                </div>
-                <div className="left-side ">
+                </div> */}
+                {/* <div className="left-side ">
                   <div className="employee-input-container">
                     <label htmlFor="education-degree-ar" className="employee-label">
                       درجة المؤهل
@@ -524,7 +660,7 @@ export default function EditEmployee() {
                     />
                   </div>               
 
-                </div>
+                </div> */}
                 {/* Input */}
               </div>
               <div className="button">
@@ -532,9 +668,17 @@ export default function EditEmployee() {
                   name="add-button"
                   className="employee-btn"
                   type="submit"
-                  
+                  onClick={() => editEmployeeHandler()}
                 >
-                  Edit
+                  Save
+                </button>
+                <button
+                  name="add-button"
+                  className="employee-btn"
+                  type="submit"
+                  onClick={() => setModalVisable(false)}
+                >
+                  Cancel
                 </button>
               </div>
             </div>
@@ -542,5 +686,5 @@ export default function EditEmployee() {
         </div>
       </div>
     </div>
-  )
+  );
 }

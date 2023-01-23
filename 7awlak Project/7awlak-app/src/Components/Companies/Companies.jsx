@@ -1,21 +1,30 @@
 import React, { useState, useEffect } from "react";
 import "./Companies.scss";
 import moment from "moment";
+import { useNavigate } from "react-router-dom"
 import TableData from "../../Components/TableData/TableData";
 import hawlakServices from "../../services/hawlakServices";
 import EmptyTable from "./../../Components/TableData/EmptyTable/EmptyTable";
 import { NavLink } from "react-router-dom";
 import GeneralModal from './../Modal/Modal';
 import EditDepartment from './../../Pages/EditDepartment/EditDepartment';
+import { t } from 'i18next';
+import EditCompany from "../../Pages/EditCompany/EditCompany";
 export default function Companies() {
   const [allCompanies, setAllCompanies] = useState([]);
-  const [currentEditingCompanies, setCurrentEditingCompanies] = useState({});
+  const navigate = useNavigate()
+  const [currentEditingCompany, setCurrentEditingCompany] = useState({});
   const [modalVisable, setModalVisable] = useState(false);
+  
+  function handleRowClick(tableRow) {
+    navigate(`/company-details/${tableRow.id}`);
+    console.log(tableRow, "hhhhhhhhhhhhhhh");
+  }
   async function allCompaniesHandler() {
     try {
-      let { data } = await hawlakServices.getAllCompanies();
-      console.log(data, "dataaaaaaaaaaaaaaaaaaaaaaa");
-      let formatedCompanies = data.results.map((item) => {
+      let { data: company } = await hawlakServices.getAllCompanies();
+      console.log(company, "dataaaaaaaaaaaaaaaaaaaaaaa");
+      let formatedCompanies = company.results.map((item) => {
         return {
           id: item.id,
           company_name_en: item.company_name_en,
@@ -28,23 +37,23 @@ export default function Companies() {
           number_of_employees: item.number_of_employees,
           creation_date: moment(item.creation_date).format("dddd DD/MM/YYYY"),
           is_active: item.is_active,
-          Edit: (
+          edit: (
             
               <button
-                className="edit-btn"
+                className="edit-company-btn"
                 onClick={(e) => {
                   e.stopPropagation();
-                  setCurrentEditingCompanies(item);
+                  setCurrentEditingCompany(item);
                   setModalVisable(true);
                 }}
               >
-                Edit
+                {t("edit")}
               </button>
            
           ),
         };
       });
-      console.log(data.results, "All companies");
+      console.log(company.results, "All companies");
       setAllCompanies(formatedCompanies);
     } catch (err) {}
   }
@@ -55,14 +64,15 @@ export default function Companies() {
     <div className="container">
       {modalVisable && (
         <GeneralModal>
-          <EditDepartment
-            currentDepartment={currentEditingCompanies}
-            setCurrentEditingDepartment={setCurrentEditingCompanies}
+          <EditCompany
+            currentCompany={currentEditingCompany}
+            setCurrentEditingCompany={setCurrentEditingCompany}
             setModalVisable={setModalVisable}
           />
         </GeneralModal>
       )}
       <TableData
+      handleRowClick={handleRowClick}
         tableHeaders={[
           "company_name_en",
           "company_name_ar",
@@ -73,7 +83,7 @@ export default function Companies() {
           "email",
           "number_of_employees",
           "creation_date",
-          "Edit",
+          "edit",
         ]}
         tableRows={allCompanies}
       />

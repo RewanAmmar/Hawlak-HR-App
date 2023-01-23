@@ -14,6 +14,10 @@ import Branches from '../../Components/Branches/Branches';
 import Departments from "../Departments/Departments";
 import ResetPassword from "../../Pages/ResetPassword/ResetPassword";
 import EditCompany from "../../Pages/EditCompany/EditCompany";
+import Employees from "../Employees/Employees";
+import CompanyDetails from '../../Pages/CompanyDetails/CompanyDetails';
+import BranchesDetails from '../../Pages/BranchesDetails/BranchesDetails';
+import DepartmentDetails from '../../Pages/DepartmentDetails/DepartmentDetails';
 
 export default function Layout() {
   return (
@@ -34,10 +38,13 @@ export default function Layout() {
             <Route path="/add-employee" element={<AddEmployee />} /> 
             <Route path="/companies" element={<Companies />} />            
             <Route path="/branches" element={<Branches />} /> 
-            <Route path="/departments" element={<Departments />} />            
-
-
-          </Routes>
+            <Route path="/departments" element={<Departments />} />
+            <Route path="/employees" element={<Employees />} /> 
+            <Route path="/company-details/:companyId" element={<CompanyDetails />} /> 
+            <Route path="/branch-details/:branchId" element={<BranchesDetails />} />    
+            <Route path="/department-details/:departmentId" element={<DepartmentDetails />} /> 
+            
+            </Routes>
         </div>
         {/* <Footer className="footer" /> */}
       </div>

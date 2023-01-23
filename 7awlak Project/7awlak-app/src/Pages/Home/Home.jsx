@@ -11,6 +11,7 @@ export default function Home() {
   const dispatch = useDispatch();
   const logoutHandler = async () => {
     dispatch(authActions.logout());
+    
   };
  const data = {
   labels: ['Companies', 'Branches', 'Departments', 'Employees'],
@@ -107,9 +108,9 @@ export default function Home() {
         </div>
         <div className="main">
           <div className="topbar">
-            <div className="toggle" onClick={() => setShow(!show)}>
+            {/* <div className="toggle" onClick={() => setShow(!show)}>
               <i class={`fas fa-bars ${show ? "fa-solid fa-xmark" : null}`}></i>
-            </div>
+            </div> */}
             <div className="search">
               <label className="search-label">
                 <input

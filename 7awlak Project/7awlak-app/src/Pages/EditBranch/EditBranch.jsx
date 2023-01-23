@@ -1,6 +1,34 @@
 import React from 'react'
 import "./EditBranch.scss"
-export default function EditBranch() {
+import { useNavigate } from "react-router-dom";
+import hawlakServices from '../../services/hawlakServices';
+import toastPopup from '../../Helpers/Toast';
+
+export default function EditBranch({currentBranch,setCurrentEditingBranch,setModalVisable}) {
+    const navigate = useNavigate();
+    async function editBranchHandler(){
+        let obj = {            
+            branch_name_en: currentBranch.branch_name_en,
+            branch_name_ar: currentBranch.branch_name_ar,
+            number_of_employees:currentBranch.number_of_employees,
+            country_en: currentBranch.country_en,
+            country_ar: currentBranch.country_ar,
+            address_en: currentBranch.address_en,
+            address_ar: currentBranch.address_ar,
+            latitude: currentBranch.latitude,
+            longitude: currentBranch.longitude,
+            company: currentBranch.company
+        }
+        try{
+            let {data} = await hawlakServices.editBranch(currentBranch.id,obj);
+            toastPopup("success");
+            setTimeout(() => {
+              navigate(0);
+          }, 1500);
+        }catch(error){
+            toastPopup("error");
+        }
+    }
   return (
     <div>
       <div className="branch-container">
@@ -25,7 +53,12 @@ export default function EditBranch() {
                   name="branch-name"
                   placeholder="Branch Name"
                   className="add-department-name"
-                 
+                  value={currentBranch.branch_name_en}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, branch_name_en: e.target.value };
+                   });
+                 }}
                 />
               </div>
               <div className="branch-input-container">
@@ -39,7 +72,12 @@ export default function EditBranch() {
                   id="branch"
                   placeholder="اسم الفرع"
                   className="add-department-name"
-                  
+                  value={currentBranch.branch_name_ar}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, branch_name_ar: e.target.value };
+                   });
+                 }}
                 />
               </div>
               <div className="branch-input-container">
@@ -53,7 +91,12 @@ export default function EditBranch() {
                   id="company"
                   placeholder="Companies Name"
                   className="add-department-name"
-                  
+                  value={currentBranch.company}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, company: e.target.value };
+                   });
+                 }}
                 />
               </div>
           
@@ -70,7 +113,12 @@ export default function EditBranch() {
                   id="country"
                   placeholder="Country"
                   className="add-department-name"
-                 
+                  value={currentBranch.country_en}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, country_en: e.target.value };
+                   });
+                 }}
                 />
               </div>
               <div className="branch-input-container">
@@ -84,7 +132,12 @@ export default function EditBranch() {
                   id="country-ar"
                   placeholder="الدولة"
                   className="add-department-name"
-                 
+                  value={currentBranch.country_ar}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, country_ar: e.target.value };
+                   });
+                 }}
                 />
               </div>
               
@@ -99,7 +152,12 @@ export default function EditBranch() {
                   name="number-of-employee"
                   placeholder="Number Of Employees"
                   className="add-department-name"
-                 
+                  value={currentBranch.number_of_employees}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, number_of_employees: e.target.value };
+                   });
+                 }}
                 />
               </div>
               </div>
@@ -115,7 +173,12 @@ export default function EditBranch() {
                   id="address"
                   placeholder="Address"
                   className="add-department-name"
-                 
+                  value={currentBranch.address_en}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, address_en: e.target.value };
+                   });
+                 }}
                 />
               </div>
               <div className="branch-input-container">
@@ -129,7 +192,12 @@ export default function EditBranch() {
                   id="address-ar"
                   placeholder="العنوان"
                   className="add-department-name"
-                  
+                  value={currentBranch.address_ar}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, address_ar: e.target.value };
+                   });
+                 }}
                 />
               </div>
               <div className="branch-input-container">
@@ -143,11 +211,16 @@ export default function EditBranch() {
                   id="latitude"
                   placeholder="Latitude"
                   className="add-department-name"
-                  
+                  value={currentBranch.latitude}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, latitude: e.target.value };
+                   });
+                 }}
                 />
               </div>
               </div>
-              <div className='left-side '>
+              {/* <div className='left-side '>
               <div className="branch-input-container">
                 <label htmlFor="longitude" className="branch-label">
                   Longitude
@@ -159,11 +232,16 @@ export default function EditBranch() {
                   id="longitude"
                   placeholder="Longitude"
                   className="add-department-name"
-                  
+                  value={currentBranch.longitude}
+                  onChange={(e) => {
+                    setCurrentEditingBranch((prev) => {
+                     return { ...prev, longitude: e.target.value };
+                   });
+                 }}
                 />
               </div>
                   
-              </div>
+              </div> */}
               {/* Input */}
               
               </div>
@@ -172,11 +250,18 @@ export default function EditBranch() {
                   name="add-button"
                   className="branch-btn"
                   type="submit"
-                  
+                  onClick={()=>editBranchHandler()}
                 >
-                 Edit
+                 Save
                 </button>
-            
+                <button
+                  name="add-button"
+                  className="branch-btn"
+                  type="submit"
+                  onClick={() => setModalVisable(false)}
+                >
+                  Cancel
+                </button>
               </div>
             </div>
           </form>

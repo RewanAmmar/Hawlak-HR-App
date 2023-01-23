@@ -24,30 +24,7 @@ function App() {
   const auth = useSelector((state) => state.auth);
   console.log(auth);
   return (
-    <div className="App">
-      {/* <Login /> */}
-      {/* <Forgotpassword/> */}
-      {/* <Home/> */}
-      {/* <AddCompany/> */}
-      {/* <Sidebar/> */}
-      {/* <AddEmployee/> */}
-      {/* <NavBar/> */}
-      {/* <AddBranch/> */}
-      {/* <AddDepartment/> */}
-     
-        {/* <Routes>
-        <Route path="/" element={<Home/>} />
-        <Route path="/home" element={<Home/>} />
-      <Route path="/forgot-password" element={<Forgotpassword/>} />
-      <Route path="/reset-password" element={<ResetPassword/>} />
-      <Route path="companies" element = {<Companies />} />     
-      <Route path="/add-company" element={<AddCompany/>} />
-      <Route path="/add-branch" element={<AddBranch/>} />
-      <Route path="/add-department" element={<AddDepartment/>} /> 
-      <Route path="/add-employee" element={<AddEmployee/>} /> 
-      <Route path="/sidebar" element={<Sidebar/>} />
-      <Route path="/login" element={<Login />} />  
-      </Routes>  */}
+    <div className="App"> 
     
       <React.Fragment>
         <Routes>

@@ -32,6 +32,7 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
   return (
     <div>
       <div className="branch-container">
+        
         <div className="branch-content">
           <form
             className="branch-card"            

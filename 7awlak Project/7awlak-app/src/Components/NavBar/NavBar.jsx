@@ -32,7 +32,7 @@ export default function NavBar() {
           <NavLink to="/home" className="navbar-navlink">
             {t("navbar.home")}
           </NavLink>
-          <NavLink to="/companies" className="navbar-navlink">
+          {/* <NavLink to="/companies" className="navbar-navlink">
             {t("navbar.companies")}
           </NavLink>
 
@@ -45,7 +45,7 @@ export default function NavBar() {
           </NavLink>
           <NavLink to="/employees" className="navbar-navlink">
           {t("navbar.employees")}
-          </NavLink>   
+          </NavLink>    */}
         
           <button className="navbar-navlink lang-btn" onClick={() => {
               changeLanguage(currentLang() === "en" ? "ar" : "en");

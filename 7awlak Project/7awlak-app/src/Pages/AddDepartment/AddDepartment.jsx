@@ -3,6 +3,8 @@ import toastPopup from '../../Helpers/Toast'
 import "./AddDepartment.scss"
 import hawlakServices from './../../services/hawlakServices';
 import { useNavigate } from "react-router-dom"; 
+import BackButton from '../../Components/BackButton/BackButton';
+import { t } from 'i18next';
 export default function AddDepartment() {
 const [departmentNameEN, setDepartmentNameEN] = useState("")
 const [departmentNameAR, setDepartmentNameAR] = useState("")
@@ -44,12 +46,13 @@ const navigate = useNavigate();
   return (
     <div>
     <div className="department-container">
+    <BackButton />
       <div className="department-content">
         <form
           className="department-card"            
         >
           <div className='form-header'>
-          <i className="fa-solid fa-bars department-icon"></i><p className="title">Add Department</p>
+          <i className="fa-solid fa-bars department-icon"></i><p className="title">{t("departments.add_department")}</p>
           </div>
           <div className="form-inputs-container">
           

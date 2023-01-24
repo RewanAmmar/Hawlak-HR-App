@@ -4,7 +4,7 @@
     text-align: center;
     height: 150px;
     z-index: -1;
-  
+    overflow-x: auto;
     &:hover {
       background-color: #4a7cff2e;
       cursor: pointer;

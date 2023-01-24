@@ -1,87 +1,149 @@
-import React, { useState } from "react";
-import Sidebar from "../../Components/Sidebar/Sidebar";
+import React, { useState, useEffect } from "react";
+
 import "./Home.scss";
+import moment from "moment";
 import { NavLink } from "react-router-dom";
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Pie } from 'react-chartjs-2';
-import { authActions } from '../../store/AuthSlice';
+import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
+import { Pie } from "react-chartjs-2";
+import { authActions } from "../../store/AuthSlice";
 import { useDispatch } from "react-redux";
+import hawlakServices from "../../services/hawlakServices";
+import TableData from "../../Components/TableData/TableData";
+import { t } from "i18next";
 export default function Home() {
+  const [companyCount, setCompanyCount] = useState({});
+  const [allCompanies, setAllCompanies] = useState([]);
+  const [branchCount, setBranchCount] = useState({});
+  const [departmentCount, setDepartmentCount] = useState({});
+  const [employeeCount, setEmployeeCount] = useState({});
   ChartJS.register(ArcElement, Tooltip, Legend);
   const dispatch = useDispatch();
   const logoutHandler = async () => {
     dispatch(authActions.logout());
-    
   };
- const data = {
-  labels: ['Companies', 'Branches', 'Departments', 'Employees'],
-  datasets: [
-    {
-      label: '# of Votes',
-      data: [4, 8, 10, 12],
-      backgroundColor: [
-        'rgb(202, 235, 246)',
-        'rgb(21, 155, 200)',
-        'rgb(155, 218, 239)',
-        'rgb(44, 135, 165)',
-  
-      ],
-      borderColor: [
-        'rgb(202, 235, 246)',
-        'rgb(21, 155, 200)',
-        'rgb(155, 218, 239)',
-        'rgb(44, 135, 165)',
-       
-      ],
-      borderWidth: 1,
-    },
-  ],
-}
+  const data = {
+    labels: ["Companies", "Branches", "Departments", "Employees"],
+    datasets: [
+      {        
+        data: [
+          companyCount.count,
+          branchCount.count,
+          departmentCount.count,
+          employeeCount.count,
+        ],
+        backgroundColor: [
+          "rgb(202, 235, 246)",
+          "rgb(21, 155, 200)",
+          "rgb(155, 218, 239)",
+          "rgb(44, 135, 165)",
+        ],
+        borderColor: [
+          "rgb(202, 235, 246)",
+          "rgb(21, 155, 200)",
+          "rgb(155, 218, 239)",
+          "rgb(44, 135, 165)",
+        ],
+        borderWidth: 1,
+        options: { responsive: true },
+      },
+    ],
+  };
+  async function allCompaniesHandler() {
+    try {
+      let { data: company } = await hawlakServices.getAllCompanies();
+      console.log(company.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
+      let formatedCompanies = company.results.map((item) => {
+        return {
+          id: item.id,
+          company_name_en: item.company_name_en,
+          company_name_ar: item.company_name_ar,
+          tax_num: item.tax_num,
+          phone: item.phone,
+          mobile: item.mobile,
+          fax: item.fax,
+          email: item.email,
+          number_of_employees: item.number_of_employees,
+          creation_date: moment(item.creation_date).format("dddd DD/MM/YYYY"),
+          is_active: item.is_active,
+        };
+      });
+      setCompanyCount(company);
+      setAllCompanies(formatedCompanies);
+    } catch (err) {}
+  }
+  async function allEmployeesHandler() {
+    try {
+      let { data: employee } = await hawlakServices.getAllEmployees();
+      console.log(employee.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
 
-  const [show, setShow] = useState(false);
+      setEmployeeCount(employee);
+    } catch (err) {}
+  }
+  async function allBranchesHandler() {
+    try {
+      let { data: branch } = await hawlakServices.getAllBranches();
+      console.log(branch.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
+
+      setBranchCount(branch);
+    } catch (err) {}
+  }
+  async function allDepartmentsHandler() {
+    try {
+      let { data: department } = await hawlakServices.getAllDepartments();
+      console.log(department.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
+
+      setDepartmentCount(department);
+    } catch (err) {}
+  }
+  useEffect(() => {
+    allCompaniesHandler();
+    allEmployeesHandler();
+    allDepartmentsHandler();
+    allBranchesHandler();
+  }, []);
   return (
     <>
       <div className="container">
         <div className="navigation">
           <ul className="navigation-ul">
-            <li className="navigation-li">
+            {/* <li className="navigation-li">
               <NavLink to="/home" className="link">
                 <span className="icon">
                   <i class="fa-solid fa-house link-icon"></i>
                 </span>
-                <span className="title">Home</span>
+                <span className="title">{t("navbar.home")}</span>
               </NavLink>
-            </li>
+            </li> */}
             <li className="navigation-li">
-              <NavLink to="/add-company" className="link">
+              <NavLink to="/companies" className="link">
                 <span className="icon">
                   <i class="fa-solid fa-building link-icon"></i>
                 </span>
-                <span className="title">Companies</span>
+                <span className="title">{t("navbar.companies")}</span>
               </NavLink>
             </li>
             <li className="navigation-li">
-              <NavLink to="/add-branch" className="link">
+              <NavLink to="/branches" className="link">
                 <span className="icon">
                   <i class="fa-solid fa-code-branch link-icon"></i>
                 </span>
-                <span className="title">Branches</span>
+                <span className="title">{t("navbar.branches")}</span>
               </NavLink>
             </li>
             <li className="navigation-li">
-              <NavLink to="/add-department" className="link">
+              <NavLink to="/departments" className="link">
                 <span className="icon">
                   <i class="fa-solid fa-bars link-icon"></i>
                 </span>
-                <span className="title">Departments</span>
+                <span className="title">{t("navbar.departments")}</span>
               </NavLink>
             </li>
             <li className="navigation-li">
-              <NavLink to="/add-employee" className="link">
+              <NavLink to="/employees" className="link">
                 <span className="icon">
                   <i class="fa-solid fa-people-group link-icon"></i>
                 </span>
-                <span className="title">Employees</span>
+                <span className="title">{t("navbar.employees")}</span>
               </NavLink>
             </li>
             <li className="navigation-li">
@@ -89,7 +151,7 @@ export default function Home() {
                 <span className="icon">
                   <i class="fa-sharp fa-solid fa-gear link-icon"></i>
                 </span>
-                <span className="title">Reset Password</span>
+                <span className="title">{t("navbar.reset_password")}</span>
               </NavLink>
             </li>
             <li className="navigation-li">
@@ -98,10 +160,15 @@ export default function Home() {
                   {" "}
                   <i class="fa-solid fa-lock link-icon"></i>
                 </span>
-                <span className="title"  onClick={(e) => {
-              e.preventDefault();
-              logoutHandler();
-            }}>Logout</span>
+                <span
+                  className="title"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    logoutHandler();
+                  }}
+                >
+                  {t("navbar.logout")}
+                </span>
               </NavLink>
             </li>
           </ul>
@@ -125,8 +192,8 @@ export default function Home() {
           <div className="card-box">
             <div className="card">
               <div>
-                <div className="number">20</div>
-                <div className="name">Companies</div>
+                <div className="number">{companyCount.count}</div>
+                <div className="name">{t("navbar.companies")}</div>
               </div>
               <div className="icon-card">
                 <i class="fa-solid fa-building link-icon"></i>
@@ -134,8 +201,8 @@ export default function Home() {
             </div>
             <div className="card">
               <div>
-                <div className="number">10</div>
-                <div className="name">Branches</div>
+                <div className="number">{branchCount.count}</div>
+                <div className="name">{t("navbar.branches")}</div>
               </div>
               <div className="icon-card">
                 <i class="fa-solid fa-code-branch link-icon"></i>
@@ -143,8 +210,8 @@ export default function Home() {
             </div>
             <div className="card">
               <div>
-                <div className="number">15</div>
-                <div className="name">Departments</div>
+                <div className="number">{departmentCount.count}</div>
+                <div className="name">{t("navbar.departments")}</div>
               </div>
               <div className="icon-card">
                 <i class="fa-solid fa-bars link-icon"></i>
@@ -152,8 +219,8 @@ export default function Home() {
             </div>
             <div className="card">
               <div>
-                <div className="number">100</div>
-                <div className="name">Employees</div>
+                <div className="number">{employeeCount.count}</div>
+                <div className="name">{t("navbar.employees")}</div>
               </div>
               <div className="icon-card">
                 <i class="fa-solid fa-people-group link-icon"></i>
@@ -168,79 +235,26 @@ export default function Home() {
                   View All
                 </a>
               </div>
-              <table className="table-data">
-                <thead className="table-head">
-                  <tr className="table-row">
-                    <td className="data-table">Company Name</td>
-
-                    <td className="data-table">Address</td>
-                    <td className="data-table">Tax Number</td>
-                    <td className="data-table">Phone</td>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr className="table-row">
-                    <td className="data-table">Sindion</td>
-
-                    <td className="data-table">18 street Alex</td>
-                    <td className="data-table">2</td>
-                    <td className="data-table">1234567</td>
-                  </tr>
-
-                  <tr className="table-row">
-                    <td className="data-table">Hawlak</td>
-                    <td className="data-table">18 street Alex</td>
-                    <td className="data-table">3</td>
-                    <td className="data-table">1234567</td>
-                  </tr>
-
-                  <tr className="table-row">
-                    <td className="data-table">TMS</td>
-                    <td className="data-table">18 street Alex</td>
-                    <td className="data-table">4</td>
-                    <td className="data-table">1234567</td>
-                  </tr>
-
-                  <tr className="table-row">
-                    <td className="data-table">Apple</td>
-                    <td className="data-table">18 street Alex</td>
-                    <td className="data-table">5</td>
-                    <td className="data-table">1234567</td>
-                  </tr>
-
-                  <tr className="table-row">
-                    <td className="data-table">Samsung</td>
-                    <td className="data-table">18 street Alex</td>
-                    <td className="data-table">6</td>
-                    <td className="data-table">1234567</td>
-                  </tr>
-
-                  <tr className="table-row">
-                    <td className="data-table">Dell</td>
-                    <td className="data-table">18 street Alex</td>
-                    <td className="data-table">2</td>
-                    <td className="data-table">1234567</td>
-                  </tr>
-
-                  <tr className="table-row">
-                    <td className="data-table">Lenovo</td>
-                    <td className="data-table">18 street Alex</td>
-                    <td className="data-table">14</td>
-                    <td className="data-table">1234567</td>
-                  </tr>
-
-                  <tr className="table-row">
-                    <td className="data-table">Addidas</td>
-                    <td className="data-table">18 street Alex</td>
-                    <td className="data-table">6</td>
-                    <td className="data-table">1234567</td>
-                  </tr>
-                </tbody>
-              </table>
+              <div className="data-table">
+              <TableData
+                tableHeaders={[
+                  "company_name_en",
+                  "company_name_ar",
+                  "tax_num",
+                  "phone",
+                  "mobile",
+                  "fax",
+                  "email",
+                  // "number_of_employees",
+                  // "creation_date",
+                  
+                ]}
+                tableRows={allCompanies}
+              />
+              </div>
             </div>
             <div className="right-data">
-            <Pie data={data} />
+              <Pie data={data} />
             </div>
           </div>
         </div>

@@ -77,20 +77,20 @@ export default function Login() {
                 }}
                 className="lang-btn"
               >
-                English
+                {t("lang")}
               </button>
             </div>
             <div className="logo">
               <img src={Hawlaklogo} alt="" className="image-logo" />
             </div>
           </div>
-          <h1 className="header">Login</h1>
+          <h1 className="header">{t("login.login")}</h1>
           <form>
             <div className="input-div">
               <i className="fa-solid fa-user icon"></i>
               <input
                 type="text"
-                placeholder="User Name"
+                placeholder={t("")}
                 className="login-input"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
@@ -125,7 +125,7 @@ export default function Login() {
             </div>
             <div className="forgot-password">
               <Link className="forgot-text" to={"/forgot-password"}>
-                Forget Password?
+               {t("login.forget_password")}
               </Link>
             </div>
             <button
@@ -133,7 +133,7 @@ export default function Login() {
               className="login-btn"
               onClick={(e) => loginHandler(e)}
             >
-              Login
+              {t("login.login")}
             </button>
           </form>
         </div>

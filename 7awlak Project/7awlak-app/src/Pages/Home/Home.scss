@@ -1,6 +1,16 @@
 .container {
     position: relative;
     width: 100%;
+    // width: calc(100% - 0);
+    // height: calc(100vh - 120px);
+    // padding: 40px;
+    // position: absolute;
+    // right: 0;
+    // top: 60px;
+    // background-color: #fff;
+    // transition: 0.3s all ease-in-out;
+    // overflow-y: auto;
+    // overflow-x: hidden;
 
     .navigation {
         position: fixed;
@@ -10,6 +20,17 @@
         border-left: 10px solid rgb(44, 135, 165);
         transition: 0.5s;
         overflow: hidden;
+        // width: 300px;
+        // height: calc(100vh - 120px);
+        // padding: 20px;
+        // position: fixed;
+        // left: 0;
+        // top: 60px;
+        // background-color: rgb(44, 135, 165);
+        // transition: 0.3s all ease-in-out;
+        // overflow: hidden;
+        // text-align: right;
+        // box-shadow: 1px 0px 5px #ddd;
 
         .navigation-ul {
             position: absolute;
@@ -207,11 +228,14 @@
                 position: relative;
                 display: grid;
                 min-height: 500px;
+                min-width: 500px;
                 background: white;
                 padding: 30px;
                 box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
                 border-radius: 20px;
-
+                .data-table{
+                    width: 100%;
+                }
                 .card-header {
                     display: flex;
                     justify-content: space-between;

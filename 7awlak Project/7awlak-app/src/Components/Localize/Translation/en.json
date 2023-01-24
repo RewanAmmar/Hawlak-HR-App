@@ -1,20 +1,44 @@
 {
     "lang": "عربي",
     "login":{
-        
-    },
+        "username": "User Name",
+        "password": "Password",
+        "email" : "Email",
+        "login": "Login",
+        "forget_password": "Forgot Password",
+        "empty_name": "Enter Your User Name",
+        "empty_password": "Enter Your Password",
+        "signing_in": "Signing in...",       
+        "": ""
+        },
     "navbar":{
         "home":"Home",
         "companies":"Companies",
         "branches":"Branches",
         "departments":"Departments",
         "employees":"Employees",
-        "reset-password":"Reset Password"
+        "reset_password":"Reset Password",
+        "logout":"Logout"
     },
-    "companies":{},
-    "branches":{},
-    "departments":{},
-    "employees":{},
+    "companies":{
+        "add_company":"Add Company"
+    },
+    "branches":{
+        "add_branch":"Add Branch",        
+        "branch_name":"Branch Name",
+        "company":"Company",
+        "country":"Country",
+        "number_of_employees":"Number Of Employees",
+        "address":"Address",
+        "latitude":"Latitude",
+        "longitude":"Longitude"
+    },
+    "departments":{
+        "add_department":"Add Department"
+    },
+    "employees":{
+        "add_employee":"Add Employee"
+    },
     "company_name_en":"Company Name",
     "company_name_ar":"اسم الشركة",
     "tax_num":"Tax Number",

@@ -18,6 +18,8 @@ import Employees from "../Employees/Employees";
 import CompanyDetails from '../../Pages/CompanyDetails/CompanyDetails';
 import BranchesDetails from '../../Pages/BranchesDetails/BranchesDetails';
 import DepartmentDetails from '../../Pages/DepartmentDetails/DepartmentDetails';
+import EmployeeDetails from '../../Pages/EmployeeDetails/EmployeeDetails';
+import Footer from './../Footer/Footer';
 
 export default function Layout() {
   return (
@@ -43,7 +45,7 @@ export default function Layout() {
             <Route path="/company-details/:companyId" element={<CompanyDetails />} /> 
             <Route path="/branch-details/:branchId" element={<BranchesDetails />} />    
             <Route path="/department-details/:departmentId" element={<DepartmentDetails />} /> 
-            
+            <Route path="/employee-details/:employeeId" element={<EmployeeDetails />} />             
             </Routes>
         </div>
         {/* <Footer className="footer" /> */}

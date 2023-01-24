@@ -3,6 +3,8 @@ import toastPopup from '../../Helpers/Toast'
 import "./AddBranch.scss"
 import { useNavigate } from "react-router-dom"; 
 import hawlakServices from './../../services/hawlakServices';
+import BackButton from '../../Components/BackButton/BackButton';
+import { t } from 'i18next';
 export default function AddBranch() {
 const [branchNameEN, setBranchNameEN] = useState("")
 const [branchNameAR, setBranchNameAR] = useState("")
@@ -60,12 +62,13 @@ const [loading, setLoading] = useState(false)
   return (
     <div>
       <div className="branch-container">
+        <BackButton />
         <div className="branch-content">
           <form
             className="branch-card"            
           >
             <div className='form-header'>
-            <i class="fa-solid fa-code-branch branch-icon"></i><p className="title">Add Branch</p>
+            <i class="fa-solid fa-code-branch branch-icon"></i><p className="title">{t("branches.add_branch")}</p>
             </div>
             <div className="form-inputs-container">
             
@@ -73,7 +76,7 @@ const [loading, setLoading] = useState(false)
           <div className='left-side'>
               <div className="branch-input-container">
                 <label htmlFor="branch-name" className="branch-label">
-                  Branch Name
+                  {t("branches.branch_name")}
                 </label>
 
                 <input
@@ -86,7 +89,7 @@ const [loading, setLoading] = useState(false)
               </div>
               <div className="branch-input-container">
                 <label htmlFor="branch" className="branch-label">
-                  اسم الفرع
+                   الفرع
                 </label>
 
                 <input
@@ -100,7 +103,7 @@ const [loading, setLoading] = useState(false)
               </div>
               <div className="branch-input-container">
                 <label htmlFor="company" className="branch-label">
-                  Company
+                  {t("branches.company")}
                 </label>
 
                 <input
@@ -117,7 +120,7 @@ const [loading, setLoading] = useState(false)
               <div className='left-side '>
               <div className="branch-input-container">
                 <label htmlFor="country" className="branch-label">
-                  Country
+                  {t("branches.country")}
                 </label>
 
                 <input
@@ -147,7 +150,7 @@ const [loading, setLoading] = useState(false)
              
               <div className="branch-input-container">
                 <label htmlFor="number-of-employee" className="branch-label">
-                Number Of Employees
+                {t("branches.number_of_employees")}
                 </label>
 
                 <input
@@ -162,7 +165,7 @@ const [loading, setLoading] = useState(false)
               <div className='left-side '>
               <div className="branch-input-container">
                 <label htmlFor="address" className="branch-label">
-                  Address
+                  {t("branches.address")}
                 </label>
 
                 <input
@@ -190,7 +193,7 @@ const [loading, setLoading] = useState(false)
               </div>
               <div className="branch-input-container">
                 <label htmlFor="latitude" className="branch-label">
-                  Latitude
+                  {t("branches.latitude")}
                 </label>
 
                 <input
@@ -206,7 +209,7 @@ const [loading, setLoading] = useState(false)
               <div className='left-side '>
               <div className="branch-input-container">
                 <label htmlFor="longitude" className="branch-label">
-                  Longitude
+                  {t("branches.longitude")}
                 </label>
 
                 <input

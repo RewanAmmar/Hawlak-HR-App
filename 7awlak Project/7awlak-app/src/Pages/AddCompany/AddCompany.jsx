@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import toastPopup from '../../Helpers/Toast';
 import Spinner from '../../Components/Spinner/Spinner';
 import hawlakServices from "../../services/hawlakServices"
+import BackButton from '../../Components/BackButton/BackButton';
+import { t } from 'i18next';
 export default function AddCompany() {
 const [companyNameEN, setCompanyNameEN] = useState("");
 const [companyNameAR, setCompanyNameAR] = useState("");
@@ -58,12 +60,13 @@ const navigate = useNavigate();
     <div>
       {loading && <Spinner/>}
       <div className="company-container">
+      <BackButton />
         <div className="company-content">
           <form
             className="company-card"            
           >
             <div className='form-header'>
-            <i className="fa-solid fa-building company-icon"></i><p className="title">Add Company</p>
+            <i className="fa-solid fa-building company-icon"></i><p className="title">{t("companies.add_company")}</p>
             </div>
             <div className="form-inputs-container">      
           <div className='container'>

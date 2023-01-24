@@ -3,6 +3,8 @@ import toastPopup from "../../Helpers/Toast";
 import hawlakServices from "../../services/hawlakServices";
 import "./AddEmployee.scss";
 import { useNavigate } from "react-router-dom";
+import BackButton from '../../Components/BackButton/BackButton';
+import { t } from "i18next";
 export default function AddEmployee() {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -14,123 +16,169 @@ export default function AddEmployee() {
   const [employeeNameEN, setEmployeeNameEN] = useState("");
   const [employeeNameAR, setEmployeeNameAR] = useState("");
   const [mobileNumber, setMobileNumber] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("")
-  const [dateOfBirth, setDateOfBirth] = useState("")
-  const [hireDate, setHireDate] = useState("")
-  const [placeOfBirthEN, setPlaceOfBirthEN] = useState("")
-  const [placeOfBirthAR, setPlaceOfBirthAR] = useState("")
-  const [idTypeEN, setIdTypeEN] = useState("")
-  const [idTypeAR, setIdTypeAR] = useState("")
-  const [idNumber, setIdNumber] = useState(0)
-  const [nationalityEN, setNationalityEN] = useState("")
-  const [nationalityAR, setNationalityAR] = useState("")
-  const [addressOne, setAddressOne] = useState("")
-  const [addressTwo, setAddressTwo] = useState("")
-  const [fieldOfStudyEN, setFieldOfStudyEN] = useState("")
-  const [fieldOfStudyAR, setFieldOfStudyAR] = useState("")
-  const [educationDegreeEN, setEducationDegreeEN] = useState("")
-  const [educationDegreeAR, setEducationDegreeAR] = useState("")
-  const [genderEN, setGenderEN] = useState("")
-  const [genderAR, setGenderAR] = useState("")
-  const [socialStatusEN, setSocialStatusEN] =  useState("")
-  const [socialStatusAR, setSocialStatusAR] =  useState("")
-  const [religionEN, setReligionEN] = useState("")
-  const [religionAR, setReligionAR] = useState("")
-  const [bankNameEN, setBankNameEN] = useState("")
-  const [bankNameAR, setBankNameAR] = useState("")
-  const [iban, setIban] = useState("")
-  const [branch, setBranch] = useState(0)
-  const [loading, setLoading] =  useState(false)
-  const navigate = useNavigate()
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState("");
+  const [hireDate, setHireDate] = useState("");
+  const [placeOfBirthEN, setPlaceOfBirthEN] = useState("");
+  const [placeOfBirthAR, setPlaceOfBirthAR] = useState("");
+  const [idTypeEN, setIdTypeEN] = useState("");
+  const [idTypeAR, setIdTypeAR] = useState("");
+  const [idNumber, setIdNumber] = useState(0);
+  const [nationalityEN, setNationalityEN] = useState("");
+  const [nationalityAR, setNationalityAR] = useState("");
+  const [addressOne, setAddressOne] = useState("");
+  const [addressTwo, setAddressTwo] = useState("");
+  const [fieldOfStudyEN, setFieldOfStudyEN] = useState("");
+  const [fieldOfStudyAR, setFieldOfStudyAR] = useState("");
+  const [educationDegreeEN, setEducationDegreeEN] = useState("");
+  const [educationDegreeAR, setEducationDegreeAR] = useState("");
+  const [genderEN, setGenderEN] = useState("");
+  const [genderAR, setGenderAR] = useState("");
+  const [socialStatusEN, setSocialStatusEN] = useState("");
+  const [socialStatusAR, setSocialStatusAR] = useState("");
+  const [religionEN, setReligionEN] = useState("");
+  const [religionAR, setReligionAR] = useState("");
+  const [bankNameEN, setBankNameEN] = useState("");
+  const [bankNameAR, setBankNameAR] = useState("");
+  const [iban, setIban] = useState("");
+  const [branch, setBranch] = useState(0);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function createEmployeeHandler(e) {
-    e.preventDefault()
-    const obj = {
-      user: {
-        email: email,
-        username: userName,
-        password: password,
-      },
-      position: {
-        start_date: startDate,
-        manager: manager,
-        job_title: jobTitle,
-        contract_type: contractType,
-      },
-      emp_name_en: employeeNameEN,
-      emp_name_ar: employeeNameAR,
-      phone: phoneNumber,
-      mobile: mobileNumber,
-      date_of_birth: dateOfBirth,
-      hiredate: hireDate,
-      is_active: true,
-      place_of_birth_en: placeOfBirthEN,
-      place_of_birth_ar: placeOfBirthAR,
-      identification_type_en: idTypeEN,
-      identification_type_ar: idTypeAR,
-      identification_number: idNumber,
-      nationality_en: nationalityEN,
-      nationality_ar: nationalityAR,
-      address1: addressOne,
-      address2: addressTwo,
-      field_of_study_en: fieldOfStudyEN,
-      field_of_study_ar: fieldOfStudyAR,
-      education_degree_en: educationDegreeEN,
-      education_degree_ar: educationDegreeAR,
-      gender_en: genderEN,
-      gender_ar: genderAR,
-      social_status_en: socialStatusEN,
-      social_status_ar: socialStatusAR,
-      religion_en: religionEN,
-      religion_ar: religionAR,
-      bank_name_en: bankNameEN,
-      bank_name_ar: bankNameAR,
-      iban: iban,
-      is_admin: true,
-      branch: branch,
-    };  
-     
-    if(email === ""){
-      toastPopup("error", "Enter Your Email")
-    }else if(userName === ""){
-      toastPopup("error", "Enter Your User Name")
-    }else if(password === ""){
-      toastPopup("error", "Enter Your Password")
-    }else if(employeeNameEN === ""){
-      toastPopup("error", "Enter Your Name in English")
-    }else if(employeeNameAR === ""){
-      toastPopup("error", "Enter Your Name in Arabic")
-    }else if(idTypeEN === ""){
-      toastPopup("error", "Enter Your Id Type in English")
-    }else if(idTypeAR === ""){
-      toastPopup("error", "Enter Your Id Type in Arabic")
-    }else if(idNumber ===  ""){
-      toastPopup("error", "Enter Your Id Number")
-    }else if(branch === ""){
-      toastPopup("error", "Enter Branch")
-    }else{       
-      try{        
-        let {data} = await hawlakServices.createEmployee(obj);        
-        console.log(data,"dataaaaaaaaaaaaaaa");
+    e.preventDefault();
+    let user = {
+      email: email,
+      username: userName,
+      password: password,
+    };
+    let position = {
+      start_date: startDate,
+      manager: manager,
+      job_title: jobTitle,
+      contract_type: contractType,
+    };
+
+    let formData = new FormData();
+    formData.append("user.username", user.username);
+    formData.append("user.email", user.email);
+    formData.append("user.password", user.password);
+    formData.append("position.start_date", position.start_date);
+    formData.append("position.manager", position.manager);
+    formData.append("position.job_title", position.job_title);
+    formData.append("position.contract_type", position.contract_type);
+    formData.append("emp_name_en", employeeNameEN);
+    formData.append("emp_name_ar", employeeNameAR);
+    formData.append("phone", phoneNumber);
+    formData.append("mobile", mobileNumber);
+    formData.append("date_of_birth", dateOfBirth);
+    formData.append("hiredate", hireDate);
+    formData.append("place_of_birth_en", placeOfBirthEN);
+    formData.append("place_of_birth_ar", placeOfBirthAR);
+    formData.append("identification_type_en", idTypeEN);
+    formData.append("identification_type_ar", idTypeAR);
+    formData.append("identification_number", idNumber);
+    formData.append("nationality_en", nationalityEN);
+    formData.append("nationality_ar", nationalityAR);
+    formData.append("address1", addressOne);
+    formData.append("address2", addressTwo);
+    formData.append("field_of_study_en", fieldOfStudyEN);
+    formData.append("field_of_study_ar", fieldOfStudyAR);
+    formData.append("education_degree_en", educationDegreeEN);
+    formData.append("education_degree_ar", educationDegreeAR);
+    formData.append("gender_en", genderEN);
+    formData.append("gender_ar", genderAR);
+    formData.append("social_status_en", socialStatusEN);
+    formData.append("social_status_ar", socialStatusAR);
+    formData.append("religion_ar", religionAR);
+    formData.append("religion_en", religionEN);
+    formData.append("bank_name_en", bankNameEN);
+    formData.append("bank_name_ar", bankNameAR);
+    formData.append("iban", iban);
+    formData.append("branch", branch);
+
+    // const obj = {
+    //   user: {
+
+    //   },
+    //   position: {
+
+    //   },
+    //   emp_name_en: employeeNameEN,
+    //   emp_name_ar: employeeNameAR,
+    //   phone: phoneNumber,
+    //   mobile: mobileNumber,
+    //   date_of_birth: dateOfBirth,
+    //   hiredate: hireDate,
+    //   is_active: true,
+    //   place_of_birth_en: placeOfBirthEN,
+    //   place_of_birth_ar: placeOfBirthAR,
+    //   identification_type_en: idTypeEN,
+    //   identification_type_ar: idTypeAR,
+    //   identification_number: idNumber,
+    //   nationality_en: nationalityEN,
+    //   nationality_ar: nationalityAR,
+    //   address1: addressOne,
+    //   address2: addressTwo,
+    //   field_of_study_en: fieldOfStudyEN,
+    //   field_of_study_ar: fieldOfStudyAR,
+    //   education_degree_en: educationDegreeEN,
+    //   education_degree_ar: educationDegreeAR,
+    //   gender_en: genderEN,
+    //   gender_ar: genderAR,
+    //   social_status_en: socialStatusEN,
+    //   social_status_ar: socialStatusAR,
+    //   religion_en: religionEN,
+    //   religion_ar: religionAR,
+    //   bank_name_en: bankNameEN,
+    //   bank_name_ar: bankNameAR,
+    //   iban: iban,
+    //   is_admin: true,
+    //   branch: branch,
+    // };
+
+    if (email === "") {
+      toastPopup("error", "Enter Your Email");
+    } else if (userName === "") {
+      toastPopup("error", "Enter Your User Name");
+    } else if (password === "") {
+      toastPopup("error", "Enter Your Password");
+    } else if (employeeNameEN === "") {
+      toastPopup("error", "Enter Your Name in English");
+    } else if (employeeNameAR === "") {
+      toastPopup("error", "Enter Your Name in Arabic");
+    } else if (idTypeEN === "") {
+      toastPopup("error", "Enter Your Id Type in English");
+    } else if (idTypeAR === "") {
+      toastPopup("error", "Enter Your Id Type in Arabic");
+    } else if (idNumber === "") {
+      toastPopup("error", "Enter Your Id Number");
+    } else if (branch === "") {
+      toastPopup("error", "Enter Branch");
+    } else {
+      try {
+        let { data } = await hawlakServices.createEmployee(formData);
+        console.log(data, "dataaaaaaaaaaaaaaa");
         setLoading(false);
-        toastPopup("success","Adding Employee Successfully");
+        toastPopup("success", "Adding Employee Successfully");
         setTimeout(() => {
           navigate(0);
         }, 2000);
-      }catch(error){
+      } catch (error) {
         setLoading(false);
-        toastPopup("error", "Error When Adding Employee")
+        toastPopup("error", "Error When Adding Employee");
       }
     }
   }
   return (
     <div>
       <div className="employee-container">
+      <BackButton />
         <div className="employee-content">
           <form className="employee-card">
             <div className="form-header">
               <i class="fa-solid fa-people-group employee-icon"></i>
-              <p className="title">Add Employee</p>
+              <p className="title">{t("employees.add_employee")}</p>
             </div>
             <div className="form-inputs-container">
               <div className="container">
@@ -145,12 +193,12 @@ export default function AddEmployee() {
                       name="user-name"
                       placeholder="User Name"
                       className="add-department-name"
-                      onChange={(e)=> setUserName(e.target.value)}
+                      onChange={(e) => setUserName(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
                     <label htmlFor="email" className="employee-label">
-                       Email
+                      Email
                     </label>
 
                     <input
@@ -159,7 +207,7 @@ export default function AddEmployee() {
                       id="email"
                       placeholder="Email"
                       className="add-department-name"
-                      onChange={(e)=> setEmail(e.target.value)}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -173,7 +221,7 @@ export default function AddEmployee() {
                       id="password"
                       placeholder="Password"
                       className="add-department-name"
-                      onChange={(e)=> setPassword(e.target.value)}
+                      onChange={(e) => setPassword(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -187,7 +235,7 @@ export default function AddEmployee() {
                       id="start-date"
                       placeholder="Start Date"
                       className="add-department-name"
-                      onChange={(e)=> setStartDate(e.target.value)}
+                      onChange={(e) => setStartDate(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -201,7 +249,7 @@ export default function AddEmployee() {
                       id="manager"
                       placeholder="Manager"
                       className="add-department-name"
-                      onChange={(e)=> setManager(e.target.value)}
+                      onChange={(e) => setManager(e.target.value)}
                     />
                   </div>
                 </div>
@@ -217,7 +265,7 @@ export default function AddEmployee() {
                       id="job-title"
                       placeholder="Job Tilte"
                       className="add-department-name"
-                      onChange={(e)=> setJobTitle(e.target.value)}
+                      onChange={(e) => setJobTitle(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -231,13 +279,13 @@ export default function AddEmployee() {
                       id="contract-type"
                       placeholder="Contract Type"
                       className="add-department-name"
-                      onChange={(e)=> setContractType(e.target.value)}
+                      onChange={(e) => setContractType(e.target.value)}
                     />
                   </div>
 
                   <div className="employee-input-container">
                     <label htmlFor="employee-name" className="employee-label">
-                     Employee Name
+                      Employee Name
                     </label>
 
                     <input
@@ -245,7 +293,7 @@ export default function AddEmployee() {
                       name="employee-name"
                       placeholder="Employee Name"
                       className="add-department-name"
-                      onChange={(e)=> setEmployeeNameEN(e.target.value)}
+                      onChange={(e) => setEmployeeNameEN(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -271,7 +319,7 @@ export default function AddEmployee() {
                       name="phone"
                       placeholder="Phone"
                       className="add-department-name"
-                      onChange={(e)=> setPhoneNumber(e.target.value)}
+                      onChange={(e) => setPhoneNumber(e.target.value)}
                     />
                   </div>
                 </div>
@@ -287,7 +335,7 @@ export default function AddEmployee() {
                       id="mobile"
                       placeholder="Mobile"
                       className="add-department-name"
-                      onChange={(e)=> setMobileNumber(e.target.value)}
+                      onChange={(e) => setMobileNumber(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -301,7 +349,7 @@ export default function AddEmployee() {
                       id="date-of-birth"
                       placeholder="Date Of Birth"
                       className="add-department-name"
-                      onChange={(e)=> setDateOfBirth(e.target.value)}
+                      onChange={(e) => setDateOfBirth(e.target.value)}
                     />
                   </div>
 
@@ -316,7 +364,7 @@ export default function AddEmployee() {
                       name="hire-date"
                       placeholder="Hire Date"
                       className="add-department-name"
-                      onChange={(e)=> setHireDate(e.target.value)}
+                      onChange={(e) => setHireDate(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -329,11 +377,14 @@ export default function AddEmployee() {
                       name="place-of-birth"
                       placeholder="Place Of Birth"
                       className="add-department-name"
-                      onChange={(e)=> setPlaceOfBirthEN(e.target.value)}
+                      onChange={(e) => setPlaceOfBirthEN(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
-                    <label htmlFor="place-of-birth-ar" className="employee-label">
+                    <label
+                      htmlFor="place-of-birth-ar"
+                      className="employee-label"
+                    >
                       محل الميلاد
                     </label>
 
@@ -342,7 +393,7 @@ export default function AddEmployee() {
                       name="place-of-birth-ar"
                       placeholder="محل الميلاد"
                       className="add-department-name"
-                      onChange={(e)=> setPlaceOfBirthAR(e.target.value)}
+                      onChange={(e) => setPlaceOfBirthAR(e.target.value)}
                     />
                   </div>
                 </div>
@@ -358,7 +409,7 @@ export default function AddEmployee() {
                       id="id-type"
                       placeholder="ID Type"
                       className="add-department-name"
-                      onChange={(e)=> setIdTypeEN(e.target.value)}
+                      onChange={(e) => setIdTypeEN(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -372,7 +423,7 @@ export default function AddEmployee() {
                       id="id-type-ar"
                       placeholder="نوع الهوية"
                       className="add-department-name"
-                      onChange={(e)=> setIdTypeAR(e.target.value)}
+                      onChange={(e) => setIdTypeAR(e.target.value)}
                     />
                   </div>
 
@@ -386,7 +437,7 @@ export default function AddEmployee() {
                       name="id-number"
                       placeholder="ID Number"
                       className="add-department-name"
-                      onChange={(e)=> setIdNumber(e.target.value)}
+                      onChange={(e) => setIdNumber(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -399,7 +450,7 @@ export default function AddEmployee() {
                       name="nationality"
                       placeholder="Nationality"
                       className="add-department-name"
-                      onChange={(e)=> setNationalityEN(e.target.value)}
+                      onChange={(e) => setNationalityEN(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -412,7 +463,7 @@ export default function AddEmployee() {
                       name="nationality-ar"
                       placeholder="الجنسية"
                       className="add-department-name"
-                      onChange={(e)=> setNationalityAR(e.target.value)}
+                      onChange={(e) => setNationalityAR(e.target.value)}
                     />
                   </div>
                 </div>
@@ -428,7 +479,7 @@ export default function AddEmployee() {
                       id="address-one"
                       placeholder="Address 1"
                       className="add-department-name"
-                      onChange={(e)=> setAddressOne(e.target.value)}
+                      onChange={(e) => setAddressOne(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -442,7 +493,7 @@ export default function AddEmployee() {
                       id="address-two"
                       placeholder="Address 2"
                       className="add-department-name"
-                      onChange={(e)=> setAddressTwo(e.target.value)}
+                      onChange={(e) => setAddressTwo(e.target.value)}
                     />
                   </div>
 
@@ -456,11 +507,14 @@ export default function AddEmployee() {
                       name="field-of-study"
                       placeholder="Field Of Study"
                       className="add-department-name"
-                      onChange={(e)=> setFieldOfStudyEN(e.target.value)}
+                      onChange={(e) => setFieldOfStudyEN(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
-                    <label htmlFor="field-of-study-ar" className="employee-label">
+                    <label
+                      htmlFor="field-of-study-ar"
+                      className="employee-label"
+                    >
                       مجال الدراسة
                     </label>
 
@@ -469,11 +523,14 @@ export default function AddEmployee() {
                       name="field-of-study-ar"
                       placeholder="مجال الدراسة"
                       className="add-department-name"
-                      onChange={(e)=> setFieldOfStudyAR(e.target.value)}
+                      onChange={(e) => setFieldOfStudyAR(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
-                    <label htmlFor="education-degree" className="employee-label">
+                    <label
+                      htmlFor="education-degree"
+                      className="employee-label"
+                    >
                       Education Degree
                     </label>
 
@@ -482,13 +539,16 @@ export default function AddEmployee() {
                       name="education-degree"
                       placeholder="Education Degree"
                       className="add-department-name"
-                      onChange={(e)=> setEducationDegreeEN(e.target.value)}
+                      onChange={(e) => setEducationDegreeEN(e.target.value)}
                     />
                   </div>
                 </div>
                 <div className="left-side ">
                   <div className="employee-input-container">
-                    <label htmlFor="education-degree-ar" className="employee-label">
+                    <label
+                      htmlFor="education-degree-ar"
+                      className="employee-label"
+                    >
                       درجة المؤهل
                     </label>
 
@@ -498,7 +558,7 @@ export default function AddEmployee() {
                       id="education-degree-ar"
                       placeholder="درجة المؤهل"
                       className="add-department-name"
-                      onChange={(e)=> setEducationDegreeAR(e.target.value)}
+                      onChange={(e) => setEducationDegreeAR(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -512,7 +572,7 @@ export default function AddEmployee() {
                       id="gender"
                       placeholder="Gender"
                       className="add-department-name"
-                      onChange={(e)=> setGenderEN(e.target.value)}
+                      onChange={(e) => setGenderEN(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -526,7 +586,7 @@ export default function AddEmployee() {
                       id="gender-ar"
                       placeholder="النوع"
                       className="add-department-name"
-                      onChange={(e)=> setGenderAR(e.target.value)}
+                      onChange={(e) => setGenderAR(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -540,11 +600,14 @@ export default function AddEmployee() {
                       id="social-status"
                       placeholder="Social Status"
                       className="add-department-name"
-                      onChange={(e)=> setSocialStatusEN(e.target.value)}
+                      onChange={(e) => setSocialStatusEN(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
-                    <label htmlFor="social-status-ar" className="employee-label">
+                    <label
+                      htmlFor="social-status-ar"
+                      className="employee-label"
+                    >
                       الحالة الاجتماعية
                     </label>
 
@@ -554,7 +617,7 @@ export default function AddEmployee() {
                       id="social-status-ar"
                       placeholder="الحالة الاجتماعية"
                       className="add-department-name"
-                      onChange={(e)=> setSocialStatusAR(e.target.value)}
+                      onChange={(e) => setSocialStatusAR(e.target.value)}
                     />
                   </div>
                 </div>
@@ -570,7 +633,7 @@ export default function AddEmployee() {
                       id="religion"
                       placeholder="Religion"
                       className="add-department-name"
-                      onChange={(e)=> setReligionEN(e.target.value)}
+                      onChange={(e) => setReligionEN(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -584,7 +647,7 @@ export default function AddEmployee() {
                       id="religion-ar"
                       placeholder="الديانة"
                       className="add-department-name"
-                      onChange={(e)=> setReligionAR(e.target.value)}
+                      onChange={(e) => setReligionAR(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -598,7 +661,7 @@ export default function AddEmployee() {
                       id="banck-name"
                       placeholder="Bank Name"
                       className="add-department-name"
-                      onChange={(e)=> setBankNameEN(e.target.value)}
+                      onChange={(e) => setBankNameEN(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
@@ -612,12 +675,12 @@ export default function AddEmployee() {
                       id="bank-name-ar"
                       placeholder="اسم البنك"
                       className="add-department-name"
-                      onChange={(e)=> setBankNameAR(e.target.value)}
+                      onChange={(e) => setBankNameAR(e.target.value)}
                     />
                   </div>
                   <div className="employee-input-container">
                     <label htmlFor="iban" className="employee-label">
-                       IBan
+                      IBan
                     </label>
 
                     <input
@@ -626,7 +689,7 @@ export default function AddEmployee() {
                       id="iban"
                       placeholder="IBan"
                       className="add-department-name"
-                      onChange={(e)=> setIban(e.target.vakue)}
+                      onChange={(e) => setIban(e.target.vakue)}
                     />
                   </div>
                 </div>
@@ -642,10 +705,9 @@ export default function AddEmployee() {
                       id="branch"
                       placeholder="Branch"
                       className="add-department-name"
-                      onChange={(e)=> setBranch(e.target.value)}
+                      onChange={(e) => setBranch(e.target.value)}
                     />
-                  </div>               
-
+                  </div>
                 </div>
                 {/* Input */}
               </div>
@@ -654,7 +716,7 @@ export default function AddEmployee() {
                   name="add-button"
                   className="employee-btn"
                   type="submit"
-                  onClick={(e)=> createEmployeeHandler(e)}
+                  onClick={(e) => createEmployeeHandler(e)}
                 >
                   Add
                 </button>
@@ -664,5 +726,5 @@ export default function AddEmployee() {
         </div>
       </div>
     </div>
-  )
+  );
 }

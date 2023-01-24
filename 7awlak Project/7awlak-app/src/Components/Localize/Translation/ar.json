@@ -1,6 +1,5 @@
 {
-    "lang": "En",
-    "english":"English",
+    "lang": "En",    
     "login":{
     "username": "اسم المستخدم",
     "password": "كلمة المرور",
@@ -19,12 +18,29 @@
         "branches":"الفروع",
         "departments":"الاقسام",
         "employees":"الموظفين",
-        "reset-password":"الاعدادات"
+        "reset_password":"الاعدادات",
+        "logout":"تسجيل الخروج"
     },
-    "companies":{},
-    "branches":{},
-    "departments":{},
-    "employees":{},
+    "companies":{
+        "add_company":"اضافة شركة"
+    },
+    "branches":{
+        "add_branch":"اضافة فرع",
+        "branch_name":"الفرع",
+        "company":"الشركة",
+        "country":"الدولة",
+        "number_of_employees":"عدد الموظفين",
+        "address":"العنوان",
+        "latitude":"خظ العرض",
+        "longitude":"خط الطول"
+
+    },
+    "departments":{
+        "add_department":"اضافة قسم"
+    },
+    "employees":{
+        "add_employee":"اضافة موظف"
+    },   
     "company_name_en":"اسم الشركة",
     "tax_num":"الرقم الضريبي",
     "phone":"الهاتف الارضي",

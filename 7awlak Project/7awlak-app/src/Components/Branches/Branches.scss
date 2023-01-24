@@ -1,5 +1,31 @@
+.container{
+    .btn-section{
+        margin-left: 70px;
+        margin-top: 40px;
+        .add-branch-btn{
+            width: 10%;
+            height: 50px;
+            background-color: rgb(44, 135, 165);
+            color: white;
+            font-size: 18px;
+            border: 1px solid #fff;
+            border-radius: 15px;
+        }
+    }
+}
+
+[dir= "rtl"]{
+  .container{
+    .btn-section{
+        margin-right: 70px;
+        margin-top: 40px;
+    }
+  }
+}
+
+
 .edit-branch-btn{
-    width: 90%;
+    width: 70%;
     height: 30px;
     background-color: rgb(44, 135, 165);
     color: white;

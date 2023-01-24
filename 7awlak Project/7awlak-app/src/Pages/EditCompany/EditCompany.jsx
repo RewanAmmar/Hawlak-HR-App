@@ -31,6 +31,7 @@ export default function EditCompany({currentCompany,setCurrentEditingCompany,set
   return (
     <div>    
     <div className="company-container">
+      
       <div className="company-content">
         <form
           className="company-card"            

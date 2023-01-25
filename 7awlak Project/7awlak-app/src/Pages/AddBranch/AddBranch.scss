@@ -65,16 +65,19 @@
               height: 50px;
               border: 1px solid rgb(44, 135, 165);
               border-radius: 15px;
-              font-size: 16px;
-              padding-left: 15px;
-                padding-top: 13px;
+              font-size: 14px;
+              padding: 15px;
+              
+              &::placeholder{
+                font-size: 14px;
+              }
             }
        
           .branch-input-container{
               position: relative;
               text-align: start;
               margin-bottom: 15px;
-              width: 30%;
+              width: 30%;              
               .show-password-icon {
                 position: absolute;
                 bottom: 15px;
@@ -163,12 +166,18 @@
     }
   }
   @media screen and (max-width: 575.99px) {
-    .reset-password-container {
-      .reset-page-content {
+    .branch-container {
+      .branch-content{
         padding-left: 20px;
         padding-right: 20px;
-        .reset-password-card {
-          .reset-password-header {
+        .branch-input-container{
+          ::placeholder{
+            padding-left: 0px;
+            color: rgb(198, 198, 198);
+          }
+        }
+        .branch-card {
+          .form-header {
             font-size: 18px;
           }
         }

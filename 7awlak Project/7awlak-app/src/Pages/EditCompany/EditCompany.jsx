@@ -1,11 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import hawlakServices from '../../services/hawlakServices'
 import "./EditCompany.scss"
+import { t } from "i18next";
 import toastPopup from '../../Helpers/Toast'
 import { useNavigate } from "react-router-dom";
+import Spinner from '../../Components/Spinner/Spinner';
 export default function EditCompany({currentCompany,setCurrentEditingCompany,setModalVisable}) {
     const navigate = useNavigate();
-    
+    const [loading, setLoading] = useState(false)
     async function editCompanyHandler(){
         let obj = {            
             company_name_en: currentCompany.company_name_en,
@@ -20,16 +22,19 @@ export default function EditCompany({currentCompany,setCurrentEditingCompany,set
         }
         try{
             let {data} = await hawlakServices.editCompany(currentCompany.id,obj);
-            toastPopup("success");
+            setLoading(true)
+            toastPopup("success",t("companies.success_edit"));
             setTimeout(() => {
               navigate(0);
           }, 1500);
         }catch(error){
-            toastPopup("error");
+          setLoading(false)
+            toastPopup("error",t("companies.error"));
         }
     }
   return (
-    <div>    
+    <div> 
+      {loading && <Spinner/>}   
     <div className="company-container">
       
       <div className="company-content">
@@ -37,7 +42,7 @@ export default function EditCompany({currentCompany,setCurrentEditingCompany,set
           className="company-card"            
         >
           <div className='form-header'>
-          <i className="fa-solid fa-building company-icon"></i><p className="title">Edit Company</p>
+          <i className="fa-solid fa-building company-icon"></i><p className="title">{t("companies.edit_company")}</p>
           </div>
           <div className="form-inputs-container">      
         <div className='container'>

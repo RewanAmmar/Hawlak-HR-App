@@ -32,26 +32,26 @@ const navigate = useNavigate();
       is_active: true
     }   
     if(companyNameEN === ""){
-      toastPopup("error", "Enter Company Name in English")
+      toastPopup("error", t("companies.empty_name"))
     }else if(companyNameAR === ""){
-      toastPopup("error", "Enter Company Name in Arabic")
+      toastPopup("error", t("companies.empty_name"))
     }else if(!new RegExp(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,13})+$/).test(email)
     ) {
-      toastPopup("error", "Enter Correct Email")
+      toastPopup("error", t("companies.email"))
     }else if(taxNumber === ""){
-      toastPopup("error","Enter Your Tax Number")
+      toastPopup("error",t("companies.tax_number"))
     }else{
       try{
         let { data } = await hawlakServices.createCompany(obj);
         console.log(data,"objjjjjjjjjjjjjjjjjjjjjjjjjjjjj");
         setLoading(true);
-        toastPopup("success","Adding Company Successfully");
+        toastPopup("success",t("companies.success"));
         setTimeout(() => {
           navigate(0);
         }, 2000);
       }catch(error){
         setLoading(false);
-        toastPopup("error", "Error When Adding Company")
+        toastPopup("error", t("companies.error"))
       }
     }
   }

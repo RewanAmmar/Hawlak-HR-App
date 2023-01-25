@@ -8,16 +8,19 @@ import EditBranch from "../../Pages/EditBranch/EditBranch";
 import { t } from "i18next";
 import i18n from "../Localize/i18n";
 import BackButton from '../BackButton/BackButton';
+
 export default function Branches() {
   const navigate = useNavigate();
   const lang = i18n.language;
   const [allBranches, setAllBranches] = useState([]);
   const [currentEditingBranch, setCurrentEditingBranch] = useState({});
   const [modalVisable, setModalVisable] = useState(false);
+
   function handleRowClick(tableRow) {
     navigate(`/branch-details/${tableRow.id}`);
     console.log(tableRow, "hhhhhhhhhhhhhhh");
   }
+
   async function allDepartmentsHandler() {
     try {
       let { data } = await hawlakServices.getAllBranches();
@@ -46,7 +49,7 @@ export default function Branches() {
                 setModalVisable(true);
               }}
             >
-              {t("edit")}
+              {t("table.edit")}
             </button>
           ),
         };

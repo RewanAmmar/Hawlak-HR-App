@@ -8,8 +8,9 @@
         "forget_password": "Forgot Password",
         "empty_name": "Enter Your User Name",
         "empty_password": "Enter Your Password",
+        "empty_email":"Enter Your Email",
         "signing_in": "Signing in...",       
-        "": ""
+        "correct_data": "من فضلك ادخل البيانات بطريقة صحيحة"
         },
     "navbar":{
         "home":"Home",
@@ -21,7 +22,20 @@
         "logout":"Logout"
     },
     "companies":{
-        "add_company":"Add Company"
+        "add_company":"Add Company",        
+        "phone":"Phone",
+        "mobile":"Mobile",
+        "tax_number":"Tax Number",
+        "email":"Email",
+        "number_of_employees":"Number Of Employees",
+        "creation_date":"Creation Date",
+        "empty_name":"Please Enter Company Name",
+        "error_email":"Please Enter Your Email",
+        "empty_tax_number":"Please Enter Tax Number",
+        "success":"Add Company Successfully",
+        "error":"Please Enter Correct Data",
+        "success_edit":"Editing Company Successfully",
+        "edit_company":"Edit Company"
     },
     "branches":{
         "add_branch":"Add Branch",        
@@ -31,13 +45,66 @@
         "number_of_employees":"Number Of Employees",
         "address":"Address",
         "latitude":"Latitude",
-        "longitude":"Longitude"
+        "longitude":"Longitude",
+        "creation_date":"Creation Date",
+        "empty_name":"Please Enter Branch Name",
+        "empty_latitude":"Please Enter Latitude",
+        "empty_longitude":"Please Enter Longitude",
+        "empty_company":"Please Enter Company Number",
+        "success":"Adding Branch Successfully",
+        "error":"Please Enter Correct Data",
+        "success_edit":"Editing Branch Successfully",
+        "edit_branch":"Edit Branch"
     },
     "departments":{
-        "add_department":"Add Department"
+        "add_department":"Add Department",
+        "empty_name":"Please Enter Department Name",
+        "empty_branch":"Please Enter Branch Number",
+        "success":"Adding Department Successfully",
+        "error":"Please Enter Correct Data",
+        "success_edit":"Editing Department Successfully",
+        "edit_department":"Edit Department"
     },
     "employees":{
-        "add_employee":"Add Employee"
+        "add_employee":"Add Employee",
+        "email":"Please Enter Your Email",
+        "user_name":"Please Enter User Name",
+        "password":"Please Enter Your Passowrd",
+        "employee_name":"Please Enter Your Name",
+        "id_type":"Please Enter Id Type",
+        "id_number":"Please Enter Id Number",
+        "branch":"Please Enter Branch Number",
+        "success":"Adding Employee Successfully",
+        "error":"Please Enter Correct Data",
+        "success_edit":"Editing Employee Successfully",
+        "edit_employee":"Edit Employee"
+    },
+    "resetpassword": {
+        "reset_password": "Reset password",
+        "old_password": "Old password",
+        "new_password": "New password",
+        "confirm_password": "Confirm new password",
+        "confirm": "Confirm",
+        "enter_old_password": "Please enter your old password",
+        "changing_password": "Changing password...",
+        "enter_new_password": "Please enter your new password",
+        "enter_confirm_password": "Please re-enter your new password",
+        "password_not_match": "Passwords do not match",
+       
+        "correct_password": "Please enter correct old password",
+        "": ""
+      },
+      "forgetPassword": {
+        "back": "Back",
+        "sending_email": "We will send you an email contains a new password",
+        "email": "Email address",
+        "send": "Send",
+        "empty_email": "Please enter your email address",
+        "email_sent": "Password has been sent to your email address",
+        "": ""
+      },
+    "table": {
+        "edit": "Edit"
     },
     "company_name_en":"Company Name",
     "company_name_ar":"اسم الشركة",
@@ -46,9 +113,9 @@
     "mobile":"Mobile",
     "fax":"Fax",
     "email":"Email",
-    "number_of_employees":"Number Of Employees",
-    "creation_date":"Creation Date",
     "edit":"Edit",
+    "number_of_employees":"Number Of Employees",
+    "creation_date":"Creation Date",    
     "branch_name_en":"Branch Name",
     "branch_name_ar":"اسم الفرع",
     "country_en":"Country",

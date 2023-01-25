@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import hawlakServices from './../../services/hawlakServices';
 import BackButton from '../../Components/BackButton/BackButton';
 import { t } from 'i18next';
+import Spinner from '../../Components/Spinner/Spinner';
 export default function AddBranch() {
 const [branchNameEN, setBranchNameEN] = useState("")
 const [branchNameAR, setBranchNameAR] = useState("")
@@ -35,32 +36,33 @@ const [loading, setLoading] = useState(false)
       longitude: longitude
     }
     if(branchNameEN === ""){
-      toastPopup("error","Enter Branch Name in English")
+      toastPopup("error",t("branches.empty_name"))
     }else if(branchNameAR === ""){
-      toastPopup("error","Enter Branch Name in Arabic")
+      toastPopup("error",t("branches.empty_name"))
     }else if(latitude === ""){
-      toastPopup("error","Enter Latitude")
+      toastPopup("error",t("branches.empty_latitude"))
     }else if(longitude === ""){
-      toastPopup("error","Enter Longitude")
+      toastPopup("error",t("branches.longitude"))
     }else if(company === ""){
-      toastPopup("error","Enter Number of Company")
+      toastPopup("error",t("branches.empty_company"))
     }else{
       try{
         let {data} = await hawlakServices.createBranch(obj);
         console.log(data,"dataaaaaaaaaaaaaaaaaaaaaaaa");
-        setLoading(false);
-        toastPopup("success","Adding Branch Successfully");
+        setLoading(true);
+        toastPopup("success",t("branches.success"));
         setTimeout(() => {
           navigate(0);
         }, 2000);
       }catch(error){
         setLoading(false);
-        toastPopup("error", "Error When Adding Branch")
+        toastPopup("error", t("branches.error"))
       }
     }
   }
   return (
     <div>
+      {loading && <Spinner/>}
       <div className="branch-container">
         <BackButton />
         <div className="branch-content">

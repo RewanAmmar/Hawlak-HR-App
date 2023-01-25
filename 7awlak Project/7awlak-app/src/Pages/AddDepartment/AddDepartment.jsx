@@ -5,6 +5,7 @@ import hawlakServices from './../../services/hawlakServices';
 import { useNavigate } from "react-router-dom"; 
 import BackButton from '../../Components/BackButton/BackButton';
 import { t } from 'i18next';
+import Spinner from '../../Components/Spinner/Spinner';
 export default function AddDepartment() {
 const [departmentNameEN, setDepartmentNameEN] = useState("")
 const [departmentNameAR, setDepartmentNameAR] = useState("")
@@ -23,28 +24,29 @@ const navigate = useNavigate();
       is_active: true
     }
     if(departmentNameEN === ""){
-      toastPopup("error","Enter Department Name in English")
+      toastPopup("error",t("departments.empty_name"))
     }else if(departmentNameAR === ""){
-      toastPopup("error", "Enter Department in Arabic")
+      toastPopup("error", t("departments.empty_name"))
     }else if(branch === ""){
-      toastPopup("error", "Choose The Branch")
+      toastPopup("error", t("departments.empty_branch"))
     }else{
       try{
         let {data} = await hawlakServices.createDepartment(obj)
         console.log(data,"dataaaaaaaaaaaa");
-        setLoading(false);
-        toastPopup("success","Adding Department Successfully");        
+        setLoading(true);
+        toastPopup("success",t("departments.success"));        
         setTimeout(() => {
           navigate(0);
         }, 2000);
       }catch(error){
         setLoading(false);
-        toastPopup("error", "Error When Adding Department")
+        toastPopup("error", t("departments.error"))
       }
     }
   }
   return (
     <div>
+      {loading && <Spinner/>}
     <div className="department-container">
     <BackButton />
       <div className="department-content">

@@ -74,7 +74,7 @@ export default function Employees() {
                 setModalVisable(true);
               }}
             >
-              {t("edit")}
+              {t("table.edit")}
             </button>
           ),
         };

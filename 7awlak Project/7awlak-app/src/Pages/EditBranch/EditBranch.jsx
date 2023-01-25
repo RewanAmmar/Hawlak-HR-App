@@ -1,11 +1,13 @@
-import React from 'react'
+import React,{useState} from 'react'
 import "./EditBranch.scss"
 import { useNavigate } from "react-router-dom";
 import hawlakServices from '../../services/hawlakServices';
 import toastPopup from '../../Helpers/Toast';
-
+import Spinner from '../../Components/Spinner/Spinner';
+import { t } from "i18next";
 export default function EditBranch({currentBranch,setCurrentEditingBranch,setModalVisable}) {
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false)
     async function editBranchHandler(){
         let obj = {            
             branch_name_en: currentBranch.branch_name_en,
@@ -21,16 +23,19 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
         }
         try{
             let {data} = await hawlakServices.editBranch(currentBranch.id,obj);
-            toastPopup("success");
+            setLoading(true)
+            toastPopup("success",t("branches.success_edit"));
             setTimeout(() => {
               navigate(0);
           }, 1500);
         }catch(error){
-            toastPopup("error");
+          setLoading(false)
+            toastPopup("error",("branches.error"));
         }
     }
   return (
     <div>
+      {loading && <Spinner/>}
       <div className="branch-container">
         
         <div className="branch-content">
@@ -38,7 +43,7 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
             className="branch-card"            
           >
             <div className='form-header'>
-            <i class="fa-solid fa-code-branch branch-icon"></i><p className="title">Edit Branch</p>
+            <i class="fa-solid fa-code-branch branch-icon"></i><p className="title">{t("branches.edit_branch")}</p>
             </div>
             <div className="form-inputs-container">
             

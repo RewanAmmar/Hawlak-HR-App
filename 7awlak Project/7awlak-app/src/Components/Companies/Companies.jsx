@@ -11,12 +11,14 @@ import i18n from "../Localize/i18n";
 import { t } from "i18next";
 import EditCompany from "../../Pages/EditCompany/EditCompany";
 import BackButton from '../BackButton/BackButton';
+
 export default function Companies() {
   const [allCompanies, setAllCompanies] = useState([]);
   const navigate = useNavigate();
   const [currentEditingCompany, setCurrentEditingCompany] = useState({});
   const [modalVisable, setModalVisable] = useState(false);
   const lang = i18n.language;
+
   function handleRowClick(tableRow) {
     navigate(`/company-details/${tableRow.id}`);
     console.log(tableRow, "hhhhhhhhhhhhhhh");
@@ -47,7 +49,7 @@ export default function Companies() {
                 setModalVisable(true);
               }}
             >
-              {t("edit")}
+              {t("table.edit")}
             </button>
           ),
         };

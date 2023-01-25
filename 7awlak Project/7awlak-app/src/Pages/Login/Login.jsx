@@ -9,6 +9,7 @@ import hawlakServices from "../../services/hawlakServices";
 import toastPopup from "../../Helpers/Toast";
 import { authActions } from "../../store/AuthSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Spinner from '../../Components/Spinner/Spinner';
 export default function Login() {
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -39,29 +40,31 @@ export default function Login() {
   async function loginHandler(e) {
     e.preventDefault();  
     if (userName === "") {
-      toastPopup("error", "Enter Your Name");
+      toastPopup("error", t("login.empty_name"));
     } else if (email === "") {
-      toastPopup("error", "Enter Your Email");
+      toastPopup("error", t("login.email"));
     } else if (password === "") {
-      toastPopup("error", "Enter Your Password");
+      toastPopup("error", t("login.empty_password"));
     } else {
       try {
-        setLoading(false);
+        setLoading(true);
         const { data } = await hawlakServices.login(userName, email, password);
         console.log(data, "dataaaaaaaaaaaaaaaaaaaaaaaaaa");        
         dispatch(authActions.login({key: data.key}));
-        toastPopup("success", "Login in......");
+        toastPopup("success", t("login.signing_in"));
 
         setTimeout(() => {
           navigate("/home");
         }, 1500);
       } catch (error) {
         setLoading(false);
-        toastPopup("error", t("Enter Correct Data"));
+        toastPopup("error", t("login.correct_data"));
       }
     }
   }
   return (
+    <div>
+      {loading && <Spinner/>} 
     <div className="login-container">
       <div className="login">
         <div className="content">
@@ -90,7 +93,7 @@ export default function Login() {
               <i className="fa-solid fa-user icon"></i>
               <input
                 type="text"
-                placeholder={t("")}
+                placeholder="User Name"
                 className="login-input"
                 value={userName}
                 onChange={(e) => setUserName(e.target.value)}
@@ -138,6 +141,7 @@ export default function Login() {
           </form>
         </div>
       </div>
+    </div>
     </div>
   );
 }

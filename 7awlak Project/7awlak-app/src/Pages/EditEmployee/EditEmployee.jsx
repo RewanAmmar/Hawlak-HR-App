@@ -1,15 +1,17 @@
-import React from "react";
+import React,{useState} from "react";
 import "./EditEmployee.scss";
 import { useNavigate } from "react-router-dom";
-
+import { t } from "i18next";
 import toastPopup from "../../Helpers/Toast";
 import hawlakServices from '../../services/hawlakServices';
+import Spinner from '../../Components/Spinner/Spinner';
 export default function EditEmployee({
   currentEmployee,
   setCurrentEditingEmployee,
   setModalVisable,
 }) {
   console.log(currentEmployee,"currentEmployee");
+  const [loading, setLoading] = useState(false)
   const navigate = useNavigate();
    async function editEmployeeHandler(){
     let obj ={
@@ -56,23 +58,26 @@ export default function EditEmployee({
     }
     try{
       let { data } = hawlakServices.editEmployee(currentEmployee.id, obj)
+      setLoading(true)
       console.log(data,"employee data");
-      toastPopup("success")
+      toastPopup("success",t("employees.success_edit"))
       setTimeout(()=>{
         navigate(0)
       },1500)
     }catch(error){
-      toastPopup("error")
+      setLoading(false)
+      toastPopup("error",t("employees.error"))
     }
    }
   return (
     <div>
+      {loading && <Spinner/>}
       <div className="employee-container">
         <div className="employee-content">
           <form className="employee-card">
             <div className="form-header">
               <i class="fa-solid fa-people-group employee-icon"></i>
-              <p className="title">Edit Employee</p>
+              <p className="title">{t("employees.edit_employee")}</p>
             </div>
             <div className="form-inputs-container">
               <div className="container">

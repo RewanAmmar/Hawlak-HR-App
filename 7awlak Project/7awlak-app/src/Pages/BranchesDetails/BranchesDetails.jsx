@@ -74,7 +74,7 @@ export default function BranchesDetails() {
           
            <div className="branch-input-container">
              <label htmlFor="company" className="branch-label">
-               Number Of Employees
+               {t("branches.number_of_employees")}
              </label>
 
              <div
@@ -86,10 +86,7 @@ export default function BranchesDetails() {
               
              >{branch?.number_of_employees}</div>
            </div>
-       
-           </div>
-           <div className='left-side '>
-            {lang === "en" ? (
+           {lang === "en" ? (
                 <div className="branch-input-container">
              <label htmlFor="country" className="branch-label">
                Country
@@ -119,6 +116,9 @@ export default function BranchesDetails() {
              >{branch?.country_ar}</div>
            </div>
             )}    
+           </div>
+           <div className='left-side '>
+           
             {lang === "en" ? (
                  <div className="branch-input-container">
             
@@ -150,13 +150,9 @@ export default function BranchesDetails() {
              >{branch?.address_ar}</div>
            </div>
             )}
-          
-           </div>
-           <div className='left-side '>
-           
-           <div className="branch-input-container">
+          <div className="branch-input-container">
              <label htmlFor="address-ar" className="branch-label">
-            Latitude
+            {t("branches.latitude")}
              </label>
 
              <div
@@ -169,7 +165,7 @@ export default function BranchesDetails() {
            </div>
            <div className="branch-input-container">
              <label htmlFor="latitude" className="branch-label">
-               Longitude
+               {t("branches.longitude")}
              </label>
 
              <div
@@ -180,11 +176,12 @@ export default function BranchesDetails() {
                className="add-department-name"
              >{branch?.longitude}</div>
            </div>
-           </div>
+           </div>  
+      
            <div className='left-side '>
            <div className="branch-input-container">
              <label htmlFor="longitude" className="branch-label">
-               Creation Date
+               {t("branches.creation_date")}
              </label>
 
              <div

@@ -30,7 +30,7 @@ export default function Layout() {
           <Routes>
             <Route path="/" element={<Navigate to={"/home"} />} />
             <Route path="/*" element={<Navigate to={"/home"} />} />
-            <Route path="home" element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/forgot-password" element={<Forgotpassword />} />
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/edit-company" element={<EditCompany/>} />

@@ -96,7 +96,10 @@ export default function EmployeeDetails() {
                       {employee?.start_date}
                     </div>
                   </div>
-                  <div className="employee-input-container">
+              
+                </div>
+                <div className="left-side ">
+                <div className="employee-input-container">
                     <label htmlFor="manager" className="employee-label">
                       Manager
                     </label>
@@ -111,8 +114,6 @@ export default function EmployeeDetails() {
                       {employee?.manager}
                     </div>
                   </div>
-                </div>
-                <div className="left-side ">
                   <div className="employee-input-container">
                     <label htmlFor="job-title" className="employee-label">
                       Job Title
@@ -175,7 +176,10 @@ export default function EmployeeDetails() {
                     </div>
                   )}
 
-                  <div className="employee-input-container">
+                  
+                </div>
+                <div className="left-side ">
+                <div className="employee-input-container">
                     <label htmlFor="phone" className="employee-label">
                       Phone
                     </label>
@@ -189,8 +193,6 @@ export default function EmployeeDetails() {
                       {employee?.phone}
                     </div>
                   </div>
-                </div>
-                <div className="left-side ">
                   <div className="employee-input-container">
                     <label htmlFor="mobile" className="employee-label">
                       Mobile
@@ -237,7 +239,10 @@ export default function EmployeeDetails() {
                       {employee?.hiredate}
                     </div>
                   </div>
-                  {lang === "en" ? (
+                  
+                </div>
+                <div className="left-side ">
+                {lang === "en" ? (
                     <div className="employee-input-container">
                       <label
                         htmlFor="place-of-birth"
@@ -274,8 +279,6 @@ export default function EmployeeDetails() {
                       </div>
                     </div>
                   )}
-                </div>
-                <div className="left-side ">
                   {lang === "en" ? (
                     <div className="employee-input-container">
                       <label htmlFor="id-type" className="employee-label">
@@ -538,9 +541,7 @@ export default function EmployeeDetails() {
                       </div>
                     </div>
                   )}
-                </div>
-                <div className="left-side ">
-                  {lang === "en" ? (
+                   {lang === "en" ? (
                     <div className="employee-input-container">
                       <label htmlFor="religion" className="employee-label">
                         Religion
@@ -607,8 +608,10 @@ export default function EmployeeDetails() {
                       </div>
                     </div>
                   )}
-
-                  <div className="employee-input-container">
+                </div>
+               
+                <div className="last-side">
+                <div className="employee-input-container">
                     <label htmlFor="iban" className="employee-label">
                       IBan
                     </label>
@@ -623,8 +626,6 @@ export default function EmployeeDetails() {
                       {employee?.iban}
                     </div>
                   </div>
-                </div>
-                <div className="left-side ">
                   <div className="employee-input-container">
                     <label htmlFor="branch" className="employee-label">
                       Branch

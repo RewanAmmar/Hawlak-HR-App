@@ -1,28 +1,17 @@
-import React,{useEffect} from "react"
+import React, { useEffect } from "react";
 
 import "./App.css";
-
-import AddCompany from "./Pages/AddCompany/AddCompany";
-import AddBranch from "./Pages/AddBranch/AddBranch";
-import Forgotpassword from "./Pages/Forgotpassword/Forgotpassword";
-import Home from "./Pages/Home/Home";
-
-import AddDepartment from "./Pages/AddDepartment/AddDepartment";
 import { BrowserRouter as Navigate, Routes, Route } from "react-router-dom";
-import AddEmployee from "./Pages/AddEmployee/AddEmployee";
-import NavBar from "./Components/NavBar/NavBar";
 import ProtectedRoute from "./Routes/ProtectedRoute";
-import Footer from "./Components/Footer/Footer";
-import ResetPassword from './Pages/ResetPassword/ResetPassword';
-
 import { useSelector } from "react-redux";
-import Companies from './Components/Companies/Companies';
-import Login from './Pages/Login/Login';
-import { checkFixLang } from './Components/Localize/lang';
-import i18n from './Components/Localize/i18n';
-
+import Login from "./Pages/Login/Login";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { checkFixLang } from "./Components/Localize/lang";
+import i18n from "./Components/Localize/i18n";
 
 function App() {
+ 
   const lang = i18n.language;
   const auth = useSelector((state) => state.auth);
   checkFixLang(lang);
@@ -32,8 +21,7 @@ function App() {
   }, [lang]);
   console.log(auth);
   return (
-    <div className="App"> 
-    
+    <div className="App">
       <React.Fragment>
         <Routes>
           <Route path="/*" element={<ProtectedRoute />} />
@@ -41,9 +29,9 @@ function App() {
             path="/login"
             element={auth?.key ? <Navigate to="/" /> : <Login />}
           />
-          
         </Routes>
       </React.Fragment>
+      <ToastContainer />
     </div>
   );
 }

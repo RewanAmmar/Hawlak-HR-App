@@ -5,6 +5,7 @@ import "./AddEmployee.scss";
 import { useNavigate } from "react-router-dom";
 import BackButton from '../../Components/BackButton/BackButton';
 import { t } from "i18next";
+import Spinner from '../../Components/Spinner/Spinner';
 export default function AddEmployee() {
   const [email, setEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -138,40 +139,41 @@ export default function AddEmployee() {
     // };
 
     if (email === "") {
-      toastPopup("error", "Enter Your Email");
+      toastPopup("error", t("employees.email"));
     } else if (userName === "") {
-      toastPopup("error", "Enter Your User Name");
+      toastPopup("error", t("employees.user_name"));
     } else if (password === "") {
-      toastPopup("error", "Enter Your Password");
+      toastPopup("error", t("employees.password"));
     } else if (employeeNameEN === "") {
-      toastPopup("error", "Enter Your Name in English");
+      toastPopup("error", t("employees.employee_name"));
     } else if (employeeNameAR === "") {
-      toastPopup("error", "Enter Your Name in Arabic");
+      toastPopup("error", t("employees.employee_name"));
     } else if (idTypeEN === "") {
-      toastPopup("error", "Enter Your Id Type in English");
+      toastPopup("error", t("employees.id_type"));
     } else if (idTypeAR === "") {
-      toastPopup("error", "Enter Your Id Type in Arabic");
+      toastPopup("error",t("employees.id_type"));
     } else if (idNumber === "") {
-      toastPopup("error", "Enter Your Id Number");
+      toastPopup("error", t("employees.id_number"));
     } else if (branch === "") {
-      toastPopup("error", "Enter Branch");
+      toastPopup("error", t("employees.branch"));
     } else {
       try {
         let { data } = await hawlakServices.createEmployee(formData);
         console.log(data, "dataaaaaaaaaaaaaaa");
-        setLoading(false);
-        toastPopup("success", "Adding Employee Successfully");
+        setLoading(true);
+        toastPopup("success", t("employees.success"));
         setTimeout(() => {
           navigate(0);
         }, 2000);
       } catch (error) {
         setLoading(false);
-        toastPopup("error", "Error When Adding Employee");
+        toastPopup("error", t("employees.error"));
       }
     }
   }
   return (
     <div>
+      {loading && <Spinner/>}
       <div className="employee-container">
       <BackButton />
         <div className="employee-content">

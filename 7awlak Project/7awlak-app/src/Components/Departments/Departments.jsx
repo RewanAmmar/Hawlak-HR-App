@@ -39,7 +39,7 @@ export default function Departments() {
                 setModalVisable(true);
               }}
             >
-              {t("edit")}
+              {t("table.edit")}
             </button>
           ),
         };

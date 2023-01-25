@@ -106,14 +106,7 @@ export default function Home() {
       <div className="container">
         <div className="navigation">
           <ul className="navigation-ul">
-            {/* <li className="navigation-li">
-              <NavLink to="/home" className="link">
-                <span className="icon">
-                  <i class="fa-solid fa-house link-icon"></i>
-                </span>
-                <span className="title">{t("navbar.home")}</span>
-              </NavLink>
-            </li> */}
+         
             <li className="navigation-li">
               <NavLink to="/companies" className="link">
                 <span className="icon">
@@ -174,10 +167,7 @@ export default function Home() {
           </ul>
         </div>
         <div className="main">
-          <div className="topbar">
-            {/* <div className="toggle" onClick={() => setShow(!show)}>
-              <i class={`fas fa-bars ${show ? "fa-solid fa-xmark" : null}`}></i>
-            </div> */}
+          <div className="topbar">          
             <div className="search">
               <label className="search-label">
                 <input
@@ -196,7 +186,7 @@ export default function Home() {
                 <div className="name">{t("navbar.companies")}</div>
               </div>
               <div className="icon-card">
-                <i class="fa-solid fa-building link-icon"></i>
+                <i class="fa-solid fa-building link-icon"></i>                
               </div>
             </div>
             <div className="card">
@@ -230,10 +220,7 @@ export default function Home() {
           <div class="details">
             <div class="recent-data">
               <div class="card-header">
-                <h2 className="main-header">Companies Data</h2>
-                <a href="#" class="btn">
-                  View All
-                </a>
+                <h2 className="main-header">Companies Data</h2>                
               </div>
               <div className="data-table">
               <TableData
@@ -244,17 +231,14 @@ export default function Home() {
                   "phone",
                   "mobile",
                   "fax",
-                  "email",
-                  // "number_of_employees",
-                  // "creation_date",
-                  
-                ]}
+                  "email",              
+                  ]}
                 tableRows={allCompanies}
               />
               </div>
             </div>
             <div className="right-data">
-              <Pie data={data} />
+              <Pie data={data}/>
             </div>
           </div>
         </div>

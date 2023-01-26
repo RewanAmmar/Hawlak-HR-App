@@ -1,26 +1,26 @@
 import React, { useState, useEffect } from "react";
 
 import "./Home.scss";
-import moment from "moment";
+
 import { NavLink } from "react-router-dom";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import { authActions } from "../../store/AuthSlice";
-import { useDispatch } from "react-redux";
+// import { authActions } from "../../store/AuthSlice";
+// import { useDispatch } from "react-redux";
 import hawlakServices from "../../services/hawlakServices";
 import TableData from "../../Components/TableData/TableData";
 import { t } from "i18next";
 export default function Home() {
-  const [companyCount, setCompanyCount] = useState({});
   const [allCompanies, setAllCompanies] = useState([]);
+  const [companyCount, setCompanyCount] = useState({});  
   const [branchCount, setBranchCount] = useState({});
   const [departmentCount, setDepartmentCount] = useState({});
   const [employeeCount, setEmployeeCount] = useState({});
   ChartJS.register(ArcElement, Tooltip, Legend);
-  const dispatch = useDispatch();
-  const logoutHandler = async () => {
-    dispatch(authActions.logout());
-  };
+  // const dispatch = useDispatch();
+  // const logoutHandler = async () => {
+  //   dispatch(authActions.logout());
+  // };
   const data = {
     labels: ["Companies", "Branches", "Departments", "Employees"],
     datasets: [
@@ -50,9 +50,8 @@ export default function Home() {
   };
   async function allCompaniesHandler() {
     try {
-      let { data: company } = await hawlakServices.getAllCompanies();
-      console.log(company.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
-      let formatedCompanies = company.results.map((item) => {
+      let { data } = await hawlakServices.getAllCompanies();      
+      let formatedCompanies = data.results.map((item) => {
         return {
           id: item.id,
           company_name_en: item.company_name_en,
@@ -63,36 +62,33 @@ export default function Home() {
           fax: item.fax,
           email: item.email,
           number_of_employees: item.number_of_employees,
-          creation_date: moment(item.creation_date).format("dddd DD/MM/YYYY"),
+          creation_date: item.creation_date,
           is_active: item.is_active,
         };
       });
-      setCompanyCount(company);
+      setCompanyCount(data);
       setAllCompanies(formatedCompanies);
     } catch (err) {}
   }
   async function allEmployeesHandler() {
     try {
-      let { data: employee } = await hawlakServices.getAllEmployees();
-      console.log(employee.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
+      let { data } = await hawlakServices.getAllEmployees();     
 
-      setEmployeeCount(employee);
+      setEmployeeCount(data);
     } catch (err) {}
   }
   async function allBranchesHandler() {
     try {
-      let { data: branch } = await hawlakServices.getAllBranches();
-      console.log(branch.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
+      let { data } = await hawlakServices.getAllBranches();     
 
-      setBranchCount(branch);
+      setBranchCount(data);
     } catch (err) {}
   }
   async function allDepartmentsHandler() {
     try {
-      let { data: department } = await hawlakServices.getAllDepartments();
-      console.log(department.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
+      let { data } = await hawlakServices.getAllDepartments();      
 
-      setDepartmentCount(department);
+      setDepartmentCount(data);
     } catch (err) {}
   }
   useEffect(() => {
@@ -110,50 +106,48 @@ export default function Home() {
             <li className="navigation-li">
               <NavLink to="/companies" className="link">
                 <span className="icon">
-                  <i class="fa-solid fa-building link-icon"></i>
-                </span>
                 <span className="title">{t("navbar.companies")}</span>
+                  <i class="fa-solid fa-building link-icon"></i>                  
+                </span>                
               </NavLink>
             </li>
             <li className="navigation-li">
               <NavLink to="/branches" className="link">
                 <span className="icon">
-                  <i class="fa-solid fa-code-branch link-icon"></i>
-                </span>
                 <span className="title">{t("navbar.branches")}</span>
+                  <i class="fa-solid fa-code-branch link-icon"></i>                 
+                </span>                
               </NavLink>
             </li>
             <li className="navigation-li">
               <NavLink to="/departments" className="link">
                 <span className="icon">
-                  <i class="fa-solid fa-bars link-icon"></i>
-                </span>
                 <span className="title">{t("navbar.departments")}</span>
+                  <i class="fa-solid fa-bars link-icon"></i>                 
+                </span>               
               </NavLink>
             </li>
             <li className="navigation-li">
               <NavLink to="/employees" className="link">
                 <span className="icon">
-                  <i class="fa-solid fa-people-group link-icon"></i>
-                </span>
                 <span className="title">{t("navbar.employees")}</span>
+                  <i class="fa-solid fa-people-group link-icon"></i>              
+                </span>                
               </NavLink>
             </li>
             <li className="navigation-li">
               <NavLink to="/reset-password" className="link">
                 <span className="icon">
-                  <i class="fa-sharp fa-solid fa-gear link-icon"></i>
-                </span>
                 <span className="title">{t("navbar.reset_password")}</span>
+                  <i class="fa-sharp fa-solid fa-gear link-icon"></i>                 
+                </span>               
               </NavLink>
             </li>
-            <li className="navigation-li">
+            {/* <li className="navigation-li">
               <NavLink to="/login" className="link">
-                <span className="icon">
-                  {" "}
+                <span className="icon">                  
                   <i class="fa-solid fa-lock link-icon"></i>
-                </span>
-                <span
+                  <span
                   className="title"
                   onClick={(e) => {
                     e.preventDefault();
@@ -162,8 +156,10 @@ export default function Home() {
                 >
                   {t("navbar.logout")}
                 </span>
+                </span>
+               
               </NavLink>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="main">
@@ -220,7 +216,7 @@ export default function Home() {
           <div class="details">
             <div class="recent-data">
               <div class="card-header">
-                <h2 className="main-header">Companies Data</h2>                
+                <h2 className="main-header">{t("navbar.companies")}</h2>                
               </div>
               <div className="data-table">
               <TableData
@@ -229,9 +225,9 @@ export default function Home() {
                   "company_name_ar",
                   "tax_num",
                   "phone",
-                  "mobile",
-                  "fax",
-                  "email",              
+                  "mobile",                  
+                  "email",
+                  "creation_date"              
                   ]}
                 tableRows={allCompanies}
               />

@@ -1,4 +1,6 @@
-.table-responsive {
+
+.data-table-container{
+  .table-responsive {
     display: block;
     overflow-x: auto;
     font-family: "bukra-bold";
@@ -32,6 +34,58 @@
       padding: 5px;
     }
   }
+  .table-pagination {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    &:only-child {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  
+    .ReactPaginate {
+      // flex-wrap: wrap;
+      width: 80%;
+      justify-content: center;
+      align-items: center;
+  
+      li {
+        display: inline-block;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        font-size: 40px;
+        font-family: "bukra-bold";
+  
+        a {
+          text-decoration: none;
+          color: #284255;
+          font-size: 20px;
+          font-weight: 600;
+          font-family: "bukra-bold";
+        }
+      }
+  
+      .active {
+        a {
+          color: rgb(44, 135, 165);
+          font-size: 30px;
+        }
+      }
+    }
+  
+  
+  
+    .cliccky-icon-inside-table {
+      z-index: 1000;
+      position: relative;
+    }
+  }
+}
+
   
   .tickets-table-data-cell {
     padding: 0px 10px;
@@ -57,53 +111,4 @@
   
   }
   
-  .table-pagination {
-    margin-top: 35px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-    &:only-child {
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  
-    .pagination {
-      // flex-wrap: wrap;
-      width: 80%;
-      justify-content: center;
-      align-items: center;
-  
-      li {
-        display: inline-block;
-        width: 30px;
-        display: flex;
-        justify-content: center;
-        font-size: 40px;
-        font-family: "bukra-bold";
-  
-        a {
-          text-decoration: none;
-          color: #284255;
-          font-size: 20px;
-          font-weight: 600;
-          font-family: "bukra-bold";
-        }
-      }
-  
-      .active {
-        a {
-          color: #047fd6;
-          font-size: 30px;
-        }
-      }
-    }
-  
-  
-  
-    .cliccky-icon-inside-table {
-      z-index: 1000;
-      position: relative;
-    }
-  }
+ 

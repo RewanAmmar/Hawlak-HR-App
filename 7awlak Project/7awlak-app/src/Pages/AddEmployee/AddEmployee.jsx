@@ -48,95 +48,52 @@ export default function AddEmployee() {
 
   async function createEmployeeHandler(e) {
     e.preventDefault();
-    let user = {
-      email: email,
-      username: userName,
-      password: password,
+   
+
+    const obj = {
+      user: {
+        email: email,
+        username: userName,
+        password: password,
+      },
+      position: {
+        start_date: startDate,
+        manager: manager,
+        job_title: jobTitle,
+        contract_type: contractType,
+      },
+      emp_name_en: employeeNameEN,
+      emp_name_ar: employeeNameAR,
+      phone: phoneNumber,
+      mobile: mobileNumber,
+      date_of_birth: dateOfBirth,
+      hiredate: hireDate,
+      is_active: true,
+      place_of_birth_en: placeOfBirthEN,
+      place_of_birth_ar: placeOfBirthAR,
+      identification_type_en: idTypeEN,
+      identification_type_ar: idTypeAR,
+      identification_number: idNumber,
+      nationality_en: nationalityEN,
+      nationality_ar: nationalityAR,
+      address1: addressOne,
+      address2: addressTwo,
+      field_of_study_en: fieldOfStudyEN,
+      field_of_study_ar: fieldOfStudyAR,
+      education_degree_en: educationDegreeEN,
+      education_degree_ar: educationDegreeAR,
+      gender_en: genderEN,
+      gender_ar: genderAR,
+      social_status_en: socialStatusEN,
+      social_status_ar: socialStatusAR,
+      religion_en: religionEN,
+      religion_ar: religionAR,
+      bank_name_en: bankNameEN,
+      bank_name_ar: bankNameAR,
+      iban: iban,
+      is_admin: true,
+      branch: branch,
     };
-    let position = {
-      start_date: startDate,
-      manager: manager,
-      job_title: jobTitle,
-      contract_type: contractType,
-    };
-
-    let formData = new FormData();
-    formData.append("user.username", user.username);
-    formData.append("user.email", user.email);
-    formData.append("user.password", user.password);
-    formData.append("position.start_date", position.start_date);
-    formData.append("position.manager", position.manager);
-    formData.append("position.job_title", position.job_title);
-    formData.append("position.contract_type", position.contract_type);
-    formData.append("emp_name_en", employeeNameEN);
-    formData.append("emp_name_ar", employeeNameAR);
-    formData.append("phone", phoneNumber);
-    formData.append("mobile", mobileNumber);
-    formData.append("date_of_birth", dateOfBirth);
-    formData.append("hiredate", hireDate);
-    formData.append("place_of_birth_en", placeOfBirthEN);
-    formData.append("place_of_birth_ar", placeOfBirthAR);
-    formData.append("identification_type_en", idTypeEN);
-    formData.append("identification_type_ar", idTypeAR);
-    formData.append("identification_number", idNumber);
-    formData.append("nationality_en", nationalityEN);
-    formData.append("nationality_ar", nationalityAR);
-    formData.append("address1", addressOne);
-    formData.append("address2", addressTwo);
-    formData.append("field_of_study_en", fieldOfStudyEN);
-    formData.append("field_of_study_ar", fieldOfStudyAR);
-    formData.append("education_degree_en", educationDegreeEN);
-    formData.append("education_degree_ar", educationDegreeAR);
-    formData.append("gender_en", genderEN);
-    formData.append("gender_ar", genderAR);
-    formData.append("social_status_en", socialStatusEN);
-    formData.append("social_status_ar", socialStatusAR);
-    formData.append("religion_ar", religionAR);
-    formData.append("religion_en", religionEN);
-    formData.append("bank_name_en", bankNameEN);
-    formData.append("bank_name_ar", bankNameAR);
-    formData.append("iban", iban);
-    formData.append("branch", branch);
-
-    // const obj = {
-    //   user: {
-
-    //   },
-    //   position: {
-
-    //   },
-    //   emp_name_en: employeeNameEN,
-    //   emp_name_ar: employeeNameAR,
-    //   phone: phoneNumber,
-    //   mobile: mobileNumber,
-    //   date_of_birth: dateOfBirth,
-    //   hiredate: hireDate,
-    //   is_active: true,
-    //   place_of_birth_en: placeOfBirthEN,
-    //   place_of_birth_ar: placeOfBirthAR,
-    //   identification_type_en: idTypeEN,
-    //   identification_type_ar: idTypeAR,
-    //   identification_number: idNumber,
-    //   nationality_en: nationalityEN,
-    //   nationality_ar: nationalityAR,
-    //   address1: addressOne,
-    //   address2: addressTwo,
-    //   field_of_study_en: fieldOfStudyEN,
-    //   field_of_study_ar: fieldOfStudyAR,
-    //   education_degree_en: educationDegreeEN,
-    //   education_degree_ar: educationDegreeAR,
-    //   gender_en: genderEN,
-    //   gender_ar: genderAR,
-    //   social_status_en: socialStatusEN,
-    //   social_status_ar: socialStatusAR,
-    //   religion_en: religionEN,
-    //   religion_ar: religionAR,
-    //   bank_name_en: bankNameEN,
-    //   bank_name_ar: bankNameAR,
-    //   iban: iban,
-    //   is_admin: true,
-    //   branch: branch,
-    // };
 
     if (email === "") {
       toastPopup("error", t("employees.email"));
@@ -158,7 +115,7 @@ export default function AddEmployee() {
       toastPopup("error", t("employees.branch"));
     } else {
       try {
-        let { data } = await hawlakServices.createEmployee(formData);
+        let { data } = await hawlakServices.createEmployee(obj);
         console.log(data, "dataaaaaaaaaaaaaaa");
         setLoading(true);
         toastPopup("success", t("employees.success"));

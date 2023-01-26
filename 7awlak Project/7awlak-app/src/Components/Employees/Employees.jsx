@@ -24,17 +24,7 @@ export default function Employees() {
       console.log(employee, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedEmployees = employee.results.map((employee) => {
         return {
-          // user: {
-          //   email: employee.email,
-          //   username: employee.userName,
-          //   password: employee.password,
-          // },
-          // position: {
-          //   start_date: employee.startDate,
-          //   manager: employee.manager,
-          //   job_title: employee.jobTitle,
-          //   contract_type: employee.contractType,
-          // },
+        
           id: employee.id,
           emp_name_en: employee.emp_name_en,
           emp_name_ar: employee.emp_name_ar,

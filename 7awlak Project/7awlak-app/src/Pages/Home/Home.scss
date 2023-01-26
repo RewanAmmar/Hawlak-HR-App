@@ -5,12 +5,13 @@
 
     .navigation {
         position: fixed;
-        width: 100px;
+        width: 120px;
         height: 100%;
         background-color: rgb(44, 135, 165);
         border-left: 10px solid rgb(44, 135, 165);
         transition: 0.5s;
         overflow: hidden;
+        flex-wrap: wrap;
 
 
         .navigation-ul {
@@ -24,37 +25,13 @@
                 position: relative;
                 width: 100%;
                 list-style: none;
-                border-top-left-radius: 30px;
-                border-bottom-left-radius: 30px;
+                border-top-left-radius: 15px;
+                border-bottom-left-radius: 15px;
+                border-top-right-radius: 15px;
+                border-bottom-right-radius: 15px;
 
                 &:hover {
                     background-color: white;
-
-                    .link::before {
-                        content: "";
-                        position: absolute;
-                        right: 0;
-                        top: -50px;
-                        width: 50px;
-                        height: 50px;
-                        background-color: transparent;
-                        border-radius: 50%;
-                        box-shadow: 35px 35px 0 10px #fff;
-                        pointer-events: none;
-                    }
-
-                    .link::after {
-                        content: "";
-                        position: absolute;
-                        right: 0;
-                        bottom: -50px;
-                        width: 50px;
-                        height: 50px;
-                        background-color: transparent;
-                        border-radius: 50%;
-                        box-shadow: 35px -35px 0 10px #fff;
-                        pointer-events: none;
-                    }
                 }
 
                 .link {
@@ -69,8 +46,6 @@
                         color: rgb(44, 135, 165);
                     }
 
-                    &:active {}
-
                     .icon {
                         position: relative;
                         display: block;
@@ -78,26 +53,49 @@
                         height: 60px;
                         line-height: 75px;
                         text-align: center;
+                        overflow: hidden;
+
+                        &:hover {
+                            overflow: visible;
+                        }
+
 
                         .link-icon {
                             font-size: 1.5rem;
+                        }
 
+                        .title {
+                            position: absolute;
+                            // right: 20%;
+                            transform: translateX(-50%);
+                            // background-color: rgb(44, 135, 165);
+                            color: rgb(44, 135, 165);
+                            font-size: 12px;
+                            font-weight: bold;
+                            padding: 10px 15px;
+                            right: -110px;
+                            min-width: 10px;
+                            transition: 0.5s;
+                            margin-left: 70px;
+                            opacity: 0;
+
+                            &:hover {
+                                opacity: 1;
+                            }
+
+                            ::before {
+                                content: "";
+                                position: absolute;
+                                bottom: -20px;
+                                right: -100px;
+                                transform: translateX(-50%);
+                                border-style: solid;
+                                border-width: 10px;
+                                border-color: rgb(44, 135, 165) transparent transparent;
+                                cursor: default;
+                            }
                         }
                     }
-
-                    .title {
-                        position: relative;
-                        opacity: 0;
-                        pointer-events: none;
-                        font-weight: bold;
-                        height: 60px;
-                        line-height: 70px;
-                        text-align: start;
-                        white-space: nowrap;
-                        font-size: 14px;
-                        color: rgb(44, 135, 165);
-                    }
-
                 }
             }
         }
@@ -105,8 +103,8 @@
 
     .main {
         position: absolute;
-        width: calc(100% - 100px);
-        left: 100px;
+        width: calc(100% - 120px);
+        left: 120px;
         min-height: 100vh;
         background-color: white;
         transition: 0.5s;
@@ -297,7 +295,35 @@
 [dir="rtl"] {
     .container {
         .navigation {}
-        .main{}
+
+        .main {}
     }
 
 }
+
+
+@media screen and (max-width: 991.99px) and (min-width: 768px) {
+    .container {
+        .main {
+            .details {
+                display: block;
+
+                .right-data {
+                    margin-top: 30px;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 767.99px) {
+    .container {
+        .details {
+            display: block;
+            .right-data {
+                margin-top: 30px;
+            }
+        }
+    }
+}
+

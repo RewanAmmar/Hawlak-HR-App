@@ -18,6 +18,11 @@ export default function Companies() {
   const [currentEditingCompany, setCurrentEditingCompany] = useState({});
   const [modalVisable, setModalVisable] = useState(false);
   const lang = i18n.language;
+  const [activePage, setactivePage] = useState(1);
+  const [itemsCount, setItemsCount] = useState(0);
+  const handlePageChange = (pageNumper) => {
+    setactivePage(pageNumper);
+  };
 
   function handleRowClick(tableRow) {
     navigate(`/company-details/${tableRow.id}`);
@@ -56,11 +61,12 @@ export default function Companies() {
       });
       console.log(company.results, "All companies");
       setAllCompanies(formatedCompanies);
+      setItemsCount(company.count);
     } catch (err) {}
   }
   useEffect(() => {
     allCompaniesHandler();
-  }, []);
+  }, [activePage]);
   return (
     <div className="container">
       <BackButton />
@@ -94,6 +100,10 @@ export default function Companies() {
               "edit",
             ]}
             tableRows={allCompanies}
+            showPagination={true}
+            handlePageChange={handlePageChange}
+            activePage={activePage}
+            itemsCount={itemsCount}
           />
         ) : (
           <TableData
@@ -110,6 +120,10 @@ export default function Companies() {
               "edit",
             ]}
             tableRows={allCompanies}
+            showPagination={true}
+            handlePageChange={handlePageChange}
+            activePage={activePage}
+            itemsCount={itemsCount}
           />
         )}
       </>

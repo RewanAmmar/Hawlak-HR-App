@@ -10,7 +10,7 @@
         "empty_password": "Enter Your Password",
         "empty_email":"Enter Your Email",
         "signing_in": "Signing in...",       
-        "correct_data": "من فضلك ادخل البيانات بطريقة صحيحة"
+        "correct_data": "Please Enter Correct Data"
         },
     "navbar":{
         "home":"Home",
@@ -21,7 +21,7 @@
         "reset_password":"Reset Password",
         "logout":"Logout"
     },
-    "companies":{
+    "companies":{       
         "add_company":"Add Company",        
         "phone":"Phone",
         "mobile":"Mobile",
@@ -89,8 +89,7 @@
         "changing_password": "Changing password...",
         "enter_new_password": "Please enter your new password",
         "enter_confirm_password": "Please re-enter your new password",
-        "password_not_match": "Passwords do not match",
-       
+        "password_not_match": "Passwords do not match",       
         "correct_password": "Please enter correct old password",
         "": ""
       },

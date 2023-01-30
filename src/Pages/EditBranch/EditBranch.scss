@@ -1,0 +1,182 @@
+.branch-container {
+    .branch-content {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 29px;
+      // // padding-bottom: 80px;
+      z-index: 9999;
+      .branch-card {
+        width: 100%; 
+        height: 500px;
+        background-color: #fff;
+       
+        padding: 0px;
+        display: flex;
+        flex-direction: column;
+       
+      .form-header{
+        color: rgb(44, 135, 165);
+        font-weight: 500;
+        font-size: 22px; 
+        gap: 4px;
+        margin-left: 40px; 
+        margin-bottom: 20px;
+        display: flex;
+          .branch-icon{
+            font-size: 20px;
+            padding-top: 5px;
+          }
+          .title{
+            line-height: 35px;
+          }
+      }
+        .add-department {
+          width: 100%;
+          padding: 25px 40px;
+          text-align: center;
+          color: rgb(44, 135, 165);
+          border-bottom: 1px solid #eaecef;
+          font-family: "bukra-bold";
+          font-weight: 700;
+        }
+  
+        .form-inputs-container {
+          padding: 10px 40px;
+          width: 100%;
+          
+          .container{
+            // display: flex;
+            // gap: 20px;
+            .left-side{
+              display: flex;
+             justify-content: space-between;
+               margin-bottom: 30px;
+               gap: 10px;
+                align-items: center;
+            }
+            .right-side{                
+                justify-content: center;
+                align-items: center;
+            }
+            .add-department-name{
+                width: 100%;
+                height: 50px;
+                border: 1px solid rgb(44, 135, 165);
+                border-radius: 15px;
+                font-size: 14px;
+                padding: 15px;               
+              }
+              .email-container{
+                width: 65%;
+                position: relative;
+                text-align: start;
+                margin-bottom: 15px;
+                ::placeholder{
+                  padding-left: 10px;
+                  color: rgb(198, 198, 198);
+                } 
+              }
+            .branch-input-container{
+                position: relative;
+                text-align: start;
+                margin-bottom: 15px;
+                width: 25%;
+                .show-password-icon {
+                  position: absolute;
+                  bottom: 15px;
+                  cursor: pointer;
+                }   
+                ::placeholder{
+                  padding-left: 10px;
+                  color: rgb(198, 198, 198);
+                } 
+              }
+          }
+          .branch-label {
+            color: rgb(44, 135, 165);
+            font-weight: 600;
+            font-family: "bukra-bold";
+            font-size: 18px;
+            display: block;
+            margin: 5px;
+          }
+        
+  
+          
+          .button{
+            justify-content: flex-end;
+            display: flex;
+            gap: 10px;            
+            .branch-btn {
+                width: 28%;
+                margin: 30px 0;
+                font-family: "bukra-bold";
+                height: 50px;
+                border-radius: 35px;
+                background-color: rgb(44, 135, 165);
+                color: white;
+                font-size: 20px;
+                text-align: center;
+                border: 1px solid rgb(44, 135, 165);
+                transition: 0.3s all ease-in-out;
+      
+                &:hover {
+                  background-color: #fff;
+                  color: rgb(44, 135, 165);
+                }
+              }                        
+          }
+       
+        }
+      }
+    }
+  }
+  .button{
+   
+  }
+
+  [dir="ltr"] .reset-password-container {
+    .reset-page-content {
+      .reset-password-card {
+        .form-inputs-container {
+          .reset-password-input-container {
+            .show-password-icon {
+              right: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  [dir="rtl"] .reset-password-container {
+    .reset-page-content {
+      .reset-password-card {
+        .form-inputs-container {
+          .reset-password-input-container {
+            .show-password-icon {
+              left: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+  [dir= "rtl"]{
+    .add-department-name{
+        padding-right: 15px;
+    }
+  }
+  @media screen and (max-width: 575.99px) {
+    .reset-password-container {
+      .reset-page-content {
+        padding-left: 20px;
+        padding-right: 20px;
+        .reset-password-card {
+          .reset-password-header {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }

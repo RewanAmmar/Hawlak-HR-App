@@ -1,0 +1,39 @@
+.container {
+    .btn-section {
+
+        margin-top: 40px;
+
+        .add-branch-btn {
+            width: 10%;
+            height: 50px;
+            background-color: rgb(44, 135, 165);
+            color: white;
+            font-size: 18px;
+            border: 1px solid #fff;
+            border-radius: 15px;
+            margin-left: 85%;
+            
+        }
+    }
+}
+
+[dir="rtl"] .container {
+        .btn-section {
+            .add-branch-btn {
+            //    margin-right: 200px;
+            }
+        }
+
+    }
+
+
+
+.edit-branch-btn {
+    width: 70%;
+    height: 30px;
+    background-color: rgb(44, 135, 165);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+}

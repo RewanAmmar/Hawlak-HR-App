@@ -43,7 +43,7 @@ export default function Forgotpassword() {
               {t("forgetPassword.send")}
             </button>
             <Link to={"/login"}>
-              <p className="login-text">{t("forgetPassword.back")}</p>
+              <button className="login-text">{t("forgetPassword.back")}</button>
             </Link>            
           </form>
         </div>

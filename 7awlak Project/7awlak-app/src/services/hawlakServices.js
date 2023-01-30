@@ -24,9 +24,9 @@ let hawlakServices ={
         const response =  await Axios.post("company/create_department/",obj)
         return response;
       },
-      createEmployee: async function(formData){
-        console.log(formData,"objemployee");
-        const response =  await Axios.post("employee/create_employee/",formData)
+      createEmployee: async function(obj){
+        console.log(obj,"objemployee");
+        const response =  await Axios.post("employee/create_employee/",obj)
         return response;
       },
       getAllCompanies: async function(){
@@ -59,7 +59,7 @@ let hawlakServices ={
         return response;
       },
       editEmployee: async function(id,obj){
-        const response = await Axios.put(`employee/edit_employee/${id}/`,obj);
+        const response = await Axios.patch(`employee/edit_employee/${id}/`,obj);
         return response;
       },
       getCompanyDetails: async function(id){

@@ -100,7 +100,7 @@
         "send": "Send",
         "empty_email": "Please enter your email address",
         "email_sent": "Password has been sent to your email address",
-        "": ""
+        "forgotpassword": "Forgot Your Password"
       },
     "table": {
         "edit": "Edit"

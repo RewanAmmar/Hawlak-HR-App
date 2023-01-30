@@ -138,11 +138,11 @@
    
   }
 
-  [dir="ltr"] .reset-password-container {
-    .reset-page-content {
-      .reset-password-card {
+  [dir="ltr"] .company-container {
+    .company-content {
+      .company-card {
         .form-inputs-container {
-          .reset-password-input-container {
+          .company-input-container {
             .show-password-icon {
               right: 20px;
             }
@@ -151,11 +151,11 @@
       }
     }
   }
-  [dir="rtl"] .reset-password-container {
-    .reset-page-content {
-      .reset-password-card {
+  [dir="rtl"] .company-container {
+    .company-content {
+      .company-card {
         .form-inputs-container {
-          .reset-password-input-container {
+          .company-input-container {
             .show-password-icon {
               left: 20px;
             }
@@ -170,15 +170,16 @@
     }
   }
   @media screen and (max-width: 575.99px) {
-    .reset-password-container {
-      .reset-page-content {
+    .company-container {
+      company-content {
         padding-left: 20px;
         padding-right: 20px;
-        .reset-password-card {
-          .reset-password-header {
+        .company-card {
+          .company-header {
             font-size: 18px;
           }
         }
       }
     }
+   
   }

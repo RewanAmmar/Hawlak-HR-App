@@ -794,7 +794,7 @@ export default function EditEmployee({
                   type="submit"
                   onClick={() => editEmployeeHandler()}
                 >
-                  Save
+                  {t("save")}
                 </button>
                 <button
                   name="add-button"
@@ -802,7 +802,7 @@ export default function EditEmployee({
                   type="submit"
                   onClick={() => setModalVisable(false)}
                 >
-                  Cancel
+                  {t("cancel")}
                 </button>
               </div>
             </div>

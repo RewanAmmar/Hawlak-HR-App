@@ -25,7 +25,7 @@ export default function Departments() {
   const [modalVisable, setModalVisable] = useState(false);
   async function allDepartmentsHandler() {
     try {
-      let { data: department } = await hawlakServices.getAllDepartments();
+      let { data: department } = await hawlakServices.getAllDepartments(activePage);
       console.log(department, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedDepartments = department.results.map((department) => {
         return {
@@ -34,6 +34,7 @@ export default function Departments() {
           department_name_ar: department.department_name_ar,
           number_of_employees: department.number_of_employees,
           branch: department.branch,
+          creation_date: department.creation_date,
           is_active: department.is_active,
           edit: (
             <button
@@ -83,6 +84,7 @@ export default function Departments() {
               "department_name_en",
               "number_of_employees",
               "branch",
+              "creation_date",
               "edit",
             ]}
             tableRows={allDepartments}

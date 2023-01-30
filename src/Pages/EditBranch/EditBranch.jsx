@@ -51,13 +51,13 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
           <div className='left-side'>
               <div className="branch-input-container">
                 <label htmlFor="branch-name" className="branch-label">
-                  Branch Name
+                  Branch
                 </label>
 
                 <input
                   id="branch-name"
                   name="branch-name"
-                  placeholder="Branch Name"
+                  placeholder="Branch"
                   className="add-department-name"
                   value={currentBranch.branch_name_en}
                   onChange={(e) => {
@@ -69,14 +69,14 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
               </div>
               <div className="branch-input-container">
                 <label htmlFor="branch" className="branch-label">
-                  اسم الفرع
+                   الفرع
                 </label>
 
                 <input
                   name="branch"
                   type="text"
                   id="branch"
-                  placeholder="اسم الفرع"
+                  placeholder=" الفرع"
                   className="add-department-name"
                   value={currentBranch.branch_name_ar}
                   onChange={(e) => {
@@ -226,17 +226,19 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
                 />
               </div>
               </div>
-              {/* <div className='left-side '>
+        
+              <div className='left-side '>
+            
               <div className="branch-input-container">
-                <label htmlFor="longitude" className="branch-label">
+                <label htmlFor="latitude" className="branch-label">
                   Longitude
                 </label>
 
                 <input
-                  name="longitude"
+                  name="latitude"
                   type="text"
-                  id="longitude"
-                  placeholder="Longitude"
+                  id="latitude"
+                  placeholder="Latitude"
                   className="add-department-name"
                   value={currentBranch.longitude}
                   onChange={(e) => {
@@ -246,10 +248,7 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
                  }}
                 />
               </div>
-                  
-              </div> */}
-              {/* Input */}
-              
+              </div>
               </div>
               <div className="button">
                 <button
@@ -258,7 +257,7 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
                   type="submit"
                   onClick={()=>editBranchHandler()}
                 >
-                 Save
+                 {t("save")}
                 </button>
                 <button
                   name="add-button"
@@ -266,7 +265,7 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
                   type="submit"
                   onClick={() => setModalVisable(false)}
                 >
-                  Cancel
+                  {t("cancel")}
                 </button>
               </div>
             </div>

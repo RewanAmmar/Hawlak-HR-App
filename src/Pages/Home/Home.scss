@@ -6,13 +6,13 @@
     .navigation {
         position: fixed;
         width: 120px;
-        height: 100%;
+        height: calc(100vh - 120px);
         background-color: rgb(44, 135, 165);
         border-left: 10px solid rgb(44, 135, 165);
         transition: 0.5s;
         overflow: hidden;
         flex-wrap: wrap;
-        
+
 
         .navigation-ul {
             position: absolute;
@@ -23,12 +23,10 @@
 
             .navigation-li {
                 position: relative;
-                width: 100%;
+                width: 90%;
                 list-style: none;
-                border-top-left-radius: 15px;
-                border-bottom-left-radius: 15px;
-                border-top-right-radius: 15px;
-                border-bottom-right-radius: 15px;
+                border-radius: 15px;
+
 
                 &:hover {
                     background-color: white;
@@ -320,10 +318,10 @@
     .container {
         .details {
             display: block;
+
             .right-data {
                 margin-top: 30px;
             }
         }
     }
 }
-

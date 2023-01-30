@@ -1,7 +1,7 @@
 import React from "react";
 import Sindion from "../../assets/Sindion.png"
 import "./Footer.scss";
-function Footer() {
+export default function Footer() {
   return (
     <footer
       className="text-center footer"
@@ -12,4 +12,3 @@ function Footer() {
   );
 }
 
-export default Footer;

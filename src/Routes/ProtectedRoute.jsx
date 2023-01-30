@@ -7,5 +7,5 @@ import { useSelector } from "react-redux";
 export default function ProtectedRoute() {
   const auth = useSelector((state) => state.auth);
 
-  return auth.key ? <Layout /> : <Navigate to="/login" />;
+  return auth?.key ? <Layout /> : <Navigate to="/login" />;
 }

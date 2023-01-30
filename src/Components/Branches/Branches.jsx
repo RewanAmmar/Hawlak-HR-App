@@ -29,27 +29,27 @@ export default function Branches() {
     try {
       let { data:branch } = await hawlakServices.getAllBranches();
       console.log(branch, "dataaaaaaaaaaaaaaaaaaaaaaa");
-      let formatedBranches = branch.results.map((item) => {
+      let formatedBranches = branch.results.map((branch) => {
         return {
-          id: item.id,
-          branch_name_en: item.branch_name_en,
-          branch_name_ar: item.branch_name_ar,
-          number_of_employees: item.number_of_employees,
-          country_en: item.country_en,
-          country_ar: item.country_ar,
-          address_en: item.address_en,
-          address_ar: item.address_ar,
-          latitude: item.latitude,
-          longitude: item.longitude,
-          creation_date: item.creation_date,
-          company: item.company,
-          is_active: item.is_active,
+          id: branch.id,
+          branch_name_en: branch.branch_name_en,
+          branch_name_ar: branch.branch_name_ar,
+          number_of_employees: branch.number_of_employees,
+          country_en: branch.country_en,
+          country_ar: branch.country_ar,
+          address_en: branch.address_en,
+          address_ar: branch.address_ar,
+          latitude: branch.latitude,
+          longitude: branch.longitude,
+          creation_date: branch.creation_date,
+          company: branch.company,
+          is_active: branch.is_active,
           edit: (
             <button
               className="edit-branch-btn"
               onClick={(e) => {
                 e.stopPropagation();
-                setCurrentEditingBranch(item);
+                setCurrentEditingBranch(branch);
                 setModalVisable(true);
               }}
             >

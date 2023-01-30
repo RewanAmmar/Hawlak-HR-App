@@ -39,7 +39,7 @@
     },
     "branches":{
         "add_branch":"Add Branch",        
-        "branch_name":"Branch Name",
+        "branch_name":"Branch",
         "company":"Company",
         "country":"Country",
         "number_of_employees":"Number Of Employees",
@@ -115,8 +115,7 @@
     "edit":"Edit",
     "number_of_employees":"Number Of Employees",
     "creation_date":"Creation Date",    
-    "branch_name_en":"Branch Name",
-    "branch_name_ar":"اسم الفرع",
+    "branch_name_en":"Branch ",    
     "country_en":"Country",
     "country_ar":"اسم الدولة",
     "address_en":"Address",
@@ -130,7 +129,9 @@
     "emp_name_en":"Employee Name",
     "emp_name_ar":"اسم الموظف",    
     "place_of_birth_en":"Place Of Birth",
-    "place_of_birth_ar":"محل الميلاد"
+    "place_of_birth_ar":"محل الميلاد",
+    "save":"Save",
+    "cancel":"Cancel"
 
     
 }

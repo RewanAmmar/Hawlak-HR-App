@@ -84,7 +84,7 @@ const [loading, setLoading] = useState(false)
                 <input
                   id="branch-name"
                   name="branch-name"
-                  placeholder="Branch Name"
+                  placeholder="Branch"
                   className="add-department-name"
                  onChange={(e)=> setBranchNameEN(e.target.value)}
                 />

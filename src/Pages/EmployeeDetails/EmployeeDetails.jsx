@@ -640,6 +640,23 @@ export default function EmployeeDetails() {
                     >
                       {employee?.branch}
                     </div>
+                    
+                  </div>
+                  <div className="employee-input-container">
+                    <label htmlFor="branch" className="employee-label">
+                      Creation Date
+                    </label>
+
+                    <div
+                      name="branch"
+                      type="text"
+                      id="branch"
+                      placeholder="Branch"
+                      className="add-department-name"
+                    >
+                      {employee?.creation_date}
+                    </div>
+                    
                   </div>
                 </div>
               </div>

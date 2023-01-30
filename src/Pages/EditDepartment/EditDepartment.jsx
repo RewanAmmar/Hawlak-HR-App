@@ -104,7 +104,7 @@ export default function EditDepartment({
                         setCurrentEditingDepartment((prev) => {
                           return { ...prev, branch: e.target.value };
                         });
-                      }}
+                      }}                    
                     />
                   </div>
                 </div>
@@ -137,7 +137,7 @@ export default function EditDepartment({
                   type="submit"
                   onClick={() => editDepartmentHandler()}
                 >
-                  Save
+                  {t("save")}
                 </button>
                 <button
                   name="add-button"
@@ -145,7 +145,7 @@ export default function EditDepartment({
                   type="submit"
                   onClick={() => setModalVisable(false)}
                 >
-                  Cancel
+                  {t("cancel")}
                 </button>
               </div>
             </div>

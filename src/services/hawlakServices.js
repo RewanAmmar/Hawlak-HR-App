@@ -35,7 +35,7 @@ let hawlakServices ={
         return response;
       },
       getAllDepartments: async function(){
-       const response = await Axios.get("company/list_departments/")
+       const response = await Axios.get(`company/list_departments/`)
        return response;
       },
       getAllBranches: async function(){

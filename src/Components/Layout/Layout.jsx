@@ -47,7 +47,7 @@ export default function Layout() {
             <Route path="/employee-details/:employeeId" element={<EmployeeDetails />} />             
             </Routes>
         </div>
-        {/* <Footer className="footer" /> */}
+        <Footer className="footer" />
       </div>
     </>
   );

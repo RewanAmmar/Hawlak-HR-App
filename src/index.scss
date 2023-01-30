@@ -1,0 +1,156 @@
+// @font-face {
+//   font-family: "bukra-bold";
+//   src: local("bukra-bold"),
+//     url(../src/assets/fonts/alfont_com_AlFont_com_29ltbukrabold.otf)
+//       format("opentype");
+// }
+
+// @font-face {
+//   font-family: "bukra-bold";
+//   src: local("bukra-bold"),
+//     url(../src//assets/fonts/alfont_com_AlFont_com_019.ttf) format("truetype");
+// }
+
+// @font-face {
+//   font-family: "bukra-light";
+//   src: local("bukra-light"),
+//     url(../src//assets/fonts/29ltbukralight.ttf) format("truetype");
+// }
+
+body {
+  background-image: url("../src/assets/main.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "bukra-bold";
+}
+
+// * {
+//   font-family: "bukra-bold";
+// }
+
+// ::-webkit-scrollbar {
+//   width: 8px;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   background: #a7a7a7;
+// }
+
+// ::-webkit-scrollbar-track {
+//   background: #f1f1f1;
+// }
+
+// footer {
+//   cursor: pointer;
+//   width: 100%;
+//   padding-bottom: 5px;
+// }
+
+// .footer {
+//   background: #fff;
+//   height: 40px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   box-shadow: 0px -1px 5px #ddd;
+//   position: fixed;
+//   width: 100%;
+//   bottom: 0;
+//   right: 0;
+//   z-index: 99999;
+// }
+
+// .footer footer {
+//   padding-bottom: 0px;
+// }
+
+// .footer img {
+//   height: 25px;
+// }
+
+// .Toastify__toast-container {
+//   z-index: 99999999 !important;
+// }
+
+// // .content-container {
+// //   padding-top: 100px;
+// //   padding-bottom: 80px;
+// //   position: relative;
+// // }
+
+// .overlayy {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   bottom: 0;
+//   right: 0;
+//   background: rgba(0, 0, 0, 0.3);
+//   z-index: 99999999999 !important;
+// }
+
+// .overlayy-main {
+//   position: absolute;
+//   top: 0;
+//   left: 50%;
+//   width: 50%;
+//   height: 100%;
+//   /*  overflow: hidden; */
+//   transition: transform 0.6s ease-in-out;
+//   z-index: 100;
+// }
+
+// .overlayy__wrapper {
+//   width: 100%;
+//   height: 100%;
+//   position: relative;
+//   z-index: 99999999999 !important;
+// }
+
+// .overlayy__spinner {
+//   position: absolute;
+//   left: 50%;
+//   top: 50%;
+//   transform: translate(-50%, -50%);
+//   z-index: 1;
+// }
+
+// h1,
+// h2,
+// h3,
+// h4,
+// h5,
+// h6,
+// p,
+// span,
+// a,
+// button,
+// input,
+// textarea,
+// select,
+// label,
+// table,
+// ul,
+// li {
+//   font-family: "bukra-bold" !important;
+//   font-size: 16px;
+// }
+
+// .image-modal {
+//   max-width: 80% !important;
+//   // height: fit-content !important;
+//   .content-img {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     .current-image {
+//       width: 80% !important;
+//       // height: fit-content !important;
+//       object-fit: contain;
+//       cursor: pointer;
+//     }
+//   }
+// }

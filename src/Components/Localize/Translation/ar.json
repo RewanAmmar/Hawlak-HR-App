@@ -111,7 +111,7 @@
     "edit":"تعديل",
     "number_of_employees": "عدد الموظفين",
     "creation_date": "التاريخ",
-    "branch_name_en": "اسم الفرع",
+    "branch_name_en": " الفرع",
     "country_en": "اسم الدولة",
     "address_en": "العنوان",
     "latitude": "خط العرض",
@@ -120,5 +120,7 @@
     "department_name_en": "اسم القسم",
     "branch": "الفرع",
     "emp_name_en": "اسم الموظف",
-    "place_of_birth_en": "محل الميلاد"
+    "place_of_birth_en": "محل الميلاد",
+    "save":"حفظ",
+    "cancel":"الغاء"
 }

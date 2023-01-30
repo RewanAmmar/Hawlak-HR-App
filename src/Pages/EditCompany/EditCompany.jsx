@@ -215,7 +215,7 @@ export default function EditCompany({currentCompany,setCurrentEditingCompany,set
                 type="submit"
                 onClick={() => editCompanyHandler()}
               >
-               Save
+               {t("save")}
               </button> 
               <button
                   name="add-button"
@@ -223,7 +223,7 @@ export default function EditCompany({currentCompany,setCurrentEditingCompany,set
                   type="submit"
                   onClick={() => setModalVisable(false)}
                 >
-                  Cancel
+                  {t("cancel")}
                 </button>           
             </div>
           </div>

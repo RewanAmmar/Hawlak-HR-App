@@ -32,25 +32,25 @@ export default function Companies() {
     try {
       let { data: company } = await hawlakServices.getAllCompanies();
       console.log(company.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
-      let formatedCompanies = company.results.map((item) => {
+      let formatedCompanies = company.results.map((company) => {
         return {
-          id: item.id,
-          company_name_en: item.company_name_en,
-          company_name_ar: item.company_name_ar,
-          tax_num: item.tax_num,
-          phone: item.phone,
-          mobile: item.mobile,
-          fax: item.fax,
-          email: item.email,
-          number_of_employees: item.number_of_employees,
-          creation_date: item.creation_date,
-          is_active: item.is_active,
+          id: company.id,
+          company_name_en: company.company_name_en,
+          company_name_ar: company.company_name_ar,
+          tax_num: company.tax_num,
+          phone: company.phone,
+          mobile: company.mobile,
+          fax: company.fax,
+          email: company.email,
+          number_of_employees: company.number_of_employees,
+          creation_date: company.creation_date,
+          is_active: company.is_active,
           edit: (
             <button
               className="edit-company-btn"
               onClick={(e) => {
                 e.stopPropagation();
-                setCurrentEditingCompany(item);
+                setCurrentEditingCompany(company);
                 setModalVisable(true);
               }}
             >

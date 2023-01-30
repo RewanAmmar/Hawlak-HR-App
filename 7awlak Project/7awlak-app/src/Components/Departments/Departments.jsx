@@ -13,6 +13,11 @@ export default function Departments() {
   const lang = i18n.language;
   const [allDepartments, setAllDepartments] = useState([]);
   const [currentEditingDepartment, setCurrentEditingDepartment] = useState({});
+  const [activePage, setActivePage] = useState(1);
+  const [itemsCount, setItemsCount] = useState(0);
+  const handlePageChange = (pageNumber) => {
+    setActivePage(pageNumber);
+  };
   function handleRowClick(tableRow) {
     navigate(`/department-details/${tableRow.id}`);
     console.log(tableRow, "hhhhhhhhhhhhhhh");
@@ -46,11 +51,12 @@ export default function Departments() {
       });
       console.log(department.results, "All departments");
       setAllDepartments(formatedDepartments);
+      setItemsCount(department.count)
     } catch (err) {}
   }
   useEffect(() => {
     allDepartmentsHandler();
-  }, []);
+  }, [activePage]);
   return (
     <div className="container">
       <BackButton />
@@ -80,6 +86,10 @@ export default function Departments() {
               "edit",
             ]}
             tableRows={allDepartments}
+            showPagination={true}
+            handlePageChange={handlePageChange}
+            activePage={activePage}
+            itemsCount={itemsCount}
           />
         ) : (
           <TableData
@@ -91,6 +101,10 @@ export default function Departments() {
               "edit",
             ]}
             tableRows={allDepartments}
+            showPagination={true}
+            handlePageChange={handlePageChange}
+            activePage={activePage}
+            itemsCount={itemsCount}
           />
         )}
       </> 

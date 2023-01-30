@@ -14,6 +14,11 @@ export default function Employees() {
   const [currentEditingEmployee, setCurrentEditingEmployee] = useState({});
   const [modalVisable, setModalVisable] = useState(false);
   const lang = i18n.language;
+  const [activePage, setactivePage] = useState(1);
+  const [itemsCount, setItemsCount] = useState(0);
+  const handlePageChange = (pageNumber) => {
+    setactivePage(pageNumber);
+  };
   function handleRowClick(tableRow) {
     navigate(`/employee-details/${tableRow.id}`);
     console.log(tableRow, "hhhhhhhhhhhhhhh");
@@ -24,7 +29,17 @@ export default function Employees() {
       console.log(employee, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedEmployees = employee.results.map((employee) => {
         return {
-        
+          user: {
+            email: employee.email,
+            username: employee.userName,
+            password: employee.password,
+          },
+          position: {
+            start_date: employee.startDate,
+            manager: employee.manager,
+            job_title: employee.jobTitle,
+            contract_type: employee.contractType,
+          },
           id: employee.id,
           emp_name_en: employee.emp_name_en,
           emp_name_ar: employee.emp_name_ar,
@@ -71,11 +86,12 @@ export default function Employees() {
       });
       console.log(employee.results, "All departments");
       setAllEmployees(formatedEmployees);
+      setItemsCount(employee.count)
     } catch (err) {}
   }
   useEffect(() => {
     allEmployeesHandler();
-  }, []);
+  }, [activePage]);
   return (
     <div className="container">
       <BackButton />
@@ -103,6 +119,10 @@ export default function Employees() {
            "edit",
          ]}
          tableRows={allEmployees}
+         showPagination={true}
+         handlePageChange={handlePageChange}
+         activePage={activePage}
+         itemsCount={itemsCount}
        />
       ):(
         <TableData
@@ -115,6 +135,10 @@ export default function Employees() {
           "edit",
         ]}
         tableRows={allEmployees}
+        showPagination={true}
+        handlePageChange={handlePageChange}
+        activePage={activePage}
+        itemsCount={itemsCount}
       />
       )}
       </>      

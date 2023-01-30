@@ -1,7 +1,7 @@
 import React from "react";
 import "./Layout.scss";
 import { Routes, Route, Navigate } from "react-router-dom";
-import Forgotpassword from "./../../Pages/Forgotpassword/Forgotpassword";
+
 import NavBar from "./../NavBar/NavBar";
 import AddCompany from './../../Pages/AddCompany/AddCompany';
 import AddBranch from './../../Pages/AddBranch/AddBranch';
@@ -30,8 +30,7 @@ export default function Layout() {
           <Routes>
             <Route path="/" element={<Navigate to={"/home"} />} />
             <Route path="/*" element={<Navigate to={"/home"} />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/forgot-password" element={<Forgotpassword />} />
+            <Route path="/home" element={<Home />} />            
             <Route path="/reset-password" element={<ResetPassword />} />
             <Route path="/edit-company" element={<EditCompany/>} />
             <Route path="/add-company" element={<AddCompany />} />

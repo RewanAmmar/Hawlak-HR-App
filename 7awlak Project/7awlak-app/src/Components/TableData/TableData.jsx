@@ -1,7 +1,7 @@
 import React from "react";
 import TableHead from "./TableHead/TableHead";
 import "./TableData.scss";
-import  ReactPaginate  from 'react-paginate';
+import Pagination from "react-js-pagination";
 
 
 export default function TableData({
@@ -43,9 +43,9 @@ export default function TableData({
           </tbody>
         </table>
       </div>
-      {showPagination && (
+    {showPagination && (
         <div className="table-pagination">
-          <ReactPaginate
+          <Pagination
             activePage={activePage}
             itemsCountPerPage={8}
             totalItemsCount={itemsCount}
@@ -53,7 +53,7 @@ export default function TableData({
             onChange={(pageNumber) => handlePageChange(pageNumber)}
           />
         </div>
-      )}
+      )}  
     </div>
   );
 }

@@ -17,10 +17,7 @@ export default function Home() {
   const [departmentCount, setDepartmentCount] = useState({});
   const [employeeCount, setEmployeeCount] = useState({});
   ChartJS.register(ArcElement, Tooltip, Legend);
-  // const dispatch = useDispatch();
-  // const logoutHandler = async () => {
-  //   dispatch(authActions.logout());
-  // };
+
   const data = {
     labels: ["Companies", "Branches", "Departments", "Employees"],
     datasets: [
@@ -143,23 +140,7 @@ export default function Home() {
                 </span>               
               </NavLink>
             </li>
-            {/* <li className="navigation-li">
-              <NavLink to="/login" className="link">
-                <span className="icon">                  
-                  <i class="fa-solid fa-lock link-icon"></i>
-                  <span
-                  className="title"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    logoutHandler();
-                  }}
-                >
-                  {t("navbar.logout")}
-                </span>
-                </span>
-               
-              </NavLink>
-            </li> */}
+      
           </ul>
         </div>
         <div className="main">

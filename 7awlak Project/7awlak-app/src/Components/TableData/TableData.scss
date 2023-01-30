@@ -46,8 +46,9 @@
       }
     }
   
-    .ReactPaginate {
+    .pagination {
       // flex-wrap: wrap;
+      display: flex;
       width: 80%;
       justify-content: center;
       align-items: center;

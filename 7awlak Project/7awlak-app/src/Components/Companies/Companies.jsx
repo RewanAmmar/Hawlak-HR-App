@@ -18,10 +18,10 @@ export default function Companies() {
   const [currentEditingCompany, setCurrentEditingCompany] = useState({});
   const [modalVisable, setModalVisable] = useState(false);
   const lang = i18n.language;
-  const [activePage, setactivePage] = useState(1);
+  const [activePage, setActivePage] = useState(1);
   const [itemsCount, setItemsCount] = useState(0);
-  const handlePageChange = (pageNumper) => {
-    setactivePage(pageNumper);
+  const handlePageChange = (pageNumber) => {
+    setActivePage(pageNumber);
   };
 
   function handleRowClick(tableRow) {
@@ -126,8 +126,7 @@ export default function Companies() {
             itemsCount={itemsCount}
           />
         )}
-      </>
-     
+      </>     
     </div>
   );
 }

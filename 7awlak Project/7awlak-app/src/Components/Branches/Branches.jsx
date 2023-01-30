@@ -15,7 +15,11 @@ export default function Branches() {
   const [allBranches, setAllBranches] = useState([]);
   const [currentEditingBranch, setCurrentEditingBranch] = useState({});
   const [modalVisable, setModalVisable] = useState(false);
-
+  const [activePage, setActivePage] = useState(1);
+  const [itemsCount, setItemsCount] = useState(0);
+  const handlePageChange = (pageNumber) => {
+    setActivePage(pageNumber);
+  };
   function handleRowClick(tableRow) {
     navigate(`/branch-details/${tableRow.id}`);
     console.log(tableRow, "hhhhhhhhhhhhhhh");
@@ -23,9 +27,9 @@ export default function Branches() {
 
   async function allDepartmentsHandler() {
     try {
-      let { data } = await hawlakServices.getAllBranches();
-      console.log(data, "dataaaaaaaaaaaaaaaaaaaaaaa");
-      let formatedBranches = data.results.map((item) => {
+      let { data:branch } = await hawlakServices.getAllBranches();
+      console.log(branch, "dataaaaaaaaaaaaaaaaaaaaaaa");
+      let formatedBranches = branch.results.map((item) => {
         return {
           id: item.id,
           branch_name_en: item.branch_name_en,
@@ -54,13 +58,14 @@ export default function Branches() {
           ),
         };
       });
-      console.log(data.results, "All branches");
+      console.log(branch.results, "All branches");
       setAllBranches(formatedBranches);
+      setItemsCount(branch.count);
     } catch (err) {}
   }
   useEffect(() => {
     allDepartmentsHandler();
-  }, []);
+  }, [activePage]);
   return (
     <div className="container">
       <BackButton />
@@ -94,6 +99,10 @@ export default function Branches() {
               "edit",
             ]}
             tableRows={allBranches}
+            showPagination={true}
+            handlePageChange={handlePageChange}
+            activePage={activePage}
+            itemsCount={itemsCount}
           />
         ) : (
           <TableData
@@ -110,6 +119,10 @@ export default function Branches() {
             "edit"
           ]}
           tableRows={allBranches}
+          showPagination={true}
+            handlePageChange={handlePageChange}
+            activePage={activePage}
+            itemsCount={itemsCount}
         />          
         )}
       </>

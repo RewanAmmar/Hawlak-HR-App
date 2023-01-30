@@ -1,0 +1,18 @@
+.layout{
+    display: grid;
+    grid-template-areas: "navbar" "content" "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: 60px calc(100vh - 120px) 60px;
+}
+
+.navbar{
+    grid-area: navbar; 
+}
+.content-container{
+    grid-area: content;
+    overflow: auto;
+}
+
+.footer{
+    grid-area: footer;
+}

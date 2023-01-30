@@ -1,0 +1,23 @@
+.general-modal-back-drop {
+    position: fixed;
+    z-index: 10000;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background-color: rgba(70, 70, 70, 0.727);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // flex-wrap: wrap;
+
+    .modal-content-container {
+        box-shadow: 0 0 0 0.2rem #ffffff3d;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        min-height: 500px;
+        // min-width: 300px;
+        overflow-y: auto;
+    }
+}

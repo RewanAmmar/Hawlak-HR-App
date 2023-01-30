@@ -1,0 +1,115 @@
+
+.data-table-container{
+  .table-responsive {
+    display: block;
+    overflow-x: auto;
+    font-family: "bukra-bold";
+    font-size: 20px;
+    // white-space: wrap;
+    margin-bottom: 20px;
+    padding: 20px 10px 0px;
+    width: 100%;
+  
+  
+    .records-table {
+      // border: none;
+      table-layout: fixed;
+      width: 100%;
+      white-space: pre;
+      word-wrap: break-word;
+      margin: 20px 0;
+      border: none;
+      border-radius: 30px;
+      box-shadow: 0 4px 8px 3px rgba(0, 0, 0, 0.2);
+      transition: 0.3s;
+   
+  
+    }
+  
+    .client-image {
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      padding: 5px;
+    }
+  }
+  .table-pagination {
+    margin-top: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    &:only-child {
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  
+    .pagination {
+      // flex-wrap: wrap;
+      display: flex;
+      width: 80%;
+      justify-content: center;
+      align-items: center;
+  
+      li {
+        display: inline-block;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        font-size: 40px;
+        font-family: "bukra-bold";
+  
+        a {
+          text-decoration: none;
+          color: #284255;
+          font-size: 20px;
+          font-weight: 600;
+          font-family: "bukra-bold";
+        }
+      }
+  
+      .active {
+        a {
+          color: rgb(44, 135, 165);
+          font-size: 30px;
+        }
+      }
+    }
+  
+  
+  
+    .cliccky-icon-inside-table {
+      z-index: 1000;
+      position: relative;
+    }
+  }
+}
+
+  
+  .tickets-table-data-cell {
+    padding: 0px 10px;
+    height: 30px;
+    text-align: center;
+    white-space: break-spaces;
+    word-wrap: break-word;
+    font-size: 16px;
+  
+  }
+  
+  .table-body-row {
+    border: 1px solid;
+    border-width: 1px 0;
+    border-bottom: 1px solid #ddd;
+    height: 50px;
+  
+  
+    &:hover {
+      background-color: rgb(242, 236, 236);
+      cursor: pointer;
+    }
+  
+  }
+  
+ 

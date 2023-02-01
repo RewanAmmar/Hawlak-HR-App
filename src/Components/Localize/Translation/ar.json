@@ -19,8 +19,8 @@
         "branches": "الفروع",
         "departments": "الاقسام",
         "employees": "الموظفين",
-        "reset_password": "الاعدادات",
-        "logout": "تسجيل الخروج"
+        "reset_password": "الاعدادات"
+        
     },
     "companies": {
         "add_company": "اضافة شركة",
@@ -40,7 +40,7 @@
     "branches": {
         "add_branch": "اضافة فرع",
         "branch_name": "الفرع",
-        "company": "الشركة",
+        "company": "رقم الشركة",
         "country": "الدولة",
         "number_of_employees": "عدد الموظفين",
         "address": "العنوان",
@@ -74,7 +74,8 @@
         "branch":"من فضلك ادخل رقم الفرع",
         "success":"تم اضافة الموظف بنجاح",
         "error":"من فضلك ادخل البيانات بطريقة صحيحة",
-        "success_edit":"جاري تعديل الموظف بنجاح"
+        "success_edit":"جاري تعديل الموظف بنجاح",
+        "edit_employee":"تعديل الموظف"
     },
     "table": {
         "edit": "تعديل"

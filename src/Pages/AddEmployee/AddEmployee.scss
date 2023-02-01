@@ -68,16 +68,7 @@
                 padding: 15px;
                 
               }
-              .email-container{
-                width: 65%;
-                position: relative;
-                text-align: start;
-                margin-bottom: 15px;
-                ::placeholder{
-                  padding-left: 10px;
-                  color: rgb(198, 198, 198);
-                } 
-              }
+          
             .employee-input-container{
                 position: relative;
                 text-align: start;
@@ -89,7 +80,7 @@
                   cursor: pointer;
                 }   
                 ::placeholder{
-                  padding-left: 10px;
+                  // padding-left: 10px;
                   color: rgb(198, 198, 198);
                 } 
               }
@@ -181,35 +172,3 @@
       }
     }
   }
-//   .image-upload-input-container {
-
-//     position: relative;
-//     width: 70px;
-//     height: 140px;
-// margin-left: 43%;
-// margin-bottom: 20px;
-
-//     .add-department-name {
-//       display: none;
-//     }
-
-//     .company-label {
-//       cursor: pointer;
-//       position: absolute;
-//       bottom: 0;
-//       right: 5px;
-//       background-color: #a29c9c;
-//       border-radius: 5px;
-//       padding: 3px 5px;
-//       color: #fff;
-//     }
-
-//     .uploaded-image {
-//       cursor: pointer;
-//       width: 150px;
-//       height: 150px;
-//       border-radius: 50%;
-//       border: 2px solid rgb(240, 237, 237);
-     
-//     }
-//   }

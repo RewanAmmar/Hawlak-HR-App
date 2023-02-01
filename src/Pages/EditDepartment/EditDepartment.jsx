@@ -90,14 +90,14 @@ export default function EditDepartment({
                   </div>
                   <div className="department-input-container">
                     <label htmlFor="branch" className="department-label">
-                      Branch
+                      Branch Number
                     </label>
 
                     <input
                       name="branch"
                       type="text"
                       id="branch"
-                      placeholder="Branch"
+                      placeholder="Branch Number"
                       className="add-department-name"
                       value={currentDepartment.branch}
                       onChange={(e) => {

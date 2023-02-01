@@ -68,16 +68,7 @@
                 padding: 15px;
                
               }
-              .email-container{
-                width: 65%;
-                position: relative;
-                text-align: start;
-                margin-bottom: 15px;
-                ::placeholder{
-                  padding-left: 10px;
-                  color: rgb(198, 198, 198);
-                } 
-              }
+             
             .employee-input-container{
                 position: relative;
                 text-align: start;
@@ -89,7 +80,7 @@
                   cursor: pointer;
                 }   
                 ::placeholder{
-                  padding-left: 10px;
+                  // padding-left: 10px;
                   color: rgb(198, 198, 198);
                 } 
               }

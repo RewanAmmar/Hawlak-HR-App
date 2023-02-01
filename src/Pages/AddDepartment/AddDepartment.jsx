@@ -89,14 +89,14 @@ const navigate = useNavigate();
             </div>
             <div className="department-input-container">
               <label htmlFor="branch" className="department-label">
-                Branch Name
+                Branch Number
               </label>
 
               <input
                 name="branch"
                 type="text"
                 id="branch"
-                placeholder="Branch Name"
+                placeholder="Branch Number"
                 className="add-department-name" 
                 onChange={(e)=> setBranch(e.target.value)}               
               />

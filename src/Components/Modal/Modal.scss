@@ -11,13 +11,14 @@
     justify-content: center;
     // flex-wrap: wrap;
 
+
     .modal-content-container {
         box-shadow: 0 0 0 0.2rem #ffffff3d;
         background-color: #fff;
         padding: 20px;
         border-radius: 12px;
         min-height: 500px;
-        // min-width: 300px;
+        
         overflow-y: auto;
     }
 }

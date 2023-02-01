@@ -49,16 +49,13 @@
         width: 100%;
 
         .container {
-
-          // display: flex;
-          // gap: 20px;
           .left-side {
             display: flex;
             justify-content: space-between;
             margin-bottom: 40px;
             align-items: center;
           }
-       
+
 
           .add-department-name {
             width: 100%;
@@ -86,7 +83,7 @@
             }
 
             ::placeholder {
-              padding-left: 10px;
+              // padding-left: 10px;
               color: rgb(198, 198, 198);
             }
           }
@@ -128,7 +125,7 @@
           }
 
           ::placeholder {
-            padding-left: 10px;
+            // padding-left: 10px;
             color: rgb(198, 198, 198);
           }
         }

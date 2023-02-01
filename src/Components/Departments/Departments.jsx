@@ -25,7 +25,7 @@ export default function Departments() {
   const [modalVisable, setModalVisable] = useState(false);
   async function allDepartmentsHandler() {
     try {
-      let { data: department } = await hawlakServices.getAllDepartments(activePage);
+      let { data: department } = await hawlakServices.getAllDepartments();
       console.log(department, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedDepartments = department.results.map((department) => {
         return {
@@ -75,7 +75,7 @@ export default function Departments() {
           />
         </GeneralModal>
       )}
-      ;
+      
       <>
         {lang === "en" ? (
           <TableData
@@ -111,5 +111,5 @@ export default function Departments() {
         )}
       </> 
     </div>
-  );
+  )
 }

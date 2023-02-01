@@ -112,7 +112,7 @@ const [loading, setLoading] = useState(false)
                   name="company"
                   type="text"
                   id="company"
-                  placeholder="Companies Name"
+                  placeholder="Company Number"
                   className="add-department-name"
                   onChange={(e)=> setCompany(e.target.value)}
                 />

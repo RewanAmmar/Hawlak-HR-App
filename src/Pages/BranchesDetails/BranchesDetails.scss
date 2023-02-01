@@ -68,11 +68,11 @@
                 align-items: center;
                 padding: 15px;
                 
-                // &::placeholder{
-                //   padding-left: 10px;
-                //   color: rgb(198, 198, 198);
+                &::placeholder{
+                  // padding-left: 10px;
+                  color: rgb(198, 198, 198);
                   
-                // }
+                }
               }
               .email-container{
                 width: 65%;
@@ -92,7 +92,7 @@
                   cursor: pointer;
                 }   
                 ::placeholder{
-                  padding-left: 10px;
+                  // padding-left: 10px;
                   color: rgb(198, 198, 198);
                 } 
               }

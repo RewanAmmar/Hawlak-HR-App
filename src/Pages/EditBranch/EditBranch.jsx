@@ -88,14 +88,14 @@ export default function EditBranch({currentBranch,setCurrentEditingBranch,setMod
               </div>
               <div className="branch-input-container">
                 <label htmlFor="company" className="branch-label">
-                  Company
+                  Company Number
                 </label>
 
                 <input
                   name="company"
                   type="text"
                   id="company"
-                  placeholder="Companies Name"
+                  placeholder="Company Number"
                   className="add-department-name"
                   value={currentBranch.company}
                   onChange={(e) => {

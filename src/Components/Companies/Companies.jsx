@@ -30,7 +30,7 @@ export default function Companies() {
   }
   async function allCompaniesHandler() {
     try {
-      let { data: company } = await hawlakServices.getAllCompanies();
+      let { data: company } = await hawlakServices.getAllCompanies(activePage);
       console.log(company.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedCompanies = company.results.map((company) => {
         return {
@@ -84,7 +84,7 @@ export default function Companies() {
           />
         </GeneralModal>
       )}
-      <>
+     
         {lang === "en" ? (
           <TableData
             handleRowClick={handleRowClick}
@@ -126,7 +126,7 @@ export default function Companies() {
             itemsCount={itemsCount}
           />
         )}
-      </>     
+           
     </div>
   );
 }

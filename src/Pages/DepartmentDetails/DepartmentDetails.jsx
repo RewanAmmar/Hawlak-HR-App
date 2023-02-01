@@ -10,7 +10,7 @@ export default function DepartmentDetails() {
   const departmentId = params.departmentId;
   const lang = i18n.language;
   const [department, setDepartment] = useState([]);
-  console.log(department, "company companyy");
+
   useEffect(() => {
     getInitialListsHandler();
   }, []);
@@ -74,7 +74,7 @@ export default function DepartmentDetails() {
 
                 <div className="department-input-container">
                   <label htmlFor="branch" className="department-label">
-                   {t("branches.branch_name")}
+                    {t("branch")}
                   </label>
 
                   <div
@@ -89,7 +89,7 @@ export default function DepartmentDetails() {
                 </div>
                 <div className="department-input-container">
                   <label htmlFor="employee" className="department-label">
-                   {t("branches.number_of_employees")}
+                    {t("branches.number_of_employees")}
                   </label>
 
                   <div
@@ -100,6 +100,73 @@ export default function DepartmentDetails() {
                     className="add-department-name"
                   >
                     {department?.number_of_employees}
+                  </div>
+                </div>
+              </div>
+              <div className="left-side">
+                {lang === "en" ? (
+                  <div className="department-input-container">
+                    <label
+                      htmlFor="department-name"
+                      className="department-label"
+                    >
+                      Branch Name
+                    </label>
+
+                    <div
+                      id="department-name"
+                      name="department-name"
+                      placeholder="Department Name"
+                      className="add-department-name"
+                    >
+                      {department?.branch_name_en}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="department-input-container">
+                    <label htmlFor="department" className="department-label">
+                      الفرع
+                    </label>
+
+                    <div
+                      name="department"
+                      type="text"
+                      id="department"
+                      placeholder="اسم القسم"
+                      className="add-department-name"
+                    >
+                      {department?.branch_name_ar}
+                    </div>
+                  </div>
+                )}
+                <div className="department-input-container">
+                  <label htmlFor="branch" className="department-label">
+                    {t("branches.creation_date")}
+                  </label>
+
+                  <div
+                    name="branch"
+                    type="text"
+                    id="branch"
+                    placeholder="Branch Name"
+                    className="add-department-name"
+                  >
+                    {department?.creation_date}
+                  </div>
+                </div>
+                <div className="department-input-container">
+                  <label htmlFor="branch" className="department-label">
+                   {t("branches.start_date")}
+                  </label>
+
+                  <div
+                    name="branch"
+                    type="text"
+                    id="branch"
+                    placeholder="Branch Name"
+                    className="add-department-name"
+                  >
+                    {department?.start_date}
                   </div>
                 </div>
               </div>

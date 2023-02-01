@@ -10,28 +10,23 @@ let hawlakServices ={
         return response;
       },
       createCompany:async function(obj){
-        console.log(obj,"objjjjjjjjjjjjjjjjjjjjjj");
         const response = await Axios.post("company/create_company/",obj)
         return response;
       },
       createBranch: async function(obj){
-        console.log(obj,"objbranch");
         const response =  await Axios.post(`company/create_branch/`,obj)
         return response;
       },
       createDepartment: async function(obj){
-        console.log(obj,"objdepartment");
         const response =  await Axios.post("company/create_department/",obj)
         return response;
       },
       createEmployee: async function(obj){
-        console.log(obj,"objemployee");
         const response =  await Axios.post("employee/create_employee/",obj)
         return response;
       },
-      getAllCompanies: async function(){
-        
-        const response =  await Axios.get("company/list_companies/")
+      getAllCompanies: async function(){        
+        const response =  await Axios.get(`company/list_companies/`)
         return response;
       },
       getAllDepartments: async function(){
@@ -39,11 +34,11 @@ let hawlakServices ={
        return response;
       },
       getAllBranches: async function(){
-        const response = await Axios.get("company/list_branches/")
+        const response = await Axios.get(`company/list_branches/`)
         return response;
       },
       getAllEmployees: async function(){
-        const response = await Axios.get("employee/list_employees/")
+        const response = await Axios.get(`employee/list_employees/`)
         return response;
       },
       editCompany: async function(id,obj){

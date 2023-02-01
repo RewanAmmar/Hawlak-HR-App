@@ -9,21 +9,18 @@ import { currentLang, switchLang } from "../Localize/lang";
 export default function NavBar() {
   const { t, i18n } = useTranslation();
   const lang = i18n.language;
+
   const dispatch = useDispatch();
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-    localStorage.setItem("lng", lng);
-    switchLang(lng);
+
+  const changeLanguage = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("lng", lang);
+    switchLang(lang);
   };
-  return (
-    
+  
+  return (    
     <>
-    <div className="navbar">
-        {/* <div
-          className="burger-menu"         
-        >
-          <i className="fa-solid fa-bars nav-icon"></i>
-        </div> */}
+    <div className="navbar">   
 
         <div className="content">
           <div className='navbar-routes'>
@@ -31,21 +28,7 @@ export default function NavBar() {
 
           <NavLink to="/home" className="navbar-navlink">
             {t("navbar.home")}
-          </NavLink>
-          {/* <NavLink to="/companies" className="navbar-navlink">
-            {t("navbar.companies")}
-          </NavLink>
-
-          <NavLink to="/branches" className="navbar-navlink">
-            {t("navbar.branches")}
-          </NavLink>
-
-          <NavLink to="/departments" className="navbar-navlink">
-          {t("navbar.departments")}
-          </NavLink>
-          <NavLink to="/employees" className="navbar-navlink">
-          {t("navbar.employees")}
-          </NavLink>    */}
+          </NavLink>     
         
           <button className="navbar-navlink lang-btn" onClick={() => {
               changeLanguage(currentLang() === "en" ? "ar" : "en");

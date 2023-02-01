@@ -27,7 +27,7 @@ export default function Branches() {
 
   async function allDepartmentsHandler() {
     try {
-      let { data:branch } = await hawlakServices.getAllBranches();
+      let { data:branch } = await hawlakServices.getAllBranches(activePage);
       console.log(branch, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedBranches = branch.results.map((branch) => {
         return {
@@ -84,7 +84,7 @@ export default function Branches() {
           />
         </GeneralModal>
       )}
-      <>
+      
         {lang === "en" ? (
           <TableData
             handleRowClick={handleRowClick}
@@ -125,7 +125,7 @@ export default function Branches() {
             itemsCount={itemsCount}
         />          
         )}
-      </>
+     
     </div>
   );
 }

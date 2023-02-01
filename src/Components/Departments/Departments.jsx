@@ -7,7 +7,7 @@ import GeneralModal from "./../Modal/Modal";
 import EditDepartment from "../../Pages/EditDepartment/EditDepartment";
 import { t } from "i18next";
 import i18n from "../Localize/i18n";
-import BackButton from '../BackButton/BackButton';
+import BackButton from "../BackButton/BackButton";
 export default function Departments() {
   const navigate = useNavigate();
   const lang = i18n.language;
@@ -15,23 +15,31 @@ export default function Departments() {
   const [currentEditingDepartment, setCurrentEditingDepartment] = useState({});
   const [activePage, setActivePage] = useState(1);
   const [itemsCount, setItemsCount] = useState(0);
+
   const handlePageChange = (pageNumber) => {
     setActivePage(pageNumber);
   };
+
   function handleRowClick(tableRow) {
     navigate(`/department-details/${tableRow.id}`);
     console.log(tableRow, "hhhhhhhhhhhhhhh");
   }
   const [modalVisable, setModalVisable] = useState(false);
+
   async function allDepartmentsHandler() {
     try {
-      let { data: department } = await hawlakServices.getAllDepartments();
+      let { data: department } = await hawlakServices.getAllDepartments(
+        activePage
+      );
+      setItemsCount(department.count);
       console.log(department, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedDepartments = department.results.map((department) => {
         return {
           id: department.id,
           department_name_en: department.department_name_en,
           department_name_ar: department.department_name_ar,
+          branch_name_en: department.branch_name_en,
+          branch_name_ar: department.branch_name_ar,
           number_of_employees: department.number_of_employees,
           branch: department.branch,
           creation_date: department.creation_date,
@@ -50,20 +58,21 @@ export default function Departments() {
           ),
         };
       });
-      console.log(department.results, "All departments");
       setAllDepartments(formatedDepartments);
-      setItemsCount(department.count)
     } catch (err) {}
   }
   useEffect(() => {
     allDepartmentsHandler();
   }, [activePage]);
+
   return (
     <div className="container">
       <BackButton />
       <div className="btn-section">
         <NavLink to="/add-department">
-          <button className="add-department-btn">{t("departments.add_department")}</button>
+          <button className="add-department-btn">
+            {t("departments.add_department")}
+          </button>
         </NavLink>
       </div>
       {modalVisable && (
@@ -75,41 +84,42 @@ export default function Departments() {
           />
         </GeneralModal>
       )}
-      
-      <>
-        {lang === "en" ? (
-          <TableData
-            handleRowClick={handleRowClick}
-            tableHeaders={[
-              "department_name_en",
-              "number_of_employees",
-              "branch",
-              "creation_date",
-              "edit",
-            ]}
-            tableRows={allDepartments}
-            showPagination={true}
-            handlePageChange={handlePageChange}
-            activePage={activePage}
-            itemsCount={itemsCount}
-          />
-        ) : (
-          <TableData
-            handleRowClick={handleRowClick}
-            tableHeaders={[
-              "department_name_ar",
-              "number_of_employees",
-              "branch",
-              "edit",
-            ]}
-            tableRows={allDepartments}
-            showPagination={true}
-            handlePageChange={handlePageChange}
-            activePage={activePage}
-            itemsCount={itemsCount}
-          />
-        )}
-      </> 
+
+      {lang === "en" ? (
+        <TableData
+          handleRowClick={handleRowClick}
+          tableHeaders={[
+            "department_name_en",
+            "branch_name_en",
+            "number_of_employees",
+            "branch",
+            "creation_date",
+            "edit",
+          ]}
+          tableRows={allDepartments}
+          showPagination={true}
+          handlePageChange={handlePageChange}
+          activePage={activePage}
+          itemsCount={itemsCount}
+        />
+      ) : (
+        <TableData
+          handleRowClick={handleRowClick}
+          tableHeaders={[
+            "department_name_ar",
+            "branch_name_ar",
+            "number_of_employees",
+            "branch",
+            "creation_date",
+            "edit",
+          ]}
+          tableRows={allDepartments}
+          showPagination={true}
+          handlePageChange={handlePageChange}
+          activePage={activePage}
+          itemsCount={itemsCount}
+        />
+      )}
     </div>
-  )
+  );
 }

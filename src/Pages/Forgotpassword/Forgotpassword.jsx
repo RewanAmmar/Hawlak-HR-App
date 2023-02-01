@@ -13,9 +13,9 @@ export default function Forgotpassword() {
     if (email === "") {
       toastPopup("error", t("forgetPassword.empty_email"));
     } else {
-      const dataEmail = { email: email };
+      const emailData = { email: email };
       try {
-        let { data } = await hawlakServices.verifyEmail(dataEmail);
+        let { data } = await hawlakServices.verifyEmail(emailData);
 
         toastPopup("success", t("forgetPassword.email_sent"));
       } catch (err) {

@@ -1,3 +1,3 @@
 export default{
-    endPoint:"https://hawlak-ziadsindion.pythonanywhere.com/",    
+    endPoint:"https://hawlak-ziadsindion.pythonanywhere.com/",
 }

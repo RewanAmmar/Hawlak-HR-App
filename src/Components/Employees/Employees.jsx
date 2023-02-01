@@ -7,7 +7,7 @@ import GeneralModal from "../Modal/Modal";
 import { NavLink, useNavigate } from "react-router-dom";
 import { t } from "i18next";
 import i18n from "../Localize/i18n";
-import BackButton from '../BackButton/BackButton';
+import BackButton from "../BackButton/BackButton";
 export default function Employees() {
   const [allEmployees, setAllEmployees] = useState([]);
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function Employees() {
   }
   async function allEmployeesHandler() {
     try {
-      let { data: employee } = await hawlakServices.getAllEmployees();
+      let { data: employee } = await hawlakServices.getAllEmployees(activePage);
       console.log(employee, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedEmployees = employee.results.map((employee) => {
         return {
@@ -68,7 +68,7 @@ export default function Employees() {
           religion_ar: employee.religion_ar,
           bank_name_en: employee.bank_name_en,
           bank_name_ar: employee.bank_name_ar,
-          iban: employee.iban,          
+          iban: employee.iban,
           branch: employee.branch,
           creation_date: employee.creation_date,
           edit: (
@@ -87,7 +87,7 @@ export default function Employees() {
       });
       console.log(employee.results, "All departments");
       setAllEmployees(formatedEmployees);
-      setItemsCount(employee.count)
+      setItemsCount(employee.count);
     } catch (err) {}
   }
   useEffect(() => {
@@ -96,9 +96,13 @@ export default function Employees() {
   return (
     <div className="container">
       <BackButton />
-      <div className='btn-section'>
-      <NavLink to="/add-employee"><button className='add-employee-btn'>{t("employees.add_employee")}</button></NavLink>
-    </div> 
+      <div className="btn-section">
+        <NavLink to="/add-employee">
+          <button className="add-employee-btn">
+            {t("employees.add_employee")}
+          </button>
+        </NavLink>
+      </div>
       {modalVisable && (
         <GeneralModal>
           <EditEmployee
@@ -107,43 +111,44 @@ export default function Employees() {
             setModalVisable={setModalVisable}
           />
         </GeneralModal>
-      )};
-      <>
-      {lang === "en"?(
-         <TableData
-         handleRowClick={handleRowClick}
-         tableHeaders={[
-           "emp_name_en",           
-           "phone",
-           "mobile",
-           "place_of_birth_en",
-           "creation_date",               
-           "edit",
-         ]}
-         tableRows={allEmployees}
-         showPagination={true}
-         handlePageChange={handlePageChange}
-         activePage={activePage}
-         itemsCount={itemsCount}
-       />
-      ):(
-        <TableData
-        handleRowClick={handleRowClick}
-        tableHeaders={[          
-          "emp_name_ar",
-          "phone",
-          "mobile",          
-          "place_of_birth_ar",       
-          "edit",
-        ]}
-        tableRows={allEmployees}
-        showPagination={true}
-        handlePageChange={handlePageChange}
-        activePage={activePage}
-        itemsCount={itemsCount}
-      />
       )}
-      </>      
+      
+     
+        {lang === "en" ? (
+          <TableData
+            handleRowClick={handleRowClick}
+            tableHeaders={[
+              "emp_name_en",
+              "phone",
+              "mobile",
+              "place_of_birth_en",
+              "creation_date",
+              "edit",
+            ]}
+            tableRows={allEmployees}
+            showPagination={true}
+            handlePageChange={handlePageChange}
+            activePage={activePage}
+            itemsCount={itemsCount}
+          />
+        ) : (
+          <TableData
+            handleRowClick={handleRowClick}
+            tableHeaders={[
+              "emp_name_ar",
+              "phone",
+              "mobile",
+              "place_of_birth_ar",
+              "edit",
+            ]}
+            tableRows={allEmployees}
+            showPagination={true}
+            handlePageChange={handlePageChange}
+            activePage={activePage}
+            itemsCount={itemsCount}
+          />
+        )}
+      
     </div>
   );
 }

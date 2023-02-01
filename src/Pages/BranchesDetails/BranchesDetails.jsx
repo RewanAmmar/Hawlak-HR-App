@@ -41,7 +41,7 @@ export default function BranchesDetails() {
          
        <div className='container'>
        <div className='left-side'>
-        <>
+        
         {lang === "en" ?(
             <div className="branch-input-container">
              <label htmlFor="branch-name" className="branch-label">
@@ -70,7 +70,7 @@ export default function BranchesDetails() {
             >{branch?.branch_name_ar}</div>
           </div>
         )}
-           </>
+          
           
            <div className="branch-input-container">
              <label htmlFor="company" className="branch-label">

@@ -3,7 +3,6 @@ import TableHead from "./TableHead/TableHead";
 import "./TableData.scss";
 import Pagination from "react-js-pagination";
 
-
 export default function TableData({
   tableRows = [],
   tableHeaders = [],
@@ -13,9 +12,6 @@ export default function TableData({
   handlePageChange = () => {},
   handleRowClick = () => {},
 }) {
- 
-
-
   return (
     <div className="data-table-container">
       <div className="table-responsive">
@@ -43,17 +39,17 @@ export default function TableData({
           </tbody>
         </table>
       </div>
-    {showPagination && (
+      {showPagination && (
         <div className="table-pagination">
           <Pagination
             activePage={activePage}
             itemsCountPerPage={8}
             totalItemsCount={itemsCount}
-            pageRangeDisplayed={Math.ceil(itemsCount / 8)} 
+            pageRangeDisplayed={Math.ceil(itemsCount / 8)}
             onChange={(pageNumber) => handlePageChange(pageNumber)}
-          />
+          />          
         </div>
-      )}  
+      )}
     </div>
   );
 }

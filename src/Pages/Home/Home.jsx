@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
-
 import "./Home.scss";
-
 import { NavLink } from "react-router-dom";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Pie } from "react-chartjs-2";
-// import { authActions } from "../../store/AuthSlice";
-// import { useDispatch } from "react-redux";
 import hawlakServices from "../../services/hawlakServices";
 import TableData from "../../Components/TableData/TableData";
 import { t } from "i18next";
+
 export default function Home() {
   const [allCompanies, setAllCompanies] = useState([]);
   const [companyCount, setCompanyCount] = useState({});  
@@ -47,8 +44,8 @@ export default function Home() {
   };
   async function allCompaniesHandler() {
     try {
-      let { data } = await hawlakServices.getAllCompanies();      
-      let formatedCompanies = data.results.map((item) => {
+      let { data: company } = await hawlakServices.getAllCompanies();      
+      let formatedCompanies = company.results.map((item) => {
         return {
           id: item.id,
           company_name_en: item.company_name_en,
@@ -63,29 +60,29 @@ export default function Home() {
           is_active: item.is_active,
         };
       });
-      setCompanyCount(data);
+      setCompanyCount(company);
       setAllCompanies(formatedCompanies);
     } catch (err) {}
   }
   async function allEmployeesHandler() {
     try {
-      let { data } = await hawlakServices.getAllEmployees();     
+      let { data: employee } = await hawlakServices.getAllEmployees();     
 
-      setEmployeeCount(data);
+      setEmployeeCount(employee);
     } catch (err) {}
   }
   async function allBranchesHandler() {
     try {
-      let { data } = await hawlakServices.getAllBranches();     
+      let { data: branch } = await hawlakServices.getAllBranches();     
 
-      setBranchCount(data);
+      setBranchCount(branch);
     } catch (err) {}
   }
   async function allDepartmentsHandler() {
     try {
-      let { data } = await hawlakServices.getAllDepartments();      
+      let { data: department } = await hawlakServices.getAllDepartments();      
 
-      setDepartmentCount(data);
+      setDepartmentCount(department);
     } catch (err) {}
   }
   useEffect(() => {

@@ -25,8 +25,7 @@ export default function Companies() {
   };
 
   function handleRowClick(tableRow) {
-    navigate(`/company-details/${tableRow.id}`);
-    console.log(tableRow, "hhhhhhhhhhhhhhh");
+    navigate(`/company-details/${tableRow.id}`);    
   }
   async function allCompaniesHandler() {
     try {

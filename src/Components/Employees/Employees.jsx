@@ -14,14 +14,14 @@ export default function Employees() {
   const [currentEditingEmployee, setCurrentEditingEmployee] = useState({});
   const [modalVisable, setModalVisable] = useState(false);
   const lang = i18n.language;
-  const [activePage, setactivePage] = useState(1);
+  const [activePage, setActivePage] = useState(1);
   const [itemsCount, setItemsCount] = useState(0);
+
   const handlePageChange = (pageNumber) => {
-    setactivePage(pageNumber);
+    setActivePage(pageNumber);
   };
   function handleRowClick(tableRow) {
-    navigate(`/employee-details/${tableRow.id}`);
-    console.log(tableRow, "hhhhhhhhhhhhhhh");
+    navigate(`/employee-details/${tableRow.id}`);    
   }
   async function allEmployeesHandler() {
     try {
@@ -31,7 +31,7 @@ export default function Employees() {
         return {
           user: {
             email: employee.email,
-            username: employee.userName,
+            username: employee.username,
             password: employee.password,
           },
           position: {
@@ -118,7 +118,7 @@ export default function Employees() {
           <TableData
             handleRowClick={handleRowClick}
             tableHeaders={[
-              "emp_name_en",
+              "emp_name_en",             
               "phone",
               "mobile",
               "place_of_birth_en",

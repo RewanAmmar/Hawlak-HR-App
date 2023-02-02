@@ -21,10 +21,9 @@ export default function Departments() {
   };
 
   function handleRowClick(tableRow) {
-    navigate(`/department-details/${tableRow.id}`);
-    console.log(tableRow, "hhhhhhhhhhhhhhh");
+    navigate(`/department-details/${tableRow.id}`);    
   }
-  const [modalVisable, setModalVisable] = useState(false);
+  const [modalVisable, setModalVisable] = useState(false)
 
   async function allDepartmentsHandler() {
     try {

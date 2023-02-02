@@ -10,35 +10,35 @@ let hawlakServices ={
         return response;
       },
       createCompany:async function(obj){
-        const response = await Axios.post("company/create_company/",obj)
+        const response = await Axios.post("company/create_company/",obj);
         return response;
       },
       createBranch: async function(obj){
-        const response =  await Axios.post(`company/create_branch/`,obj)
+        const response =  await Axios.post(`company/create_branch/`,obj);
         return response;
       },
       createDepartment: async function(obj){
-        const response =  await Axios.post("company/create_department/",obj)
+        const response =  await Axios.post("company/create_department/",obj);
         return response;
       },
       createEmployee: async function(obj){
-        const response =  await Axios.post("employee/create_employee/",obj)
+        const response =  await Axios.post("employee/create_employee/",obj);
         return response;
       },
-      getAllCompanies: async function(){        
-        const response =  await Axios.get(`company/list_companies/`)
+      getAllCompanies: async function(page = 1){        
+        const response =  await Axios.get(`company/list_companies/?page=${page}`);
         return response;
       },
-      getAllDepartments: async function(){
-       const response = await Axios.get(`company/list_departments/`)
+      getAllDepartments: async function(page = 1){
+       const response = await Axios.get(`company/list_departments/?page=${page}`);
        return response;
       },
-      getAllBranches: async function(){
-        const response = await Axios.get(`company/list_branches/`)
+      getAllBranches: async function(page = 1){
+        const response = await Axios.get(`company/list_branches/?page=${page}`);
         return response;
       },
-      getAllEmployees: async function(){
-        const response = await Axios.get(`employee/list_employees/`)
+      getAllEmployees: async function(page = 1){
+        const response = await Axios.get(`employee/list_employees/?page=${page}`);
         return response;
       },
       editCompany: async function(id,obj){
@@ -58,19 +58,19 @@ let hawlakServices ={
         return response;
       },
       getCompanyDetails: async function(id){
-        const response = await Axios.get(`company/company_details/${id}/`)
+        const response = await Axios.get(`company/company_details/${id}/`);
         return response;
       },
       getBranchDetails: async function(id){
-        const response = await Axios.get(`company/branch_details/${id}/`)
+        const response = await Axios.get(`company/branch_details/${id}/`);
         return response;
       },
       getDepartmentDetails: async function(id){
-        const response = await Axios.get(`company/department_details/${id}/`)
+        const response = await Axios.get(`company/department_details/${id}/`);
         return response;
       },
       getEmployeeDetails: async function(id){
-        const response = await Axios.get(`employee/employee_details/${id}/`)
+        const response = await Axios.get(`employee/employee_details/${id}/`);
         return response;
       },
 }

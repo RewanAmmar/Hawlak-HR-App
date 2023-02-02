@@ -21,8 +21,7 @@ export default function Branches() {
     setActivePage(pageNumber);
   };
   function handleRowClick(tableRow) {
-    navigate(`/branch-details/${tableRow.id}`);
-    console.log(tableRow, "hhhhhhhhhhhhhhh");
+    navigate(`/branch-details/${tableRow.id}`);    
   }
 
   async function allDepartmentsHandler() {

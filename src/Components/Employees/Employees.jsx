@@ -13,16 +13,18 @@ export default function Employees() {
   const navigate = useNavigate();
   const [currentEditingEmployee, setCurrentEditingEmployee] = useState({});
   const [modalVisable, setModalVisable] = useState(false);
-  const lang = i18n.language;
   const [activePage, setActivePage] = useState(1);
   const [itemsCount, setItemsCount] = useState(0);
+  const lang = i18n.language;
 
-  const handlePageChange = (pageNumber) => {
-    setActivePage(pageNumber);
-  };
+ const handlePageChange = (pageNumber) => {
+  setActivePage(pageNumber)
+ }
+
   function handleRowClick(tableRow) {
     navigate(`/employee-details/${tableRow.id}`);    
   }
+
   async function allEmployeesHandler() {
     try {
       let { data: employee } = await hawlakServices.getAllEmployees(activePage);
@@ -93,6 +95,7 @@ export default function Employees() {
   useEffect(() => {
     allEmployeesHandler();
   }, [activePage]);
+
   return (
     <div className="container">
       <BackButton />

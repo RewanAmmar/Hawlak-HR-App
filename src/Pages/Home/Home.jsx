@@ -13,6 +13,12 @@ export default function Home() {
   const [branchCount, setBranchCount] = useState({});
   const [departmentCount, setDepartmentCount] = useState({});
   const [employeeCount, setEmployeeCount] = useState({});
+  const [activePage, setActivePage] = useState(1);
+  const [itemsCount, setItemsCount] = useState(0);
+
+const handlePageChange = (pageNumber) => {
+  setActivePage(pageNumber)
+}
   ChartJS.register(ArcElement, Tooltip, Legend);
 
   const data = {
@@ -44,7 +50,8 @@ export default function Home() {
   };
   async function allCompaniesHandler() {
     try {
-      let { data: company } = await hawlakServices.getAllCompanies();      
+      let { data: company } = await hawlakServices.getAllCompanies(activePage); 
+      setItemsCount(company.count)     
       let formatedCompanies = company.results.map((item) => {
         return {
           id: item.id,
@@ -90,7 +97,7 @@ export default function Home() {
     allEmployeesHandler();
     allDepartmentsHandler();
     allBranchesHandler();
-  }, []);
+  }, [activePage]);
   return (
     <>
       <div className="container">
@@ -208,6 +215,10 @@ export default function Home() {
                   "creation_date"              
                   ]}
                 tableRows={allCompanies}
+                showPagination={true}
+                handlePageChange={handlePageChange}
+                activePage={activePage}
+                itemsCount={itemsCount}
               />
               </div>
             </div>

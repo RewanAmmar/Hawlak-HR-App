@@ -16,21 +16,20 @@ export default function Departments() {
   const [activePage, setActivePage] = useState(1);
   const [itemsCount, setItemsCount] = useState(0);
 
-  const handlePageChange = (pageNumber) => {
-    setActivePage(pageNumber);
-  };
+const handlePageChange = (pageNumber) => {
+  setActivePage(pageNumber)
+}
 
   function handleRowClick(tableRow) {
-    navigate(`/department-details/${tableRow.id}`);    
+    navigate(`/department-details/${tableRow.id}`);
   }
-  const [modalVisable, setModalVisable] = useState(false)
+  const [modalVisable, setModalVisable] = useState(false);
 
   async function allDepartmentsHandler() {
     try {
       let { data: department } = await hawlakServices.getAllDepartments(
         activePage
-      );
-      setItemsCount(department.count);
+      );      
       console.log(department, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedDepartments = department.results.map((department) => {
         return {
@@ -58,6 +57,7 @@ export default function Departments() {
         };
       });
       setAllDepartments(formatedDepartments);
+      setItemsCount(department.count);
     } catch (err) {}
   }
   useEffect(() => {

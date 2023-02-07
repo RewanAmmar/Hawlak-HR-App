@@ -37,8 +37,8 @@ export default function NavBar() {
           </div>
           <div className='logout-section'>
            <div className='logout-action' onClick={(e) => {
-                e.preventDefault();
-                dispatch(authActions.logout());
+              e.preventDefault();
+              dispatch(authActions.logout())
               }}>
           <i class="fa-solid fa-right-from-bracket logout"></i>
           </div>

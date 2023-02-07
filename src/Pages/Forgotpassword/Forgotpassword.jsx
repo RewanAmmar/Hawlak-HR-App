@@ -5,8 +5,11 @@ import { Link } from "react-router-dom";
 import toastPopup from "../../Helpers/Toast";
 import hawlakServices from "../../services/hawlakServices";
 import { useTranslation } from "react-i18next";
+
 export default function Forgotpassword() {
+
   const [email, setEmail] = useState("");
+
   const { t } = useTranslation();
 
   async function verifyEmailHandler() {

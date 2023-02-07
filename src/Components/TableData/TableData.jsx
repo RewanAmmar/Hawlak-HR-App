@@ -43,11 +43,11 @@ export default function TableData({
         <div className="table-pagination">
           <Pagination
             activePage={activePage}
-            itemsCountPerPage={8}
+            itemsCountPerPage={10}
             totalItemsCount={itemsCount}
-            pageRangeDisplayed={Math.ceil(itemsCount / 8)}
+            pageRangeDisplayed={Math.ceil(itemsCount / 10)}
             onChange={(pageNumber) => handlePageChange(pageNumber)}
-          />          
+          />
         </div>
       )}
     </div>

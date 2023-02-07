@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./CompanyDetails.scss";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import hawlakServices from "../../services/hawlakServices";
 import BackButton from "../../Components/BackButton/BackButton";
 import i18n from "../../Components/Localize/i18n";

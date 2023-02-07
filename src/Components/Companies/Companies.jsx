@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import "./Companies.scss";
-import moment from "moment";
+
 import { useNavigate } from "react-router-dom";
 import TableData from "../../Components/TableData/TableData";
 import hawlakServices from "../../services/hawlakServices";
-import EmptyTable from "./../../Components/TableData/EmptyTable/EmptyTable";
+
 import { NavLink } from "react-router-dom";
 import GeneralModal from "./../Modal/Modal";
 import i18n from "../Localize/i18n";
@@ -20,9 +20,10 @@ export default function Companies() {
   const lang = i18n.language;
   const [activePage, setActivePage] = useState(1);
   const [itemsCount, setItemsCount] = useState(0);
-  const handlePageChange = (pageNumber) => {
-    setActivePage(pageNumber);
-  };
+
+const handlePageChange = (pageNumber) => {
+  setActivePage(pageNumber)
+}
 
   function handleRowClick(tableRow) {
     navigate(`/company-details/${tableRow.id}`);    
@@ -30,7 +31,7 @@ export default function Companies() {
   async function allCompaniesHandler() {
     try {
       let { data: company } = await hawlakServices.getAllCompanies(activePage);
-      console.log(company.count, "dataaaaaaaaaaaaaaaaaaaaaaa");
+      console.log(company, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedCompanies = company.results.map((company) => {
         return {
           id: company.id,

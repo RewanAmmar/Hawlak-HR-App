@@ -32,7 +32,7 @@ function App() {
           <Route path="/*" element={<ProtectedRoute />} />
           <Route
             path="/login"
-            element={auth?.key ? <Navigate to="/" /> : <Login />}
+            element={auth.key ? <Navigate to="/" /> : <Login />}
           />
           <Route path="/forgot-password" element={<Forgotpassword />} />
         </Routes>

@@ -7,7 +7,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import EditBranch from "../../Pages/EditBranch/EditBranch";
 import { t } from "i18next";
 import i18n from "../Localize/i18n";
-import BackButton from '../BackButton/BackButton';
+import BackButton from "../BackButton/BackButton";
 
 export default function Branches() {
   const navigate = useNavigate();
@@ -17,16 +17,18 @@ export default function Branches() {
   const [modalVisable, setModalVisable] = useState(false);
   const [activePage, setActivePage] = useState(1);
   const [itemsCount, setItemsCount] = useState(0);
+
   const handlePageChange = (pageNumber) => {
     setActivePage(pageNumber);
   };
+
   function handleRowClick(tableRow) {
-    navigate(`/branch-details/${tableRow.id}`);    
+    navigate(`/branch-details/${tableRow.id}`);
   }
 
   async function allDepartmentsHandler() {
     try {
-      let { data:branch } = await hawlakServices.getAllBranches(activePage);
+      let { data: branch } = await hawlakServices.getAllBranches(activePage);
       console.log(branch, "dataaaaaaaaaaaaaaaaaaaaaaa");
       let formatedBranches = branch.results.map((branch) => {
         return {
@@ -83,28 +85,28 @@ export default function Branches() {
           />
         </GeneralModal>
       )}
-      
-        {lang === "en" ? (
-          <TableData
-            handleRowClick={handleRowClick}
-            tableHeaders={[
-              "branch_name_en",
-              "country_en",
-              "address_en",
-              "latitude",
-              "longitude",
-              "creation_date",
-              "company",
-              "edit",
-            ]}
-            tableRows={allBranches}
-            showPagination={true}
-            handlePageChange={handlePageChange}
-            activePage={activePage}
-            itemsCount={itemsCount}
-          />
-        ) : (
-          <TableData
+
+      {lang === "en" ? (
+        <TableData
+          handleRowClick={handleRowClick}
+          tableHeaders={[
+            "branch_name_en",
+            "country_en",
+            "address_en",
+            "latitude",
+            "longitude",
+            "creation_date",
+            "company",
+            "edit",
+          ]}
+          tableRows={allBranches}
+          showPagination={true}
+          handlePageChange={handlePageChange}
+          activePage={activePage}
+          itemsCount={itemsCount}
+        />
+      ) : (
+        <TableData
           handleRowClick={handleRowClick}
           tableHeaders={[
             "branch_name_ar",
@@ -115,16 +117,15 @@ export default function Branches() {
             "longitude",
             "creation_date",
             "company",
-            "edit"
+            "edit",
           ]}
           tableRows={allBranches}
           showPagination={true}
-            handlePageChange={handlePageChange}
-            activePage={activePage}
-            itemsCount={itemsCount}
-        />          
-        )}
-     
+          handlePageChange={handlePageChange}
+          activePage={activePage}
+          itemsCount={itemsCount}
+        />
+      )}
     </div>
   );
 }

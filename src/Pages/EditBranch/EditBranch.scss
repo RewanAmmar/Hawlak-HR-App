@@ -76,7 +76,7 @@
             position: relative;
             text-align: start;
             margin-bottom: 15px;
-            width: 25%;
+            width: 45%;
 
             .show-password-icon {
               position: absolute;
@@ -132,41 +132,12 @@
   }
 }
 
-.button {}
 
-[dir="ltr"] .reset-password-container {
-  .reset-page-content {
-    .reset-password-card {
-      .form-inputs-container {
-        .reset-password-input-container {
-          .show-password-icon {
-            right: 20px;
-          }
-        }
-      }
-    }
-  }
-}
-
-[dir="rtl"] .reset-password-container {
-  .reset-page-content {
-    .reset-password-card {
-      .form-inputs-container {
-        .reset-password-input-container {
-          .show-password-icon {
-            left: 20px;
-          }
-        }
-      }
-    }
-  }
-}
-
-[dir="rtl"] {
-  .add-department-name {
-    padding-right: 15px;
-  }
-}
+// [dir="rtl"] {
+//   .add-department-name {
+//     padding-right: 15px;
+//   }
+// }
 
 @media screen and (max-width: 575.99px) {
   .reset-password-container {
